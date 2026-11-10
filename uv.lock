@@ -2096,7 +2096,7 @@ wheels = [
 
 [[package]]
 name = "lockwalk"
-version = "0.1.0.dev0"
+version = "0.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "pydantic", version = "2.12.5", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version < '3.14' and extra == 'group-8-lockwalk-crewai') or (extra == 'extra-8-lockwalk-mcp' and extra == 'group-8-lockwalk-crewai') or (extra == 'group-8-lockwalk-crewai' and extra == 'group-8-lockwalk-dev')" },

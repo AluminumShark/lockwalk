@@ -1,6 +1,6 @@
 [project]
 name = "lockwalk"
-version = "0.1.0.dev0"
+version = "0.1.0"
 description = "Authorization test coverage for AI agent tools: find untested tool permissions, policy mismatches, and unenforced denials."
 readme = "README.md"
 license = "Apache-2.0"

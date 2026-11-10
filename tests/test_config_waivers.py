@@ -1,5 +1,6 @@
 from pathlib import Path
 
+import click
 import pytest
 from pydantic import ValidationError
 from typer.testing import CliRunner
@@ -61,5 +62,7 @@ def test_run_test_accepts_waivers():
 def test_help_lists_waivers_and_summary(command):
     result = CliRunner().invoke(app, [command, "--help"], terminal_width=200)
     assert result.exit_code == 0
-    assert "--waivers" in result.output
-    assert "--summary" in result.output
+    # On GitHub Actions typer adds colour codes that split "--waivers" into "-" and "-waivers".
+    text = click.unstyle(result.output)
+    assert "--waivers" in text
+    assert "--summary" in text

@@ -82,7 +82,13 @@ def test_utf8_bom_is_accepted(tmp_path):
 
 def test_deep_nesting_fails_the_source(tmp_path):
     (tmp_path / "tools.json").write_text("[" * 100000, encoding="utf-8")
-    assert read(tmp_path, "tools.json").error == "invalid JSON: nested too deeply"
+    # Most builds raise RecursionError on the way down. A build with a deeper C stack (seen with
+    # Python 3.14 on GitHub's Linux and macOS runners) reaches the end and finds the value
+    # missing. The source fails either way.
+    assert read(tmp_path, "tools.json").error in (
+        "invalid JSON: nested too deeply",
+        "invalid JSON: Expecting value: line 1 column 100001 (char 100000)",
+    )
 
 
 def test_nan_is_not_valid_json(write, tmp_path):

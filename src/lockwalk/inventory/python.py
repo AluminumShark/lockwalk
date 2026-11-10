@@ -101,7 +101,8 @@ def _kill_tree(process: subprocess.Popen[bytes]) -> None:
             check=False,
         )
     else:
-        with contextlib.suppress(ProcessLookupError):
+        # macOS answers EPERM, not ESRCH, when the group holds only an unreaped zombie.
+        with contextlib.suppress(ProcessLookupError, PermissionError):
             os.killpg(process.pid, signal.SIGKILL)
     with contextlib.suppress(subprocess.TimeoutExpired):
         process.wait(timeout=5)

@@ -1,8 +1,13 @@
+import os
+import subprocess
+import sys
 import time
 from pathlib import Path
 
+import pytest
+
 from lockwalk.config import PythonSourceConfig
-from lockwalk.inventory.python import PythonSource
+from lockwalk.inventory.python import PythonSource, _kill_tree
 from lockwalk.models import SourceResult
 
 PLAIN_TOOLS = '''
@@ -270,3 +275,17 @@ def test_worker_stderr_never_reaches_the_report(write, tmp_path):
     assert result.error
     assert "s3cr3t" not in result.error
     assert "import the target yourself" in result.error
+
+
+@pytest.mark.skipif(sys.platform == "win32", reason="process groups are POSIX only")
+def test_kill_tree_accepts_a_group_it_may_not_signal(monkeypatch: pytest.MonkeyPatch) -> None:
+    # macOS answers EPERM, not ESRCH, when the group holds only an unreaped zombie. That used to
+    # escape and crash the run instead of reporting why the worker failed.
+    process = subprocess.Popen([sys.executable, "-c", "pass"], start_new_session=True)
+
+    def refuse(pgid: int, signal_number: int) -> None:
+        raise PermissionError(1, "Operation not permitted")
+
+    monkeypatch.setattr(os, "killpg", refuse)
+    _kill_tree(process)
+    assert process.returncode == 0

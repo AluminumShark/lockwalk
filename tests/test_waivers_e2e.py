@@ -162,7 +162,12 @@ def test_the_flag_wins_over_the_waivers_in_the_config_file(tmp_path):
     expired = waivers_file(tmp_path, [(w, m, "2026-06-30") for w, m, _ in BOTH], "expired.yaml")
 
     def rel(name: str) -> str:
-        return os.path.relpath(MULTI / name, tmp_path).replace(os.sep, "/")
+        # On Windows the temporary folder can be on another drive than the checkout (as on
+        # GitHub's runners); then there is no relative path and only an absolute one works.
+        try:
+            return os.path.relpath(MULTI / name, tmp_path).replace(os.sep, "/")
+        except ValueError:
+            return (MULTI / name).as_posix()
 
     config = tmp_path / ".lockwalk.toml"
     config.write_text(

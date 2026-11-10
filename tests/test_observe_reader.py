@@ -10,6 +10,7 @@ from typing import Any
 import pytest
 from pydantic import ValidationError
 
+from lockwalk.harness import runner as harness_runner
 from lockwalk.observe import reader
 from lockwalk.observe.reader import ReaderRecord, run_reader
 from lockwalk.observe.spans import Limits, ReadResult
@@ -262,6 +263,10 @@ def test_timeout_kills_the_worker_and_its_child(
     assert_gone([int(Path(f"{pid_file}{suffix}").read_text()) for suffix in ("", ".child")])
 
 
+@pytest.mark.skipif(
+    sys.platform != "win32" and not harness_runner._HAS_WAITID,
+    reason="no os.waitid (macOS): a child left by a reader that returned normally may survive",
+)
 def test_child_left_by_a_normal_return_is_cleaned_up(tmp_path: Path) -> None:
     pid_file = tmp_path / "pid"
     result = run("reader_hostile:read_leaves_child", (str(pid_file),))

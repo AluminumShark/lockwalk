@@ -202,6 +202,10 @@ def _alive(pid: int) -> bool:
     return code.value == 259  # STILL_ACTIVE
 
 
+@pytest.mark.skipif(
+    sys.platform != "win32" and not runner._HAS_WAITID,
+    reason="no os.waitid (macOS): a child left by a worker that exited on its own may survive",
+)
 def test_grandchild_does_not_outlive_the_run(harness: HarnessRunner) -> None:
     seen = harness.run(job("grandchild"))
     assert seen.error is None and seen.exception_message is not None

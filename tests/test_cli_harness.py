@@ -3,6 +3,7 @@
 import json
 from pathlib import Path
 
+import click
 import pytest
 from lockwalk_discovery_cache import reuse_discovery  # noqa: F401
 from typer.testing import CliRunner
@@ -57,6 +58,7 @@ def test_coverage_ignores_harness_and_never_starts_a_worker(no_worker, tmp_path)
 def test_the_option_is_documented():
     result = runner.invoke(cli.app, ["test", "--help"])
     assert result.exit_code == 0
-    assert "--no-harness" in result.stdout
+    # On GitHub Actions typer adds colour codes that split an option name in two.
+    assert "--no-harness" in click.unstyle(result.stdout)
     coverage_help = runner.invoke(cli.app, ["coverage", "--help"])
-    assert "--no-harness" not in coverage_help.stdout
+    assert "--no-harness" not in click.unstyle(coverage_help.stdout)

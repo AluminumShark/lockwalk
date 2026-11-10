@@ -1414,6 +1414,8 @@ and harmless.
 - **Trace files can hold personal data.** lockwalk keeps none of it, but how the files are
   stored is up to you.
 - **A reader function is your code.** lockwalk checks its shape, not its correctness.
+- **Cleanup of a reader's children has a gap on macOS.** There is no `os.waitid`, so a child
+  process left behind by a reader that returned normally may survive the run.
 - **Observe trusts the door's own record.** If the door records `deny` and sends `allow`, or
   records one subject and sends another, observe cannot see it. It checks what the door says
   it did.

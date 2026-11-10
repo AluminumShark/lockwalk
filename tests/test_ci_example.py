@@ -7,6 +7,7 @@ import shlex
 from pathlib import Path
 from typing import Any
 
+import click
 import pytest
 import yaml
 from typer.testing import CliRunner
@@ -239,7 +240,8 @@ def test_every_flag_exists(workflow: dict[Any, Any]) -> None:
     assert commands
     for words in commands:
         sub = words[0]
-        help_text = runner.invoke(app, [sub, "--help"]).output
+        # On GitHub Actions typer adds colour codes that split an option name in two.
+        help_text = click.unstyle(runner.invoke(app, [sub, "--help"]).output)
         for word in words[1:]:
             if word.startswith("--"):
                 assert word.split("=")[0] in help_text, (sub, word)
@@ -249,7 +251,7 @@ def test_every_flag_exists(workflow: dict[Any, Any]) -> None:
         "--head",
         ".lockwalk-head/coverage.json",
     ]
-    diff_help = runner.invoke(app, ["diff", "--help"]).output
+    diff_help = click.unstyle(runner.invoke(app, ["diff", "--help"]).output)
     for flag in ("--base", "--head", "--format"):
         assert flag in diff_help
     compare = next(s for s in _steps(workflow["jobs"]["coverage"]) if s.get("name") == "Compare")

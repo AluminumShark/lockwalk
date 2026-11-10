@@ -1,0 +1,23 @@
+# Agent entities arrive without "cerbos.roles", so Cerbos gives them the role of their
+# subject type: "agent". The rules below therefore name the role "agent".
+apiVersion: api.cerbos.dev/v1
+resourcePolicy:
+  resource: order
+  version: default
+  rules:
+    - actions: ["trade:execute"]
+      effect: EFFECT_ALLOW
+      roles: ["trader"]
+      condition:
+        match:
+          expr: request.resource.attr.account_owner == request.principal.id
+    # DELIBERATE HOLE, kept so that lockwalk test has something to find: the service
+    # identity of trade-agent may trade on any account.
+    # To close it, compare the order's account_owner with the delegating user instead of
+    # trusting the agent identity.
+    - actions: ["trade:execute"]
+      effect: EFFECT_ALLOW
+      roles: ["agent"]
+      condition:
+        match:
+          expr: request.principal.id == "trade-agent"

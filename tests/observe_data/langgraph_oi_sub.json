@@ -1,0 +1,949 @@
+{
+ "resourceSpans": [
+  {
+   "resource": {
+    "attributes": [
+     {
+      "key": "service.name",
+      "value": {
+       "stringValue": "unknown_service:python.exe"
+      }
+     }
+    ]
+   },
+   "scopeSpans": [
+    {
+     "scope": {
+      "name": "openinference.instrumentation.langchain",
+      "version": "0.1.82"
+     },
+     "spans": [
+      {
+       "traceId": "044aceb4c71030387eb3b6294b6940ca",
+       "spanId": "425750564caad772",
+       "parentSpanId": "be5baa55d00bc3df",
+       "name": "route",
+       "kind": 1,
+       "startTimeUnixNano": "1794105592945056000",
+       "endTimeUnixNano": "1794105592945056000",
+       "attributes": [
+        {
+         "key": "input.value",
+         "value": {
+          "stringValue": "{\"messages\": [{\"type\": \"human\", \"data\": {\"content\": \"buy 5 ACME\", \"additional_kwargs\": {}, \"response_metadata\": {}, \"type\": \"human\", \"name\": null, \"id\": \"3691a543-3be3-41b9-8084-2461eb2fdba7\"}}]}"
+         }
+        },
+        {
+         "key": "input.mime_type",
+         "value": {
+          "stringValue": "application/json"
+         }
+        },
+        {
+         "key": "output.value",
+         "value": {
+          "stringValue": "{\"graph\": null, \"update\": null, \"resume\": null, \"goto\": \"trade-agent\"}"
+         }
+        },
+        {
+         "key": "output.mime_type",
+         "value": {
+          "stringValue": "application/json"
+         }
+        },
+        {
+         "key": "llm.input_messages.0.message.role",
+         "value": {
+          "stringValue": "user"
+         }
+        },
+        {
+         "key": "llm.input_messages.0.message.content",
+         "value": {
+          "stringValue": "buy 5 ACME"
+         }
+        },
+        {
+         "key": "metadata",
+         "value": {
+          "stringValue": "{\"ls_integration\": \"langgraph\", \"langgraph_step\": 1, \"langgraph_node\": \"route\", \"langgraph_triggers\": [\"branch:to:route\"], \"langgraph_path\": [\"__pregel_pull\", \"route\"], \"langgraph_checkpoint_ns\": \"route:9fdd8b92-5313-b109-c1fe-b51f036f869c\"}"
+         }
+        },
+        {
+         "key": "openinference.span.kind",
+         "value": {
+          "stringValue": "CHAIN"
+         }
+        }
+       ],
+       "status": {
+        "code": 1
+       }
+      },
+      {
+       "traceId": "044aceb4c71030387eb3b6294b6940ca",
+       "spanId": "46a283b76cee92c9",
+       "parentSpanId": "751c0ead7e07acc1",
+       "name": "FakeToolModel",
+       "kind": 1,
+       "startTimeUnixNano": "1794105592947062016",
+       "endTimeUnixNano": "1794105592948062976",
+       "attributes": [
+        {
+         "key": "input.value",
+         "value": {
+          "stringValue": "{\"messages\": [[{\"lc\": 1, \"type\": \"constructor\", \"id\": [\"langchain\", \"schema\", \"messages\", \"HumanMessage\"], \"kwargs\": {\"content\": \"buy 5 ACME\", \"type\": \"human\", \"id\": \"3691a543-3be3-41b9-8084-2461eb2fdba7\"}}]]}"
+         }
+        },
+        {
+         "key": "input.mime_type",
+         "value": {
+          "stringValue": "application/json"
+         }
+        },
+        {
+         "key": "output.value",
+         "value": {
+          "stringValue": "{\"generations\": [[{\"text\": \"\", \"generation_info\": null, \"type\": \"ChatGeneration\", \"message\": {\"lc\": 1, \"type\": \"constructor\", \"id\": [\"langchain\", \"schema\", \"messages\", \"AIMessage\"], \"kwargs\": {\"content\": \"\", \"type\": \"ai\", \"id\": \"lc_run--01a1b906-cc73-72a8-926e-ed33a381030e-0\", \"tool_calls\": [{\"name\": \"execute_trade\", \"args\": {\"symbol\": \"ACME\", \"qty\": 5}, \"id\": \"c1\", \"type\": \"tool_call\"}], \"invalid_tool_calls\": []}}}]], \"llm_output\": null, \"run\": null, \"type\": \"LLMResult\"}"
+         }
+        },
+        {
+         "key": "output.mime_type",
+         "value": {
+          "stringValue": "application/json"
+         }
+        },
+        {
+         "key": "llm.input_messages.0.message.role",
+         "value": {
+          "stringValue": "user"
+         }
+        },
+        {
+         "key": "llm.input_messages.0.message.content",
+         "value": {
+          "stringValue": "buy 5 ACME"
+         }
+        },
+        {
+         "key": "llm.output_messages.0.message.role",
+         "value": {
+          "stringValue": "assistant"
+         }
+        },
+        {
+         "key": "llm.output_messages.0.message.tool_calls.0.tool_call.id",
+         "value": {
+          "stringValue": "c1"
+         }
+        },
+        {
+         "key": "llm.output_messages.0.message.tool_calls.0.tool_call.function.name",
+         "value": {
+          "stringValue": "execute_trade"
+         }
+        },
+        {
+         "key": "llm.output_messages.0.message.tool_calls.0.tool_call.function.arguments",
+         "value": {
+          "stringValue": "{\"symbol\": \"ACME\", \"qty\": 5}"
+         }
+        },
+        {
+         "key": "llm.invocation_parameters",
+         "value": {
+          "stringValue": "{\"_type\": \"fake-tool-model\", \"stop\": null}"
+         }
+        },
+        {
+         "key": "llm.provider",
+         "value": {
+          "stringValue": "faketoolmodel"
+         }
+        },
+        {
+         "key": "metadata",
+         "value": {
+          "stringValue": "{\"ls_integration\": \"langchain_chat_model\", \"langgraph_step\": 1, \"langgraph_node\": \"agent\", \"langgraph_triggers\": [\"branch:to:agent\"], \"langgraph_path\": [\"__pregel_pull\", \"agent\"], \"langgraph_checkpoint_ns\": \"trade-agent:90e9ed5b-8d22-bfc9-d240-4c19bfe12819|agent:fd217f3d-01c2-74fc-b91c-05a336a39fd8\", \"checkpoint_ns\": \"trade-agent:90e9ed5b-8d22-bfc9-d240-4c19bfe12819\", \"ls_provider\": \"faketoolmodel\", \"ls_model_type\": \"chat\", \"lc_versions\": {\"langchain-core\": \"1.7.6\"}}"
+         }
+        },
+        {
+         "key": "openinference.span.kind",
+         "value": {
+          "stringValue": "LLM"
+         }
+        }
+       ],
+       "status": {
+        "code": 1
+       }
+      },
+      {
+       "traceId": "044aceb4c71030387eb3b6294b6940ca",
+       "spanId": "92161ba50d4c69b8",
+       "parentSpanId": "751c0ead7e07acc1",
+       "name": "route",
+       "kind": 1,
+       "startTimeUnixNano": "1794105592948062976",
+       "endTimeUnixNano": "1794105592949063168",
+       "attributes": [
+        {
+         "key": "input.value",
+         "value": {
+          "stringValue": "{\"messages\": [{\"type\": \"human\", \"data\": {\"content\": \"buy 5 ACME\", \"additional_kwargs\": {}, \"response_metadata\": {}, \"type\": \"human\", \"name\": null, \"id\": \"3691a543-3be3-41b9-8084-2461eb2fdba7\"}}, {\"type\": \"ai\", \"data\": {\"content\": \"\", \"additional_kwargs\": {}, \"response_metadata\": {}, \"type\": \"ai\", \"name\": null, \"id\": \"lc_run--01a1b906-cc73-72a8-926e-ed33a381030e-0\", \"tool_calls\": [{\"name\": \"execute_trade\", \"args\": {\"symbol\": \"ACME\", \"qty\": 5}, \"id\": \"c1\", \"type\": \"tool_call\"}], \"invalid_tool_calls\": [], \"usage_metadata\": null}}]}"
+         }
+        },
+        {
+         "key": "input.mime_type",
+         "value": {
+          "stringValue": "application/json"
+         }
+        },
+        {
+         "key": "output.value",
+         "value": {
+          "stringValue": "tools"
+         }
+        },
+        {
+         "key": "llm.input_messages.0.message.role",
+         "value": {
+          "stringValue": "user"
+         }
+        },
+        {
+         "key": "llm.input_messages.0.message.content",
+         "value": {
+          "stringValue": "buy 5 ACME"
+         }
+        },
+        {
+         "key": "metadata",
+         "value": {
+          "stringValue": "{\"ls_integration\": \"langgraph\", \"langgraph_step\": 1, \"langgraph_node\": \"agent\", \"langgraph_triggers\": [\"branch:to:agent\"], \"langgraph_path\": [\"__pregel_pull\", \"agent\"], \"langgraph_checkpoint_ns\": \"trade-agent:90e9ed5b-8d22-bfc9-d240-4c19bfe12819|agent:fd217f3d-01c2-74fc-b91c-05a336a39fd8\", \"checkpoint_ns\": \"trade-agent:90e9ed5b-8d22-bfc9-d240-4c19bfe12819\"}"
+         }
+        },
+        {
+         "key": "openinference.span.kind",
+         "value": {
+          "stringValue": "CHAIN"
+         }
+        }
+       ],
+       "status": {
+        "code": 1
+       }
+      },
+      {
+       "traceId": "044aceb4c71030387eb3b6294b6940ca",
+       "spanId": "751c0ead7e07acc1",
+       "parentSpanId": "f67018ebc258eb7b",
+       "name": "agent",
+       "kind": 1,
+       "startTimeUnixNano": "1794105592947062016",
+       "endTimeUnixNano": "1794105592949063168",
+       "attributes": [
+        {
+         "key": "input.value",
+         "value": {
+          "stringValue": "{\"messages\": [{\"type\": \"human\", \"data\": {\"content\": \"buy 5 ACME\", \"additional_kwargs\": {}, \"response_metadata\": {}, \"type\": \"human\", \"name\": null, \"id\": \"3691a543-3be3-41b9-8084-2461eb2fdba7\"}}]}"
+         }
+        },
+        {
+         "key": "input.mime_type",
+         "value": {
+          "stringValue": "application/json"
+         }
+        },
+        {
+         "key": "output.value",
+         "value": {
+          "stringValue": "{\"messages\": [{\"type\": \"ai\", \"data\": {\"content\": \"\", \"additional_kwargs\": {}, \"response_metadata\": {}, \"type\": \"ai\", \"name\": null, \"id\": \"lc_run--01a1b906-cc73-72a8-926e-ed33a381030e-0\", \"tool_calls\": [{\"name\": \"execute_trade\", \"args\": {\"symbol\": \"ACME\", \"qty\": 5}, \"id\": \"c1\", \"type\": \"tool_call\"}], \"invalid_tool_calls\": [], \"usage_metadata\": null}}]}"
+         }
+        },
+        {
+         "key": "output.mime_type",
+         "value": {
+          "stringValue": "application/json"
+         }
+        },
+        {
+         "key": "llm.input_messages.0.message.role",
+         "value": {
+          "stringValue": "user"
+         }
+        },
+        {
+         "key": "llm.input_messages.0.message.content",
+         "value": {
+          "stringValue": "buy 5 ACME"
+         }
+        },
+        {
+         "key": "metadata",
+         "value": {
+          "stringValue": "{\"ls_integration\": \"langgraph\", \"langgraph_step\": 1, \"langgraph_node\": \"agent\", \"langgraph_triggers\": [\"branch:to:agent\"], \"langgraph_path\": [\"__pregel_pull\", \"agent\"], \"langgraph_checkpoint_ns\": \"trade-agent:90e9ed5b-8d22-bfc9-d240-4c19bfe12819|agent:fd217f3d-01c2-74fc-b91c-05a336a39fd8\", \"checkpoint_ns\": \"trade-agent:90e9ed5b-8d22-bfc9-d240-4c19bfe12819\"}"
+         }
+        },
+        {
+         "key": "openinference.span.kind",
+         "value": {
+          "stringValue": "AGENT"
+         }
+        }
+       ],
+       "status": {
+        "code": 1
+       }
+      },
+      {
+       "traceId": "044aceb4c71030387eb3b6294b6940ca",
+       "spanId": "161e053deb597849",
+       "parentSpanId": "7d41fedbef2d4540",
+       "name": "execute_trade",
+       "kind": 1,
+       "startTimeUnixNano": "1794105592950062080",
+       "endTimeUnixNano": "1794105592950062080",
+       "attributes": [
+        {
+         "key": "lockwalk.door.via_run_id",
+         "value": {
+          "stringValue": "yes"
+         }
+        },
+        {
+         "key": "input.value",
+         "value": {
+          "stringValue": "{\"symbol\": \"ACME\", \"qty\": 5}"
+         }
+        },
+        {
+         "key": "input.mime_type",
+         "value": {
+          "stringValue": "application/json"
+         }
+        },
+        {
+         "key": "output.value",
+         "value": {
+          "stringValue": "{\"type\": \"tool\", \"data\": {\"content\": \"traded 5 ACME\", \"additional_kwargs\": {}, \"response_metadata\": {}, \"type\": \"tool\", \"name\": \"execute_trade\", \"id\": null, \"tool_call_id\": \"c1\", \"artifact\": null, \"status\": \"success\"}}"
+         }
+        },
+        {
+         "key": "output.mime_type",
+         "value": {
+          "stringValue": "application/json"
+         }
+        },
+        {
+         "key": "tool.name",
+         "value": {
+          "stringValue": "execute_trade"
+         }
+        },
+        {
+         "key": "tool.description",
+         "value": {
+          "stringValue": "Execute a trade (sync)."
+         }
+        },
+        {
+         "key": "metadata",
+         "value": {
+          "stringValue": "{\"ls_integration\": \"langgraph\", \"langgraph_step\": 2, \"langgraph_node\": \"tools\", \"langgraph_triggers\": [\"branch:to:tools\"], \"langgraph_path\": [\"__pregel_pull\", \"tools\"], \"langgraph_checkpoint_ns\": \"trade-agent:90e9ed5b-8d22-bfc9-d240-4c19bfe12819|tools:ff3be101-6e46-75af-36e8-e4bc41f65767\", \"checkpoint_ns\": \"trade-agent:90e9ed5b-8d22-bfc9-d240-4c19bfe12819\"}"
+         }
+        },
+        {
+         "key": "openinference.span.kind",
+         "value": {
+          "stringValue": "TOOL"
+         }
+        }
+       ],
+       "status": {
+        "code": 1
+       }
+      },
+      {
+       "traceId": "044aceb4c71030387eb3b6294b6940ca",
+       "spanId": "7d41fedbef2d4540",
+       "parentSpanId": "f67018ebc258eb7b",
+       "name": "tools",
+       "kind": 1,
+       "startTimeUnixNano": "1794105592949063168",
+       "endTimeUnixNano": "1794105592951063040",
+       "attributes": [
+        {
+         "key": "input.value",
+         "value": {
+          "stringValue": "{\"messages\": [{\"type\": \"human\", \"data\": {\"content\": \"buy 5 ACME\", \"additional_kwargs\": {}, \"response_metadata\": {}, \"type\": \"human\", \"name\": null, \"id\": \"3691a543-3be3-41b9-8084-2461eb2fdba7\"}}, {\"type\": \"ai\", \"data\": {\"content\": \"\", \"additional_kwargs\": {}, \"response_metadata\": {}, \"type\": \"ai\", \"name\": null, \"id\": \"lc_run--01a1b906-cc73-72a8-926e-ed33a381030e-0\", \"tool_calls\": [{\"name\": \"execute_trade\", \"args\": {\"symbol\": \"ACME\", \"qty\": 5}, \"id\": \"c1\", \"type\": \"tool_call\"}], \"invalid_tool_calls\": [], \"usage_metadata\": null}}]}"
+         }
+        },
+        {
+         "key": "input.mime_type",
+         "value": {
+          "stringValue": "application/json"
+         }
+        },
+        {
+         "key": "output.value",
+         "value": {
+          "stringValue": "{\"messages\": [{\"type\": \"tool\", \"data\": {\"content\": \"traded 5 ACME\", \"additional_kwargs\": {}, \"response_metadata\": {}, \"type\": \"tool\", \"name\": \"execute_trade\", \"id\": null, \"tool_call_id\": \"c1\", \"artifact\": null, \"status\": \"success\"}}]}"
+         }
+        },
+        {
+         "key": "output.mime_type",
+         "value": {
+          "stringValue": "application/json"
+         }
+        },
+        {
+         "key": "llm.input_messages.0.message.role",
+         "value": {
+          "stringValue": "user"
+         }
+        },
+        {
+         "key": "llm.input_messages.0.message.content",
+         "value": {
+          "stringValue": "buy 5 ACME"
+         }
+        },
+        {
+         "key": "metadata",
+         "value": {
+          "stringValue": "{\"ls_integration\": \"langgraph\", \"langgraph_step\": 2, \"langgraph_node\": \"tools\", \"langgraph_triggers\": [\"branch:to:tools\"], \"langgraph_path\": [\"__pregel_pull\", \"tools\"], \"langgraph_checkpoint_ns\": \"trade-agent:90e9ed5b-8d22-bfc9-d240-4c19bfe12819|tools:ff3be101-6e46-75af-36e8-e4bc41f65767\", \"checkpoint_ns\": \"trade-agent:90e9ed5b-8d22-bfc9-d240-4c19bfe12819\"}"
+         }
+        },
+        {
+         "key": "openinference.span.kind",
+         "value": {
+          "stringValue": "CHAIN"
+         }
+        }
+       ],
+       "status": {
+        "code": 1
+       }
+      },
+      {
+       "traceId": "044aceb4c71030387eb3b6294b6940ca",
+       "spanId": "455630cd14b5047a",
+       "parentSpanId": "9a53d28e3ef325b0",
+       "name": "FakeToolModel",
+       "kind": 1,
+       "startTimeUnixNano": "1794105592951063040",
+       "endTimeUnixNano": "1794105592952091904",
+       "attributes": [
+        {
+         "key": "input.value",
+         "value": {
+          "stringValue": "{\"messages\": [[{\"lc\": 1, \"type\": \"constructor\", \"id\": [\"langchain\", \"schema\", \"messages\", \"HumanMessage\"], \"kwargs\": {\"content\": \"buy 5 ACME\", \"type\": \"human\", \"id\": \"3691a543-3be3-41b9-8084-2461eb2fdba7\"}}, {\"lc\": 1, \"type\": \"constructor\", \"id\": [\"langchain\", \"schema\", \"messages\", \"AIMessage\"], \"kwargs\": {\"content\": \"\", \"type\": \"ai\", \"id\": \"lc_run--01a1b906-cc73-72a8-926e-ed33a381030e-0\", \"tool_calls\": [{\"name\": \"execute_trade\", \"args\": {\"symbol\": \"ACME\", \"qty\": 5}, \"id\": \"c1\", \"type\": \"tool_call\"}], \"invalid_tool_calls\": []}}, {\"lc\": 1, \"type\": \"constructor\", \"id\": [\"langchain\", \"schema\", \"messages\", \"ToolMessage\"], \"kwargs\": {\"content\": \"traded 5 ACME\", \"type\": \"tool\", \"name\": \"execute_trade\", \"id\": \"272e482d-ec90-4413-bc5f-3bd9f2e1e432\", \"tool_call_id\": \"c1\", \"status\": \"success\"}}]]}"
+         }
+        },
+        {
+         "key": "input.mime_type",
+         "value": {
+          "stringValue": "application/json"
+         }
+        },
+        {
+         "key": "output.value",
+         "value": {
+          "stringValue": "{\"generations\": [[{\"text\": \"done\", \"generation_info\": null, \"type\": \"ChatGeneration\", \"message\": {\"lc\": 1, \"type\": \"constructor\", \"id\": [\"langchain\", \"schema\", \"messages\", \"AIMessage\"], \"kwargs\": {\"content\": \"done\", \"type\": \"ai\", \"id\": \"lc_run--01a1b906-cc77-77e8-8e71-c787c5d0df60-0\", \"tool_calls\": [], \"invalid_tool_calls\": []}}}]], \"llm_output\": null, \"run\": null, \"type\": \"LLMResult\"}"
+         }
+        },
+        {
+         "key": "output.mime_type",
+         "value": {
+          "stringValue": "application/json"
+         }
+        },
+        {
+         "key": "llm.input_messages.0.message.role",
+         "value": {
+          "stringValue": "user"
+         }
+        },
+        {
+         "key": "llm.input_messages.0.message.content",
+         "value": {
+          "stringValue": "buy 5 ACME"
+         }
+        },
+        {
+         "key": "llm.input_messages.1.message.role",
+         "value": {
+          "stringValue": "assistant"
+         }
+        },
+        {
+         "key": "llm.input_messages.1.message.tool_calls.0.tool_call.id",
+         "value": {
+          "stringValue": "c1"
+         }
+        },
+        {
+         "key": "llm.input_messages.1.message.tool_calls.0.tool_call.function.name",
+         "value": {
+          "stringValue": "execute_trade"
+         }
+        },
+        {
+         "key": "llm.input_messages.1.message.tool_calls.0.tool_call.function.arguments",
+         "value": {
+          "stringValue": "{\"symbol\": \"ACME\", \"qty\": 5}"
+         }
+        },
+        {
+         "key": "llm.input_messages.2.message.role",
+         "value": {
+          "stringValue": "tool"
+         }
+        },
+        {
+         "key": "llm.input_messages.2.message.content",
+         "value": {
+          "stringValue": "traded 5 ACME"
+         }
+        },
+        {
+         "key": "llm.input_messages.2.message.tool_call_id",
+         "value": {
+          "stringValue": "c1"
+         }
+        },
+        {
+         "key": "llm.input_messages.2.message.name",
+         "value": {
+          "stringValue": "execute_trade"
+         }
+        },
+        {
+         "key": "llm.output_messages.0.message.role",
+         "value": {
+          "stringValue": "assistant"
+         }
+        },
+        {
+         "key": "llm.output_messages.0.message.content",
+         "value": {
+          "stringValue": "done"
+         }
+        },
+        {
+         "key": "llm.invocation_parameters",
+         "value": {
+          "stringValue": "{\"_type\": \"fake-tool-model\", \"stop\": null}"
+         }
+        },
+        {
+         "key": "llm.provider",
+         "value": {
+          "stringValue": "faketoolmodel"
+         }
+        },
+        {
+         "key": "metadata",
+         "value": {
+          "stringValue": "{\"ls_integration\": \"langchain_chat_model\", \"langgraph_step\": 3, \"langgraph_node\": \"agent\", \"langgraph_triggers\": [\"branch:to:agent\"], \"langgraph_path\": [\"__pregel_pull\", \"agent\"], \"langgraph_checkpoint_ns\": \"trade-agent:90e9ed5b-8d22-bfc9-d240-4c19bfe12819|agent:31d95f79-dd45-4dc3-8af3-82e81aec0a4d\", \"checkpoint_ns\": \"trade-agent:90e9ed5b-8d22-bfc9-d240-4c19bfe12819\", \"ls_provider\": \"faketoolmodel\", \"ls_model_type\": \"chat\", \"lc_versions\": {\"langchain-core\": \"1.7.6\"}}"
+         }
+        },
+        {
+         "key": "openinference.span.kind",
+         "value": {
+          "stringValue": "LLM"
+         }
+        }
+       ],
+       "status": {
+        "code": 1
+       }
+      },
+      {
+       "traceId": "044aceb4c71030387eb3b6294b6940ca",
+       "spanId": "d880061b3e5e360b",
+       "parentSpanId": "9a53d28e3ef325b0",
+       "name": "route",
+       "kind": 1,
+       "startTimeUnixNano": "1794105592952091904",
+       "endTimeUnixNano": "1794105592952091904",
+       "attributes": [
+        {
+         "key": "input.value",
+         "value": {
+          "stringValue": "{\"messages\": [{\"type\": \"human\", \"data\": {\"content\": \"buy 5 ACME\", \"additional_kwargs\": {}, \"response_metadata\": {}, \"type\": \"human\", \"name\": null, \"id\": \"3691a543-3be3-41b9-8084-2461eb2fdba7\"}}, {\"type\": \"ai\", \"data\": {\"content\": \"\", \"additional_kwargs\": {}, \"response_metadata\": {}, \"type\": \"ai\", \"name\": null, \"id\": \"lc_run--01a1b906-cc73-72a8-926e-ed33a381030e-0\", \"tool_calls\": [{\"name\": \"execute_trade\", \"args\": {\"symbol\": \"ACME\", \"qty\": 5}, \"id\": \"c1\", \"type\": \"tool_call\"}], \"invalid_tool_calls\": [], \"usage_metadata\": null}}, {\"type\": \"tool\", \"data\": {\"content\": \"traded 5 ACME\", \"additional_kwargs\": {}, \"response_metadata\": {}, \"type\": \"tool\", \"name\": \"execute_trade\", \"id\": \"272e482d-ec90-4413-bc5f-3bd9f2e1e432\", \"tool_call_id\": \"c1\", \"artifact\": null, \"status\": \"success\"}}, {\"type\": \"ai\", \"data\": {\"content\": \"done\", \"additional_kwargs\": {}, \"response_metadata\": {}, \"type\": \"ai\", \"name\": null, \"id\": \"lc_run--01a1b906-cc77-77e8-8e71-c787c5d0df60-0\", \"tool_calls\": [], \"invalid_tool_calls\": [], \"usage_metadata\": null}}]}"
+         }
+        },
+        {
+         "key": "input.mime_type",
+         "value": {
+          "stringValue": "application/json"
+         }
+        },
+        {
+         "key": "output.value",
+         "value": {
+          "stringValue": "__end__"
+         }
+        },
+        {
+         "key": "llm.input_messages.0.message.role",
+         "value": {
+          "stringValue": "user"
+         }
+        },
+        {
+         "key": "llm.input_messages.0.message.content",
+         "value": {
+          "stringValue": "buy 5 ACME"
+         }
+        },
+        {
+         "key": "metadata",
+         "value": {
+          "stringValue": "{\"ls_integration\": \"langgraph\", \"langgraph_step\": 3, \"langgraph_node\": \"agent\", \"langgraph_triggers\": [\"branch:to:agent\"], \"langgraph_path\": [\"__pregel_pull\", \"agent\"], \"langgraph_checkpoint_ns\": \"trade-agent:90e9ed5b-8d22-bfc9-d240-4c19bfe12819|agent:31d95f79-dd45-4dc3-8af3-82e81aec0a4d\", \"checkpoint_ns\": \"trade-agent:90e9ed5b-8d22-bfc9-d240-4c19bfe12819\"}"
+         }
+        },
+        {
+         "key": "openinference.span.kind",
+         "value": {
+          "stringValue": "CHAIN"
+         }
+        }
+       ],
+       "status": {
+        "code": 1
+       }
+      },
+      {
+       "traceId": "044aceb4c71030387eb3b6294b6940ca",
+       "spanId": "9a53d28e3ef325b0",
+       "parentSpanId": "f67018ebc258eb7b",
+       "name": "agent",
+       "kind": 1,
+       "startTimeUnixNano": "1794105592951063040",
+       "endTimeUnixNano": "1794105592952091904",
+       "attributes": [
+        {
+         "key": "input.value",
+         "value": {
+          "stringValue": "{\"messages\": [{\"type\": \"human\", \"data\": {\"content\": \"buy 5 ACME\", \"additional_kwargs\": {}, \"response_metadata\": {}, \"type\": \"human\", \"name\": null, \"id\": \"3691a543-3be3-41b9-8084-2461eb2fdba7\"}}, {\"type\": \"ai\", \"data\": {\"content\": \"\", \"additional_kwargs\": {}, \"response_metadata\": {}, \"type\": \"ai\", \"name\": null, \"id\": \"lc_run--01a1b906-cc73-72a8-926e-ed33a381030e-0\", \"tool_calls\": [{\"name\": \"execute_trade\", \"args\": {\"symbol\": \"ACME\", \"qty\": 5}, \"id\": \"c1\", \"type\": \"tool_call\"}], \"invalid_tool_calls\": [], \"usage_metadata\": null}}, {\"type\": \"tool\", \"data\": {\"content\": \"traded 5 ACME\", \"additional_kwargs\": {}, \"response_metadata\": {}, \"type\": \"tool\", \"name\": \"execute_trade\", \"id\": \"272e482d-ec90-4413-bc5f-3bd9f2e1e432\", \"tool_call_id\": \"c1\", \"artifact\": null, \"status\": \"success\"}}]}"
+         }
+        },
+        {
+         "key": "input.mime_type",
+         "value": {
+          "stringValue": "application/json"
+         }
+        },
+        {
+         "key": "output.value",
+         "value": {
+          "stringValue": "{\"messages\": [{\"type\": \"ai\", \"data\": {\"content\": \"done\", \"additional_kwargs\": {}, \"response_metadata\": {}, \"type\": \"ai\", \"name\": null, \"id\": \"lc_run--01a1b906-cc77-77e8-8e71-c787c5d0df60-0\", \"tool_calls\": [], \"invalid_tool_calls\": [], \"usage_metadata\": null}}]}"
+         }
+        },
+        {
+         "key": "output.mime_type",
+         "value": {
+          "stringValue": "application/json"
+         }
+        },
+        {
+         "key": "llm.input_messages.0.message.role",
+         "value": {
+          "stringValue": "user"
+         }
+        },
+        {
+         "key": "llm.input_messages.0.message.content",
+         "value": {
+          "stringValue": "buy 5 ACME"
+         }
+        },
+        {
+         "key": "metadata",
+         "value": {
+          "stringValue": "{\"ls_integration\": \"langgraph\", \"langgraph_step\": 3, \"langgraph_node\": \"agent\", \"langgraph_triggers\": [\"branch:to:agent\"], \"langgraph_path\": [\"__pregel_pull\", \"agent\"], \"langgraph_checkpoint_ns\": \"trade-agent:90e9ed5b-8d22-bfc9-d240-4c19bfe12819|agent:31d95f79-dd45-4dc3-8af3-82e81aec0a4d\", \"checkpoint_ns\": \"trade-agent:90e9ed5b-8d22-bfc9-d240-4c19bfe12819\"}"
+         }
+        },
+        {
+         "key": "openinference.span.kind",
+         "value": {
+          "stringValue": "AGENT"
+         }
+        }
+       ],
+       "status": {
+        "code": 1
+       }
+      },
+      {
+       "traceId": "044aceb4c71030387eb3b6294b6940ca",
+       "spanId": "f67018ebc258eb7b",
+       "parentSpanId": "18a563610a8d4ef4",
+       "name": "trade-agent",
+       "kind": 1,
+       "startTimeUnixNano": "1794105592946063104",
+       "endTimeUnixNano": "1794105592953062144",
+       "attributes": [
+        {
+         "key": "input.value",
+         "value": {
+          "stringValue": "{\"messages\": [{\"type\": \"human\", \"data\": {\"content\": \"buy 5 ACME\", \"additional_kwargs\": {}, \"response_metadata\": {}, \"type\": \"human\", \"name\": null, \"id\": \"3691a543-3be3-41b9-8084-2461eb2fdba7\"}}]}"
+         }
+        },
+        {
+         "key": "input.mime_type",
+         "value": {
+          "stringValue": "application/json"
+         }
+        },
+        {
+         "key": "output.value",
+         "value": {
+          "stringValue": "{\"messages\": [{\"type\": \"human\", \"data\": {\"content\": \"buy 5 ACME\", \"additional_kwargs\": {}, \"response_metadata\": {}, \"type\": \"human\", \"name\": null, \"id\": \"3691a543-3be3-41b9-8084-2461eb2fdba7\"}}, {\"type\": \"ai\", \"data\": {\"content\": \"\", \"additional_kwargs\": {}, \"response_metadata\": {}, \"type\": \"ai\", \"name\": null, \"id\": \"lc_run--01a1b906-cc73-72a8-926e-ed33a381030e-0\", \"tool_calls\": [{\"name\": \"execute_trade\", \"args\": {\"symbol\": \"ACME\", \"qty\": 5}, \"id\": \"c1\", \"type\": \"tool_call\"}], \"invalid_tool_calls\": [], \"usage_metadata\": null}}, {\"type\": \"tool\", \"data\": {\"content\": \"traded 5 ACME\", \"additional_kwargs\": {}, \"response_metadata\": {}, \"type\": \"tool\", \"name\": \"execute_trade\", \"id\": \"272e482d-ec90-4413-bc5f-3bd9f2e1e432\", \"tool_call_id\": \"c1\", \"artifact\": null, \"status\": \"success\"}}, {\"type\": \"ai\", \"data\": {\"content\": \"done\", \"additional_kwargs\": {}, \"response_metadata\": {}, \"type\": \"ai\", \"name\": null, \"id\": \"lc_run--01a1b906-cc77-77e8-8e71-c787c5d0df60-0\", \"tool_calls\": [], \"invalid_tool_calls\": [], \"usage_metadata\": null}}]}"
+         }
+        },
+        {
+         "key": "output.mime_type",
+         "value": {
+          "stringValue": "application/json"
+         }
+        },
+        {
+         "key": "llm.input_messages.0.message.role",
+         "value": {
+          "stringValue": "user"
+         }
+        },
+        {
+         "key": "llm.input_messages.0.message.content",
+         "value": {
+          "stringValue": "buy 5 ACME"
+         }
+        },
+        {
+         "key": "metadata",
+         "value": {
+          "stringValue": "{\"ls_integration\": \"langgraph\", \"langgraph_step\": 2, \"langgraph_node\": \"trade-agent\", \"langgraph_triggers\": [\"branch:to:trade-agent\"], \"langgraph_path\": [\"__pregel_pull\", \"trade-agent\"], \"langgraph_checkpoint_ns\": \"trade-agent:90e9ed5b-8d22-bfc9-d240-4c19bfe12819\", \"checkpoint_ns\": \"trade-agent:90e9ed5b-8d22-bfc9-d240-4c19bfe12819\"}"
+         }
+        },
+        {
+         "key": "openinference.span.kind",
+         "value": {
+          "stringValue": "AGENT"
+         }
+        }
+       ],
+       "status": {
+        "code": 1
+       }
+      },
+      {
+       "traceId": "044aceb4c71030387eb3b6294b6940ca",
+       "spanId": "18a563610a8d4ef4",
+       "parentSpanId": "be5baa55d00bc3df",
+       "name": "trade-agent",
+       "kind": 1,
+       "startTimeUnixNano": "1794105592946063104",
+       "endTimeUnixNano": "1794105592953062144",
+       "attributes": [
+        {
+         "key": "input.value",
+         "value": {
+          "stringValue": "{\"messages\": [{\"type\": \"human\", \"data\": {\"content\": \"buy 5 ACME\", \"additional_kwargs\": {}, \"response_metadata\": {}, \"type\": \"human\", \"name\": null, \"id\": \"3691a543-3be3-41b9-8084-2461eb2fdba7\"}}]}"
+         }
+        },
+        {
+         "key": "input.mime_type",
+         "value": {
+          "stringValue": "application/json"
+         }
+        },
+        {
+         "key": "output.value",
+         "value": {
+          "stringValue": "{\"messages\": [{\"type\": \"human\", \"data\": {\"content\": \"buy 5 ACME\", \"additional_kwargs\": {}, \"response_metadata\": {}, \"type\": \"human\", \"name\": null, \"id\": \"3691a543-3be3-41b9-8084-2461eb2fdba7\"}}, {\"type\": \"ai\", \"data\": {\"content\": \"\", \"additional_kwargs\": {}, \"response_metadata\": {}, \"type\": \"ai\", \"name\": null, \"id\": \"lc_run--01a1b906-cc73-72a8-926e-ed33a381030e-0\", \"tool_calls\": [{\"name\": \"execute_trade\", \"args\": {\"symbol\": \"ACME\", \"qty\": 5}, \"id\": \"c1\", \"type\": \"tool_call\"}], \"invalid_tool_calls\": [], \"usage_metadata\": null}}, {\"type\": \"tool\", \"data\": {\"content\": \"traded 5 ACME\", \"additional_kwargs\": {}, \"response_metadata\": {}, \"type\": \"tool\", \"name\": \"execute_trade\", \"id\": \"272e482d-ec90-4413-bc5f-3bd9f2e1e432\", \"tool_call_id\": \"c1\", \"artifact\": null, \"status\": \"success\"}}, {\"type\": \"ai\", \"data\": {\"content\": \"done\", \"additional_kwargs\": {}, \"response_metadata\": {}, \"type\": \"ai\", \"name\": null, \"id\": \"lc_run--01a1b906-cc77-77e8-8e71-c787c5d0df60-0\", \"tool_calls\": [], \"invalid_tool_calls\": [], \"usage_metadata\": null}}]}"
+         }
+        },
+        {
+         "key": "output.mime_type",
+         "value": {
+          "stringValue": "application/json"
+         }
+        },
+        {
+         "key": "llm.input_messages.0.message.role",
+         "value": {
+          "stringValue": "user"
+         }
+        },
+        {
+         "key": "llm.input_messages.0.message.content",
+         "value": {
+          "stringValue": "buy 5 ACME"
+         }
+        },
+        {
+         "key": "metadata",
+         "value": {
+          "stringValue": "{\"ls_integration\": \"langgraph\", \"langgraph_step\": 2, \"langgraph_node\": \"trade-agent\", \"langgraph_triggers\": [\"branch:to:trade-agent\"], \"langgraph_path\": [\"__pregel_pull\", \"trade-agent\"], \"langgraph_checkpoint_ns\": \"trade-agent:90e9ed5b-8d22-bfc9-d240-4c19bfe12819\"}"
+         }
+        },
+        {
+         "key": "openinference.span.kind",
+         "value": {
+          "stringValue": "AGENT"
+         }
+        }
+       ],
+       "status": {
+        "code": 1
+       }
+      },
+      {
+       "traceId": "044aceb4c71030387eb3b6294b6940ca",
+       "spanId": "be5baa55d00bc3df",
+       "parentSpanId": "e635ae2b46b6384b",
+       "name": "supervisor",
+       "kind": 1,
+       "startTimeUnixNano": "1794105592943550208",
+       "endTimeUnixNano": "1794105592953062144",
+       "attributes": [
+        {
+         "key": "input.value",
+         "value": {
+          "stringValue": "{\"messages\": [{\"type\": \"human\", \"data\": {\"content\": \"buy 5 ACME\", \"additional_kwargs\": {}, \"response_metadata\": {}, \"type\": \"human\", \"name\": null, \"id\": \"3691a543-3be3-41b9-8084-2461eb2fdba7\"}}]}"
+         }
+        },
+        {
+         "key": "input.mime_type",
+         "value": {
+          "stringValue": "application/json"
+         }
+        },
+        {
+         "key": "output.value",
+         "value": {
+          "stringValue": "{\"messages\": [{\"type\": \"human\", \"data\": {\"content\": \"buy 5 ACME\", \"additional_kwargs\": {}, \"response_metadata\": {}, \"type\": \"human\", \"name\": null, \"id\": \"3691a543-3be3-41b9-8084-2461eb2fdba7\"}}, {\"type\": \"ai\", \"data\": {\"content\": \"\", \"additional_kwargs\": {}, \"response_metadata\": {}, \"type\": \"ai\", \"name\": null, \"id\": \"lc_run--01a1b906-cc73-72a8-926e-ed33a381030e-0\", \"tool_calls\": [{\"name\": \"execute_trade\", \"args\": {\"symbol\": \"ACME\", \"qty\": 5}, \"id\": \"c1\", \"type\": \"tool_call\"}], \"invalid_tool_calls\": [], \"usage_metadata\": null}}, {\"type\": \"tool\", \"data\": {\"content\": \"traded 5 ACME\", \"additional_kwargs\": {}, \"response_metadata\": {}, \"type\": \"tool\", \"name\": \"execute_trade\", \"id\": \"272e482d-ec90-4413-bc5f-3bd9f2e1e432\", \"tool_call_id\": \"c1\", \"artifact\": null, \"status\": \"success\"}}, {\"type\": \"ai\", \"data\": {\"content\": \"done\", \"additional_kwargs\": {}, \"response_metadata\": {}, \"type\": \"ai\", \"name\": null, \"id\": \"lc_run--01a1b906-cc77-77e8-8e71-c787c5d0df60-0\", \"tool_calls\": [], \"invalid_tool_calls\": [], \"usage_metadata\": null}}]}"
+         }
+        },
+        {
+         "key": "output.mime_type",
+         "value": {
+          "stringValue": "application/json"
+         }
+        },
+        {
+         "key": "llm.input_messages.0.message.role",
+         "value": {
+          "stringValue": "user"
+         }
+        },
+        {
+         "key": "llm.input_messages.0.message.content",
+         "value": {
+          "stringValue": "buy 5 ACME"
+         }
+        },
+        {
+         "key": "metadata",
+         "value": {
+          "stringValue": "{\"ls_integration\": \"langgraph\"}"
+         }
+        },
+        {
+         "key": "openinference.span.kind",
+         "value": {
+          "stringValue": "CHAIN"
+         }
+        }
+       ],
+       "status": {
+        "code": 1
+       }
+      }
+     ]
+    },
+    {
+     "scope": {
+      "name": "app"
+     },
+     "spans": [
+      {
+       "traceId": "044aceb4c71030387eb3b6294b6940ca",
+       "spanId": "d0c5c8a97c61c402",
+       "parentSpanId": "e635ae2b46b6384b",
+       "name": "authz-check",
+       "kind": 1,
+       "startTimeUnixNano": "1794105592950062100",
+       "endTimeUnixNano": "1794105592950062100",
+       "attributes": [
+        {
+         "key": "lockwalk.door.decision",
+         "value": {
+          "stringValue": "allow-child"
+         }
+        }
+       ],
+       "status": {
+        "code": 0
+       }
+      },
+      {
+       "traceId": "044aceb4c71030387eb3b6294b6940ca",
+       "spanId": "e921a7bd1f6c4a5b",
+       "parentSpanId": "161e053deb597849",
+       "name": "authz-check-via-run",
+       "kind": 1,
+       "startTimeUnixNano": "1794105592950062100",
+       "endTimeUnixNano": "1794105592950062100",
+       "attributes": [],
+       "status": {
+        "code": 0
+       }
+      },
+      {
+       "traceId": "044aceb4c71030387eb3b6294b6940ca",
+       "spanId": "e635ae2b46b6384b",
+       "name": "app-request",
+       "kind": 1,
+       "startTimeUnixNano": "1794105592943550500",
+       "endTimeUnixNano": "1794105592953062100",
+       "attributes": [
+        {
+         "key": "user.id",
+         "value": {
+          "stringValue": "alice"
+         }
+        },
+        {
+         "key": "lockwalk.door.decision",
+         "value": {
+          "stringValue": "allow"
+         }
+        },
+        {
+         "key": "lockwalk.door.subject.id",
+         "value": {
+          "stringValue": "u-1"
+         }
+        },
+        {
+         "key": "lockwalk.door.action",
+         "value": {
+          "stringValue": "trade:execute"
+         }
+        }
+       ],
+       "status": {
+        "code": 0
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

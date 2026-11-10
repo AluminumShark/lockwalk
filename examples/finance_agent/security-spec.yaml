@@ -1,0 +1,38 @@
+# The expected answers, written by a person. Never generate these from a policy engine.
+schema_version: '1'
+scenario_suite: finance-demo-v1
+cases:
+  - id: CASE-001
+    actor: alice
+    role: analyst
+    agent: finance-agent
+    tool: get_stock_price
+    action: market:read
+    resource_fixture: TSMC
+    expect: allow
+  - id: CASE-002
+    actor: alice
+    role: analyst
+    agent: finance-agent
+    tool: read_portfolio
+    action: portfolio:read
+    resource_fixture: alice-portfolio
+    expect: allow
+  - id: CASE-003
+    actor: alice
+    role: analyst
+    agent: finance-agent
+    tool: read_portfolio
+    action: portfolio:read
+    resource_fixture: bob-portfolio
+    expect: deny
+    reason: Alice does not own Bob's portfolio
+  - id: CASE-004
+    actor: alice
+    role: analyst
+    agent: research-agent
+    tool: execute_trade
+    action: trade:execute
+    resource_fixture: dummy-order
+    expect: deny
+    reason: Research agent cannot execute trades

@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 490" role="img" aria-labelledby="title desc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="title">How lockwalk works</title>
+  <desc id="desc">Your registry, your tool sources and your spec go into a map of who can reach what. lockwalk coverage, lockwalk test and lockwalk observe work from that map. Coverage and test write coverage.json and an exit code, and lockwalk diff compares two of those reports. Observe writes observe.json and an exit code.</desc>
+  <defs>
+    <marker id="gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M1 1 L9 5 L1 9" fill="none" stroke="#a3a39c" stroke-width="1.4"/>
+    </marker>
+    <style>
+      .box { fill: #45453f; stroke: #8f8f88; stroke-width: 1.5; }
+      .name { fill: #f2f1ea; font-size: 25px; text-anchor: middle; }
+      .file { fill: #f2f1ea; font-size: 21px; text-anchor: middle; font-family: ui-monospace, SFMono-Regular, Consolas, Menlo, monospace; }
+      .note { fill: #cfcec6; font-size: 19px; text-anchor: middle; }
+      .flow { fill: none; stroke: #a3a39c; stroke-width: 2.5; }
+      .check { fill: #0b5345; stroke: #3fc7a0; stroke-width: 1.5; }
+      .cmd { fill: #a8f0d8; font-size: 21px; text-anchor: middle; font-weight: 600; font-family: ui-monospace, SFMono-Regular, Consolas, Menlo, monospace; }
+      .what { fill: #69dcb7; font-size: 19px; text-anchor: middle; }
+      .status { fill: #a8f0d8; font-size: 25px; text-anchor: middle; font-weight: 600; }
+      .legend { fill: #cfcec6; font-size: 20px; }
+    </style>
+  </defs>
+
+  <rect width="1240" height="490" rx="18" fill="#181818"/>
+
+  <!-- What you give it -->
+  <rect class="box" x="30" y="32" width="262" height="104" rx="16"/>
+  <text class="file" x="161" y="78">registry.yaml</text>
+  <text class="note" x="161" y="110">Your agents and tools</text>
+
+  <rect class="box" x="30" y="162" width="262" height="104" rx="16"/>
+  <text class="name" x="161" y="208">Tool sources</text>
+  <text class="note" x="161" y="240">MCP, Python, JSON lists</text>
+
+  <rect class="box" x="30" y="292" width="262" height="104" rx="16"/>
+  <text class="file" x="161" y="338">security-spec.yaml</text>
+  <text class="note" x="161" y="370">Your expected answers</text>
+
+  <!-- The map -->
+  <rect class="check" x="352" y="162" width="222" height="104" rx="16"/>
+  <text class="status" x="463" y="208">The map</text>
+  <text class="what" x="463" y="240">Who can reach what</text>
+
+  <path class="flow" d="M292 84 H322 V190 H350" marker-end="url(#gray)"/>
+  <path class="flow" d="M292 214 H350" marker-end="url(#gray)"/>
+  <path class="flow" d="M292 344 H322 V238 H350" marker-end="url(#gray)"/>
+
+  <!-- The commands -->
+  <rect class="check" x="634" y="32" width="262" height="104" rx="16"/>
+  <text class="cmd" x="765" y="78">lockwalk coverage</text>
+  <text class="what" x="765" y="110">What has no test?</text>
+
+  <rect class="check" x="634" y="162" width="262" height="104" rx="16"/>
+  <text class="cmd" x="765" y="208">lockwalk test</text>
+  <text class="what" x="765" y="240">Asks your policy engine</text>
+
+  <rect class="check" x="634" y="292" width="262" height="104" rx="16"/>
+  <text class="cmd" x="765" y="338">lockwalk observe</text>
+  <text class="what" x="765" y="370">Compares real traces</text>
+
+  <path class="flow" d="M574 190 H604 V84 H632" marker-end="url(#gray)"/>
+  <path class="flow" d="M574 214 H632" marker-end="url(#gray)"/>
+  <path class="flow" d="M574 238 H604 V344 H632" marker-end="url(#gray)"/>
+
+  <!-- What comes out -->
+  <rect class="box" x="956" y="32" width="254" height="104" rx="16"/>
+  <text class="file" x="1083" y="78">coverage.json</text>
+  <text class="note" x="1083" y="110">and an exit code</text>
+
+  <rect class="check" x="956" y="162" width="254" height="104" rx="16"/>
+  <text class="cmd" x="1083" y="208">lockwalk diff</text>
+  <text class="what" x="1083" y="240">What did this PR change?</text>
+
+  <rect class="box" x="956" y="292" width="254" height="104" rx="16"/>
+  <text class="file" x="1083" y="338">observe.json</text>
+  <text class="note" x="1083" y="370">and an exit code</text>
+
+  <path class="flow" d="M896 84 H954" marker-end="url(#gray)"/>
+  <path class="flow" d="M896 214 H926 V100 H954" marker-end="url(#gray)"/>
+  <path class="flow" d="M896 344 H954" marker-end="url(#gray)"/>
+  <path class="flow" d="M1083 136 V160" marker-end="url(#gray)"/>
+
+  <!-- Legend -->
+  <rect class="box" x="30" y="432" width="28" height="28" rx="6"/>
+  <text class="legend" x="72" y="453">Your files, and the reports</text>
+  <rect class="check" x="400" y="432" width="28" height="28" rx="6"/>
+  <text class="legend" x="442" y="453">What lockwalk does</text>
+</svg>

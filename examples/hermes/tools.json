@@ -1,0 +1,790 @@
+{
+ "tools": [
+  {
+   "description": "",
+   "name": "browser_exec",
+   "parameters": {
+    "properties": {
+     "code": {
+      "type": "string"
+     },
+     "session": {
+      "type": "string"
+     },
+     "timeout_s": {
+      "default": 300,
+      "type": "integer"
+     }
+    },
+    "required": [
+     "code"
+    ],
+    "type": "object"
+   }
+  },
+  {
+   "description": "",
+   "name": "clarify",
+   "parameters": {
+    "properties": {
+     "questions": {
+      "items": {
+       "properties": {
+        "choices": {
+         "items": {
+          "type": "string"
+         },
+         "maxItems": 4,
+         "type": "array"
+        },
+        "multi_select": {
+         "type": "boolean"
+        },
+        "question": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "question"
+       ],
+       "type": "object"
+      },
+      "maxItems": 5,
+      "minItems": 1,
+      "type": "array"
+     }
+    },
+    "required": [
+     "questions"
+    ],
+    "type": "object"
+   }
+  },
+  {
+   "description": "",
+   "name": "delegate_task",
+   "parameters": {
+    "properties": {
+     "action": {
+      "enum": [
+       "spawn",
+       "list",
+       "steer",
+       "stop"
+      ],
+      "type": "string"
+     },
+     "message": {
+      "type": "string"
+     },
+     "subagent_id": {
+      "type": "string"
+     },
+     "tasks": {
+      "items": {
+       "properties": {
+        "context": {
+         "type": "string"
+        },
+        "goal": {
+         "type": "string"
+        },
+        "images": {
+         "items": {
+          "type": "string"
+         },
+         "type": "array"
+        },
+        "output_schema": {
+         "properties": {},
+         "required": [],
+         "type": "object"
+        }
+       },
+       "required": [
+        "goal"
+       ],
+       "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+     }
+    },
+    "required": [],
+    "type": "object"
+   }
+  },
+  {
+   "description": "",
+   "name": "execute_code",
+   "parameters": {
+    "properties": {
+     "code": {
+      "type": "string"
+     },
+     "reset": {
+      "type": "boolean"
+     }
+    },
+    "required": [
+     "code"
+    ],
+    "type": "object"
+   }
+  },
+  {
+   "description": "",
+   "name": "manage_connections",
+   "parameters": {
+    "properties": {
+     "action": {
+      "enum": [
+       "display",
+       "status",
+       "connect",
+       "reconnect",
+       "rename",
+       "install",
+       "enable",
+       "authorize"
+      ],
+      "type": "string"
+     },
+     "connectors": {
+      "items": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "additionalProperties": false,
+         "properties": {
+          "alias": {
+           "type": "string"
+          },
+          "mcp": {
+           "type": "boolean"
+          },
+          "name": {
+           "type": "string"
+          },
+          "to": {
+           "pattern": "^[a-z0-9][a-z0-9-]{0,31}$",
+           "type": "string"
+          }
+         },
+         "required": [
+          "name"
+         ],
+         "type": "object"
+        }
+       ]
+      },
+      "type": "array"
+     },
+     "force": {
+      "type": "boolean"
+     }
+    },
+    "required": [],
+    "type": "object"
+   }
+  },
+  {
+   "description": "",
+   "name": "memory",
+   "parameters": {
+    "properties": {
+     "operations": {
+      "items": {
+       "additionalProperties": false,
+       "properties": {
+        "action": {
+         "enum": [
+          "add",
+          "patch",
+          "remove"
+         ],
+         "type": "string"
+        },
+        "content": {
+         "type": "string"
+        },
+        "old_text": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "action"
+       ],
+       "type": "object"
+      },
+      "type": "array"
+     },
+     "target": {
+      "enum": [
+       "memory",
+       "user"
+      ],
+      "type": "string"
+     }
+    },
+    "required": [
+     "target",
+     "operations"
+    ],
+    "type": "object"
+   }
+  },
+  {
+   "description": "",
+   "name": "patch",
+   "parameters": {
+    "properties": {
+     "new_string": {
+      "type": "string"
+     },
+     "old_string": {
+      "type": "string"
+     },
+     "path": {
+      "type": "string"
+     },
+     "replace_all": {
+      "default": false,
+      "type": "boolean"
+     }
+    },
+    "required": [
+     "path",
+     "old_string",
+     "new_string"
+    ],
+    "type": "object"
+   }
+  },
+  {
+   "description": "",
+   "name": "read_file",
+   "parameters": {
+    "properties": {
+     "limit": {
+      "default": 2000,
+      "maximum": 2000,
+      "type": "integer"
+     },
+     "offset": {
+      "default": 1,
+      "minimum": 1,
+      "type": "integer"
+     },
+     "path": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "path"
+    ],
+    "type": "object"
+   }
+  },
+  {
+   "description": "",
+   "name": "search_files",
+   "parameters": {
+    "properties": {
+     "context": {
+      "default": 0,
+      "type": "integer"
+     },
+     "file_glob": {
+      "type": "string"
+     },
+     "limit": {
+      "default": 50,
+      "type": "integer"
+     },
+     "offset": {
+      "default": 0,
+      "type": "integer"
+     },
+     "order": {
+      "default": "discovery",
+      "enum": [
+       "discovery",
+       "modified"
+      ],
+      "type": "string"
+     },
+     "output_mode": {
+      "default": "content",
+      "enum": [
+       "content",
+       "files_only",
+       "count"
+      ],
+      "type": "string"
+     },
+     "path": {
+      "default": ".",
+      "type": "string"
+     },
+     "pattern": {
+      "type": "string"
+     },
+     "target": {
+      "default": "content",
+      "enum": [
+       "content",
+       "files"
+      ],
+      "type": "string"
+     }
+    },
+    "required": [
+     "pattern"
+    ],
+    "type": "object"
+   }
+  },
+  {
+   "description": "",
+   "name": "skill_manage",
+   "parameters": {
+    "properties": {
+     "operations": {
+      "items": {
+       "anyOf": [
+        {
+         "additionalProperties": false,
+         "properties": {
+          "action": {
+           "enum": [
+            "create"
+           ],
+           "type": "string"
+          },
+          "category": {
+           "type": "string"
+          },
+          "content": {
+           "type": "string"
+          },
+          "name": {
+           "type": "string"
+          }
+         },
+         "required": [
+          "name",
+          "action",
+          "content"
+         ],
+         "type": "object"
+        },
+        {
+         "additionalProperties": false,
+         "properties": {
+          "action": {
+           "enum": [
+            "patch"
+           ],
+           "type": "string"
+          },
+          "file_path": {
+           "type": "string"
+          },
+          "name": {
+           "type": "string"
+          },
+          "new_string": {
+           "type": "string"
+          },
+          "old_string": {
+           "type": "string"
+          },
+          "replace_all": {
+           "type": "boolean"
+          }
+         },
+         "required": [
+          "name",
+          "action",
+          "old_string",
+          "new_string"
+         ],
+         "type": "object"
+        },
+        {
+         "additionalProperties": false,
+         "properties": {
+          "action": {
+           "enum": [
+            "patch"
+           ],
+           "type": "string"
+          },
+          "content": {
+           "type": "string"
+          },
+          "name": {
+           "type": "string"
+          }
+         },
+         "required": [
+          "name",
+          "action",
+          "content"
+         ],
+         "type": "object"
+        },
+        {
+         "additionalProperties": false,
+         "properties": {
+          "action": {
+           "enum": [
+            "write_file"
+           ],
+           "type": "string"
+          },
+          "file_content": {
+           "type": "string"
+          },
+          "file_path": {
+           "type": "string"
+          },
+          "name": {
+           "type": "string"
+          }
+         },
+         "required": [
+          "name",
+          "action",
+          "file_path",
+          "file_content"
+         ],
+         "type": "object"
+        },
+        {
+         "additionalProperties": false,
+         "properties": {
+          "action": {
+           "enum": [
+            "remove_file"
+           ],
+           "type": "string"
+          },
+          "file_path": {
+           "type": "string"
+          },
+          "name": {
+           "type": "string"
+          }
+         },
+         "required": [
+          "name",
+          "action",
+          "file_path"
+         ],
+         "type": "object"
+        },
+        {
+         "additionalProperties": false,
+         "properties": {
+          "absorbed_into": {
+           "type": "string"
+          },
+          "action": {
+           "enum": [
+            "delete"
+           ],
+           "type": "string"
+          },
+          "name": {
+           "type": "string"
+          }
+         },
+         "required": [
+          "name",
+          "action"
+         ],
+         "type": "object"
+        }
+       ]
+      },
+      "type": "array"
+     }
+    },
+    "required": [
+     "operations"
+    ],
+    "type": "object"
+   }
+  },
+  {
+   "description": "",
+   "name": "skill_view",
+   "parameters": {
+    "properties": {
+     "file_path": {
+      "type": "string"
+     },
+     "name": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "name"
+    ],
+    "type": "object"
+   }
+  },
+  {
+   "description": "",
+   "name": "skills_list",
+   "parameters": {
+    "properties": {
+     "category": {
+      "type": "string"
+     }
+    },
+    "required": [],
+    "type": "object"
+   }
+  },
+  {
+   "description": "",
+   "name": "terminal",
+   "parameters": {
+    "properties": {
+     "background": {
+      "default": false,
+      "type": "boolean"
+     },
+     "command": {
+      "type": "string"
+     },
+     "heartbeat": {
+      "default": 0,
+      "minimum": 0,
+      "type": "integer"
+     },
+     "notify": {
+      "anyOf": [
+       {
+        "type": "boolean"
+       },
+       {
+        "items": {
+         "type": "string"
+        },
+        "type": "array"
+       }
+      ]
+     },
+     "persist_on_release": {
+      "default": false,
+      "type": "boolean"
+     },
+     "pty": {
+      "default": false,
+      "type": "boolean"
+     },
+     "timeout": {
+      "minimum": 1,
+      "type": "integer"
+     },
+     "workdir": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "command"
+    ],
+    "type": "object"
+   }
+  },
+  {
+   "description": "",
+   "name": "text_to_speech",
+   "parameters": {
+    "properties": {
+     "instructions": {
+      "type": "string"
+     },
+     "output_path": {
+      "type": "string"
+     },
+     "speed": {
+      "type": "number"
+     },
+     "text": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "text"
+    ],
+    "type": "object"
+   }
+  },
+  {
+   "description": "",
+   "name": "tool_call",
+   "parameters": {
+    "properties": {
+     "calls": {
+      "items": {
+       "properties": {
+        "arguments": {
+         "type": "object"
+        },
+        "name": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "name",
+        "arguments"
+       ],
+       "type": "object"
+      },
+      "type": "array"
+     }
+    },
+    "required": [
+     "calls"
+    ],
+    "type": "object"
+   }
+  },
+  {
+   "description": "",
+   "name": "tool_describe",
+   "parameters": {
+    "properties": {
+     "names": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array"
+     }
+    },
+    "required": [
+     "names"
+    ],
+    "type": "object"
+   }
+  },
+  {
+   "description": "",
+   "name": "tool_search",
+   "parameters": {
+    "properties": {
+     "limit": {
+      "type": "integer"
+     },
+     "queries": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array"
+     }
+    },
+    "required": [
+     "queries"
+    ],
+    "type": "object"
+   }
+  },
+  {
+   "description": "",
+   "name": "vision_analyze",
+   "parameters": {
+    "properties": {
+     "image_url": {
+      "type": "string"
+     },
+     "question": {
+      "type": "string"
+     },
+     "region": {
+      "items": {
+       "type": "integer"
+      },
+      "maxItems": 4,
+      "minItems": 4,
+      "type": "array"
+     }
+    },
+    "required": [
+     "image_url",
+     "question"
+    ],
+    "type": "object"
+   }
+  },
+  {
+   "description": "",
+   "name": "web_extract",
+   "parameters": {
+    "properties": {
+     "char_limit": {
+      "minimum": 2000,
+      "type": "integer"
+     },
+     "urls": {
+      "items": {
+       "type": "string"
+      },
+      "maxItems": 5,
+      "type": "array"
+     }
+    },
+    "required": [
+     "urls"
+    ],
+    "type": "object"
+   }
+  },
+  {
+   "description": "",
+   "name": "web_search",
+   "parameters": {
+    "properties": {
+     "limit": {
+      "default": 5,
+      "maximum": 100,
+      "minimum": 1,
+      "type": "integer"
+     },
+     "query": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "query"
+    ],
+    "type": "object"
+   }
+  },
+  {
+   "description": "",
+   "name": "write_file",
+   "parameters": {
+    "properties": {
+     "content": {
+      "type": "string"
+     },
+     "path": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "path",
+     "content"
+    ],
+    "type": "object"
+   }
+  }
+ ]
+}

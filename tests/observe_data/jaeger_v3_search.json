@@ -1,0 +1,632 @@
+{
+ "result": {
+  "resourceSpans": [
+   {
+    "resource": {
+     "attributes": [
+      {
+       "key": "service.name",
+       "value": {
+        "stringValue": "demo-svc"
+       }
+      }
+     ]
+    },
+    "scopeSpans": [
+     {
+      "scope": {
+       "name": "scope.beta",
+       "version": "2.1"
+      },
+      "spans": [
+       {
+        "traceId": "b234d6c84c35a9ccafe55427f85a1008",
+        "spanId": "d63b2cf19e2108eb",
+        "parentSpanId": "9c5064d2a22a5fb6",
+        "flags": 256,
+        "name": "grandchild-tool",
+        "kind": 1,
+        "startTimeUnixNano": "1794105511930673900",
+        "endTimeUnixNano": "1794105511930673901",
+        "attributes": [
+         {
+          "key": "@jaeger@warnings",
+          "value": {
+           "arrayValue": {
+            "values": [
+             {
+              "stringValue": "Negative duration detected, sanitizing end timestamp. Original end timestamp: 2026-11-08 02:38:31.9306739 +0000 UTC, adjusted to: 2026-11-08 02:38:31.930673901 +0000 UTC"
+             },
+             {
+              "stringValue": "clock skew adjustment disabled; not applying calculated delta of -511.301µs"
+             }
+            ]
+           }
+          }
+         }
+        ],
+        "events": [
+         {
+          "timeUnixNano": "1794105511930673900",
+          "name": "exception",
+          "attributes": [
+           {
+            "key": "exception.escaped",
+            "value": {
+             "stringValue": "False"
+            }
+           },
+           {
+            "key": "exception.message",
+            "value": {
+             "stringValue": "x"
+            }
+           },
+           {
+            "key": "exception.stacktrace",
+            "value": {
+             "stringValue": "RuntimeError: x\n"
+            }
+           },
+           {
+            "key": "exception.type",
+            "value": {
+             "stringValue": "RuntimeError"
+            }
+           }
+          ]
+         }
+        ],
+        "status": {
+         "message": "boom",
+         "code": 2
+        }
+       },
+       {
+        "traceId": "b234d6c84c35a9ccafe55427f85a1008",
+        "spanId": "9c5064d2a22a5fb6",
+        "parentSpanId": "6bb7cf5f4442aaf9",
+        "flags": 256,
+        "name": "child-llm",
+        "kind": 3,
+        "startTimeUnixNano": "1794105511929651300",
+        "endTimeUnixNano": "1794105511930673900",
+        "attributes": [
+         {
+          "key": "gen_ai.operation.name",
+          "value": {
+           "stringValue": "chat"
+          }
+         }
+        ],
+        "status": {}
+       }
+      ]
+     },
+     {
+      "scope": {
+       "name": "scope.alpha",
+       "version": "1.0.0"
+      },
+      "spans": [
+       {
+        "traceId": "b234d6c84c35a9ccafe55427f85a1008",
+        "spanId": "00869a108c00ed1f",
+        "parentSpanId": "6bb7cf5f4442aaf9",
+        "flags": 256,
+        "name": "child2",
+        "kind": 4,
+        "startTimeUnixNano": "1794105511930673900",
+        "endTimeUnixNano": "1794105511930673901",
+        "attributes": [
+         {
+          "key": "@jaeger@warnings",
+          "value": {
+           "arrayValue": {
+            "values": [
+             {
+              "stringValue": "Negative duration detected, sanitizing end timestamp. Original end timestamp: 2026-11-08 02:38:31.9306739 +0000 UTC, adjusted to: 2026-11-08 02:38:31.930673901 +0000 UTC"
+             },
+             {
+              "stringValue": "clock skew adjustment disabled; not applying calculated delta of -511.301µs"
+             }
+            ]
+           }
+          }
+         }
+        ],
+        "links": [
+         {
+          "traceId": "b234d6c84c35a9ccafe55427f85a1008",
+          "spanId": "6bb7cf5f4442aaf9",
+          "attributes": [
+           {
+            "key": "l.k",
+            "value": {
+             "stringValue": "v"
+            }
+           }
+          ],
+          "flags": 256
+         }
+        ],
+        "status": {
+         "code": 1
+        }
+       },
+       {
+        "traceId": "b234d6c84c35a9ccafe55427f85a1008",
+        "spanId": "6bb7cf5f4442aaf9",
+        "flags": 256,
+        "name": "root-2",
+        "kind": 2,
+        "startTimeUnixNano": "1794105511929651300",
+        "endTimeUnixNano": "1794105511930673900",
+        "attributes": [
+         {
+          "key": "a.arr_empty",
+          "value": {
+           "arrayValue": {}
+          }
+         },
+         {
+          "key": "a.arr_int",
+          "value": {
+           "arrayValue": {
+            "values": [
+             {
+              "intValue": "1"
+             },
+             {
+              "intValue": "2"
+             }
+            ]
+           }
+          }
+         },
+         {
+          "key": "a.arr_str",
+          "value": {
+           "arrayValue": {
+            "values": [
+             {
+              "stringValue": "x"
+             },
+             {
+              "stringValue": "y"
+             }
+            ]
+           }
+          }
+         },
+         {
+          "key": "a.bigint",
+          "value": {
+           "intValue": "4611686018427387904"
+          }
+         },
+         {
+          "key": "a.bool",
+          "value": {
+           "boolValue": true
+          }
+         },
+         {
+          "key": "a.bytes",
+          "value": {
+           "bytesValue": "AAH/"
+          }
+         },
+         {
+          "key": "a.double",
+          "value": {
+           "doubleValue": 3.5
+          }
+         },
+         {
+          "key": "a.double_int",
+          "value": {
+           "doubleValue": 2
+          }
+         },
+         {
+          "key": "a.int",
+          "value": {
+           "intValue": "42"
+          }
+         },
+         {
+          "key": "a.map",
+          "value": {
+           "kvlistValue": {
+            "values": [
+             {
+              "key": "k",
+              "value": {
+               "stringValue": "v"
+              }
+             },
+             {
+              "key": "n",
+              "value": {
+               "intValue": "1"
+              }
+             }
+            ]
+           }
+          }
+         },
+         {
+          "key": "a.nan",
+          "value": {
+           "doubleValue": "NaN"
+          }
+         },
+         {
+          "key": "a.neg",
+          "value": {
+           "intValue": "-7"
+          }
+         },
+         {
+          "key": "a.str",
+          "value": {
+           "stringValue": "héllo"
+          }
+         }
+        ],
+        "events": [
+         {
+          "timeUnixNano": "1794105511929651300",
+          "name": "evt1",
+          "attributes": [
+           {
+            "key": "e.i",
+            "value": {
+             "intValue": "5"
+            }
+           },
+           {
+            "key": "e.k",
+            "value": {
+             "stringValue": "v"
+            }
+           }
+          ]
+         },
+         {
+          "timeUnixNano": "1794105511929651300",
+          "name": "evt2"
+         }
+        ],
+        "status": {}
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "resource": {
+     "attributes": [
+      {
+       "key": "service.name",
+       "value": {
+        "stringValue": "demo-svc"
+       }
+      }
+     ]
+    },
+    "scopeSpans": [
+     {
+      "scope": {
+       "name": "scope.beta",
+       "version": "2.1"
+      },
+      "spans": [
+       {
+        "traceId": "8028cc564e1c2f6ef37be6496af66a93",
+        "spanId": "41070b247eb958b3",
+        "parentSpanId": "90baf86f2a79ca2f",
+        "flags": 256,
+        "name": "grandchild-tool",
+        "kind": 1,
+        "startTimeUnixNano": "1794105510902447600",
+        "endTimeUnixNano": "1794105510902447601",
+        "attributes": [
+         {
+          "key": "@jaeger@warnings",
+          "value": {
+           "arrayValue": {
+            "values": [
+             {
+              "stringValue": "Negative duration detected, sanitizing end timestamp. Original end timestamp: 2026-11-08 02:38:30.9024476 +0000 UTC, adjusted to: 2026-11-08 02:38:30.902447601 +0000 UTC"
+             }
+            ]
+           }
+          }
+         }
+        ],
+        "events": [
+         {
+          "timeUnixNano": "1794105510902447600",
+          "name": "exception",
+          "attributes": [
+           {
+            "key": "exception.escaped",
+            "value": {
+             "stringValue": "False"
+            }
+           },
+           {
+            "key": "exception.message",
+            "value": {
+             "stringValue": "x"
+            }
+           },
+           {
+            "key": "exception.stacktrace",
+            "value": {
+             "stringValue": "RuntimeError: x\n"
+            }
+           },
+           {
+            "key": "exception.type",
+            "value": {
+             "stringValue": "RuntimeError"
+            }
+           }
+          ]
+         }
+        ],
+        "status": {
+         "message": "boom",
+         "code": 2
+        }
+       },
+       {
+        "traceId": "8028cc564e1c2f6ef37be6496af66a93",
+        "spanId": "90baf86f2a79ca2f",
+        "parentSpanId": "cc04bbd64130b69f",
+        "flags": 256,
+        "name": "child-llm",
+        "kind": 3,
+        "startTimeUnixNano": "1794105510902447600",
+        "endTimeUnixNano": "1794105510902447601",
+        "attributes": [
+         {
+          "key": "@jaeger@warnings",
+          "value": {
+           "arrayValue": {
+            "values": [
+             {
+              "stringValue": "Negative duration detected, sanitizing end timestamp. Original end timestamp: 2026-11-08 02:38:30.9024476 +0000 UTC, adjusted to: 2026-11-08 02:38:30.902447601 +0000 UTC"
+             }
+            ]
+           }
+          }
+         },
+         {
+          "key": "gen_ai.operation.name",
+          "value": {
+           "stringValue": "chat"
+          }
+         }
+        ],
+        "status": {}
+       }
+      ]
+     },
+     {
+      "scope": {
+       "name": "scope.alpha",
+       "version": "1.0.0"
+      },
+      "spans": [
+       {
+        "traceId": "8028cc564e1c2f6ef37be6496af66a93",
+        "spanId": "10fe3f300fe47421",
+        "parentSpanId": "cc04bbd64130b69f",
+        "flags": 256,
+        "name": "child2",
+        "kind": 4,
+        "startTimeUnixNano": "1794105510902447600",
+        "endTimeUnixNano": "1794105510902447601",
+        "attributes": [
+         {
+          "key": "@jaeger@warnings",
+          "value": {
+           "arrayValue": {
+            "values": [
+             {
+              "stringValue": "Negative duration detected, sanitizing end timestamp. Original end timestamp: 2026-11-08 02:38:30.9024476 +0000 UTC, adjusted to: 2026-11-08 02:38:30.902447601 +0000 UTC"
+             }
+            ]
+           }
+          }
+         }
+        ],
+        "links": [
+         {
+          "traceId": "8028cc564e1c2f6ef37be6496af66a93",
+          "spanId": "cc04bbd64130b69f",
+          "attributes": [
+           {
+            "key": "l.k",
+            "value": {
+             "stringValue": "v"
+            }
+           }
+          ],
+          "flags": 256
+         }
+        ],
+        "status": {
+         "code": 1
+        }
+       },
+       {
+        "traceId": "8028cc564e1c2f6ef37be6496af66a93",
+        "spanId": "cc04bbd64130b69f",
+        "flags": 256,
+        "name": "root-1",
+        "kind": 2,
+        "startTimeUnixNano": "1794105510902447600",
+        "endTimeUnixNano": "1794105510902447601",
+        "attributes": [
+         {
+          "key": "@jaeger@warnings",
+          "value": {
+           "arrayValue": {
+            "values": [
+             {
+              "stringValue": "Negative duration detected, sanitizing end timestamp. Original end timestamp: 2026-11-08 02:38:30.9024476 +0000 UTC, adjusted to: 2026-11-08 02:38:30.902447601 +0000 UTC"
+             }
+            ]
+           }
+          }
+         },
+         {
+          "key": "a.arr_empty",
+          "value": {
+           "arrayValue": {}
+          }
+         },
+         {
+          "key": "a.arr_int",
+          "value": {
+           "arrayValue": {
+            "values": [
+             {
+              "intValue": "1"
+             },
+             {
+              "intValue": "2"
+             }
+            ]
+           }
+          }
+         },
+         {
+          "key": "a.arr_str",
+          "value": {
+           "arrayValue": {
+            "values": [
+             {
+              "stringValue": "x"
+             },
+             {
+              "stringValue": "y"
+             }
+            ]
+           }
+          }
+         },
+         {
+          "key": "a.bigint",
+          "value": {
+           "intValue": "4611686018427387904"
+          }
+         },
+         {
+          "key": "a.bool",
+          "value": {
+           "boolValue": true
+          }
+         },
+         {
+          "key": "a.bytes",
+          "value": {
+           "bytesValue": "AAH/"
+          }
+         },
+         {
+          "key": "a.double",
+          "value": {
+           "doubleValue": 3.5
+          }
+         },
+         {
+          "key": "a.double_int",
+          "value": {
+           "doubleValue": 2
+          }
+         },
+         {
+          "key": "a.int",
+          "value": {
+           "intValue": "42"
+          }
+         },
+         {
+          "key": "a.map",
+          "value": {
+           "kvlistValue": {
+            "values": [
+             {
+              "key": "k",
+              "value": {
+               "stringValue": "v"
+              }
+             },
+             {
+              "key": "n",
+              "value": {
+               "intValue": "1"
+              }
+             }
+            ]
+           }
+          }
+         },
+         {
+          "key": "a.nan",
+          "value": {
+           "doubleValue": "NaN"
+          }
+         },
+         {
+          "key": "a.neg",
+          "value": {
+           "intValue": "-7"
+          }
+         },
+         {
+          "key": "a.str",
+          "value": {
+           "stringValue": "héllo"
+          }
+         }
+        ],
+        "events": [
+         {
+          "timeUnixNano": "1794105510902447600",
+          "name": "evt1",
+          "attributes": [
+           {
+            "key": "e.i",
+            "value": {
+             "intValue": "5"
+            }
+           },
+           {
+            "key": "e.k",
+            "value": {
+             "stringValue": "v"
+            }
+           }
+          ]
+         },
+         {
+          "timeUnixNano": "1794105510902447600",
+          "name": "evt2"
+         }
+        ],
+        "status": {}
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}

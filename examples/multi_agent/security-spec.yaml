@@ -1,0 +1,59 @@
+# The expected answers, written by a person. Never generate these from a policy engine.
+schema_version: '1'
+scenario_suite: multi-agent-demo-v1
+cases:
+  - id: CASE-001
+    actor: alice
+    role: analyst
+    path: [supervisor, finance-agent]
+    tool: read_portfolio
+    action: portfolio:read
+    resource_fixture: alice-portfolio
+    expect: allow
+  - id: CASE-002
+    actor: alice
+    role: analyst
+    path: [supervisor, finance-agent]
+    tool: read_portfolio
+    action: portfolio:read
+    resource_fixture: bob-portfolio
+    expect: deny
+    reason: Alice does not own Bob's portfolio
+  - id: CASE-003
+    actor: alice
+    role: analyst
+    path: [supervisor, finance-agent, pricing-agent]
+    tool: get_stock_price
+    action: market:read
+    resource_fixture: TSMC
+    expect: allow
+  - id: CASE-004
+    actor: bob
+    role: trader
+    path: [trade-desk, trade-agent]
+    tool: execute_trade
+    action: trade:execute
+    resource_fixture: bob-order
+    expect: allow
+  - id: CASE-005
+    actor: bob
+    role: trader
+    path: [trade-desk, trade-agent]
+    tool: execute_trade
+    action: trade:execute
+    resource_fixture: alice-order
+    expect: deny
+    reason: Bob cannot trade from Alice's account
+never_reaches:
+  - id: RULE-001
+    role: analyst
+    tool: execute_trade
+    reason: Analysts must never trade, through any route
+  - id: RULE-002
+    agent: market-oracle
+    tool: execute_trade
+    reason: The exchange's oracle is a third party; it must never trigger our trades
+  - id: RULE-003
+    agent: pricing-agent
+    tool: execute_trade
+    reason: The pricing agent only quotes prices

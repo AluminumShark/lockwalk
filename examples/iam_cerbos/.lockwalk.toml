@@ -1,0 +1,18 @@
+# Cerbos, asked over AuthZEN 1.0. The registry, spec, fixtures, and agents are the
+# multi-agent demo's. Run lockwalk from this directory, after `docker compose up -d`.
+[lockwalk]
+registry = "../multi_agent/registry.yaml"
+spec = "../multi_agent/security-spec.yaml"
+fixtures = "../multi_agent/fixtures.yaml"
+
+[policy]
+adapter = "authzen"
+url = "http://127.0.0.1:3592"
+# Cerbos reads a user's roles from the subject property "cerbos.roles".
+roles_property = "cerbos.roles"
+
+[[inventory.python]]
+target = "../multi_agent/app.py:OPENAI_ENTRY_AGENTS"
+
+[[inventory.python]]
+target = "../multi_agent/app.py:pricing_agent"

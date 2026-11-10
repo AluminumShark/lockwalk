@@ -1,0 +1,14 @@
+# Example configuration: runs the finance demo from the repository root.
+# Relative paths are resolved against the directory of this file.
+
+[lockwalk]
+registry = "examples/finance_agent/registry.yaml"
+spec = "examples/finance_agent/security-spec.yaml"
+
+# The default gate, written out so it is easy to find and change.
+[gate]
+fail_on_unspecified_risk = ["critical", "unknown"]
+require_deny_case_for_risk = ["high", "critical", "unknown"]
+
+[[inventory.mcp]]
+target = "stdio://examples/finance_agent/mcp_server.py"

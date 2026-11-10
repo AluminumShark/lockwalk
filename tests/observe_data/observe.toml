@@ -1,0 +1,8 @@
+[lockwalk]
+registry = "registry.yaml"
+spec = "security-spec.yaml"
+
+# These tests check routes. The doors are checked by tests/test_observe_e2e_doors.py.
+[gate]
+fail_on_unguarded_call = []
+fail_on_untested_path = []

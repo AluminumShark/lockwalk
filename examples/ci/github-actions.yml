@@ -1,0 +1,185 @@
+# Example workflow for lockwalk. Copy it to .github/workflows/lockwalk.yml in your repo.
+# lockwalk itself never creates a repository or any CI; this file is only an example.
+#
+#
+# - `coverage` (pull requests): runs `lockwalk coverage` on the pull request and on the target
+#   branch, then `lockwalk diff` on the two reports. Red or green comes from the pull
+#   request's own gate, never from `diff`.
+# - `comment` (pull requests from this repository): posts the comparison as one comment.
+# - `test` (nightly and manual runs): runs `lockwalk test`, which asks your real IAM.
+#
+# If your policy is in the repository (a `decide()` function or Cedar files), use
+# `lockwalk test --summary` in place of `lockwalk coverage --summary` in BOTH steps of the
+# `coverage` job. Then the diff also shows cases that went from PASS to FAIL.
+#
+# Do not switch the trigger to `pull_request_target`: it gives pull request code a write token.
+#
+# Installing lockwalk, exit codes, waivers and the rest: see examples/ci/README.md.
+name: lockwalk
+
+on:
+  pull_request:
+  schedule:
+    - cron: "17 3 * * *" # every night at 03:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# One run per pull request at a time: a new push cancels the older run, so two runs cannot
+# post two comments or overwrite a newer comparison with an older one.
+concurrency:
+  group: lockwalk-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  coverage:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    # Read-only: this job runs code from the pull request. Only the comment job can write.
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --locked
+      - name: Check the pull request
+        id: head
+        # `set +e` so the exit code is recorded and the steps below still run. The last
+        # step of the job turns it back into a red or green status.
+        run: |
+          set +e
+          uv run lockwalk coverage --summary --output-dir .lockwalk-head
+          echo "code=$?" >> "$GITHUB_OUTPUT"
+      - name: Check the target branch
+        # With the same lockwalk, so both reports have the same format. A target branch
+        # without lockwalk writes no report, and the diff then shows the head only.
+        continue-on-error: true
+        run: |
+          # The first parent of the merge commit this job checked out is what GitHub merged
+          # the pull request onto. Using it, not the target branch's current tip, keeps
+          # changes that landed on the target branch after that merge out of this comparison.
+          # `fetch-depth: 0` above makes the parent available.
+          git worktree add ../lockwalk-base HEAD^1
+          cd ../lockwalk-base
+          uv run --project "$GITHUB_WORKSPACE" lockwalk coverage --summary --output-dir "$GITHUB_WORKSPACE/.lockwalk-base"
+      - name: Compare
+        if: ${{ !cancelled() }}
+        run: |
+          base=()
+          if [ -f .lockwalk-base/coverage.json ]; then
+            base=(--base .lockwalk-base/coverage.json)
+          fi
+          if ! uv run lockwalk diff --head .lockwalk-head/coverage.json "${base[@]}" --format markdown > comment.md; then
+            # The reason went into comment.md: show it in the job log before replacing the file.
+            cat comment.md >&2
+            printf '%s\n\n%s\n' '<!-- lockwalk-diff -->' 'lockwalk diff could not compare the reports; see the job log.' > comment.md
+          fi
+          cat comment.md >> "$GITHUB_STEP_SUMMARY"
+      - name: Keep the reports and the comment
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: lockwalk-diff
+          path: |
+            comment.md
+            .lockwalk-head/coverage.json
+            .lockwalk-base/coverage.json
+          if-no-files-found: warn
+          include-hidden-files: true
+      - name: Fail if the gate failed
+        # Runs only when the steps above worked (if `uv sync` failed, the job is already red).
+        # The code goes through env, so nothing from outside is pasted into the script.
+        env:
+          CODE: ${{ steps.head.outputs.code }}
+        run: exit "$CODE"
+
+  comment:
+    needs: coverage
+    # Only for pull requests from this repository: GitHub gives fork pull requests a
+    # read-only token, so those get the job summary only. `!cancelled()` keeps this job
+    # running when the gate failed. It never checks out or runs pull request code.
+    # Dependabot pull requests are left out: GitHub gives them a read-only token, so this
+    # job would fail. They get the job summary only, like fork pull requests.
+    if: ${{ !cancelled() && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.user.login != 'dependabot[bot]' }}
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - uses: actions/download-artifact@v4
+        # If `coverage` failed before it uploaded (for example `uv sync` failed), there is
+        # nothing to download. The next step then says so and stops without a second error.
+        continue-on-error: true
+        with:
+          name: lockwalk-diff
+      - name: Post or update the comment
+        # Updates only a comment made by github-actions[bot] that starts with the marker.
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          if [ ! -f comment.md ]; then
+            echo "No comparison to post: the coverage job did not produce one. See its log."
+            exit 0
+          fi
+          # `sed -n 1p` reads all its input. `head -n 1` can exit early, and `gh` then dies of
+          # SIGPIPE, which fails the step under `bash -e -o pipefail`.
+          id=$(gh api "repos/$REPO/issues/$PR/comments" --paginate --jq '.[] | select(.user.login == "github-actions[bot]" and (.body | startswith("<!-- lockwalk-diff -->"))) | .id' | sed -n 1p)
+          if [ -n "$id" ]; then
+            gh api -X PATCH "repos/$REPO/issues/comments/$id" -F body=@comment.md
+          else
+            gh pr comment "$PR" --repo "$REPO" --body-file comment.md
+          fi
+
+  test:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    # Cerbos, option A (service container). A service container starts BEFORE checkout,
+    # so it cannot mount your repo's policies. It only works with an image that already
+    # contains the policies and config (your own image, in place of the one below).
+    #
+    # services:
+    #   cerbos:
+    #     image: ghcr.io/cerbos/cerbos:0.57.0
+    #     ports:
+    #       - 3592:3592
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --locked
+      # Cerbos, option B (recommended): start it after checkout so it can mount the
+      # policies from your repo. Replace <policies> and <conf.yaml>; see
+      # examples/iam_cerbos/cerbos/ in the lockwalk repository for the layout. Then point
+      # [policy] in .lockwalk.toml at it, as in examples/iam_cerbos/.lockwalk.toml:
+      #   [policy]
+      #   adapter = "authzen"
+      #   url = "http://127.0.0.1:3592"
+      #   roles_property = "cerbos.roles"
+      #
+      # - name: Start Cerbos
+      #   run: |
+      #     docker run -d --name cerbos -p 127.0.0.1:3592:3592 \
+      #       -v "$PWD/<policies>:/policies:ro" -v "$PWD/<conf.yaml>:/conf.yaml:ro" \
+      #       ghcr.io/cerbos/cerbos:0.57.0 server --config=/conf.yaml
+      #     for i in $(seq 1 30); do
+      #       docker exec cerbos /cerbos healthcheck --config=/conf.yaml && exit 0
+      #       sleep 1
+      #     done
+      #     docker logs cerbos
+      #     exit 1
+      - name: Ask the IAM and run door tests
+        run: uv run lockwalk test --summary
+      - name: Keep the full report
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: lockwalk-test
+          path: |
+            .lockwalk/coverage.json
+            .lockwalk/evidence.jsonl
+          if-no-files-found: warn
+          include-hidden-files: true

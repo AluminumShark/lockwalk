@@ -1,0 +1,2351 @@
+{
+ "resourceSpans": [
+  {
+   "resource": {
+    "attributes": [
+     {
+      "key": "service.name",
+      "value": {
+       "stringValue": "unknown_service:python.exe"
+      }
+     }
+    ]
+   },
+   "scopeSpans": [
+    {
+     "scope": {
+      "name": "app"
+     },
+     "spans": [
+      {
+       "traceId": "dbf0d30fd91b2b54b82d6a14f9466910",
+       "spanId": "733137e303eedc8c",
+       "parentSpanId": "f63eb57a288a5e6c",
+       "name": "authz-check",
+       "kind": 1,
+       "startTimeUnixNano": "1794105558861329700",
+       "endTimeUnixNano": "1794105558861329700",
+       "attributes": [
+        {
+         "key": "lockwalk.door.decision",
+         "value": {
+          "stringValue": "allow-child"
+         }
+        }
+       ],
+       "status": {
+        "code": 0
+       }
+      },
+      {
+       "traceId": "dbf0d30fd91b2b54b82d6a14f9466910",
+       "spanId": "f63eb57a288a5e6c",
+       "name": "app-request",
+       "kind": 1,
+       "startTimeUnixNano": "1794105558776708200",
+       "endTimeUnixNano": "1794105558865329000",
+       "attributes": [
+        {
+         "key": "user.id",
+         "value": {
+          "stringValue": "alice"
+         }
+        },
+        {
+         "key": "lockwalk.door.decision",
+         "value": {
+          "stringValue": "allow"
+         }
+        },
+        {
+         "key": "lockwalk.door.subject.id",
+         "value": {
+          "stringValue": "u-1"
+         }
+        },
+        {
+         "key": "lockwalk.door.action",
+         "value": {
+          "stringValue": "trade:execute"
+         }
+        }
+       ],
+       "status": {
+        "code": 0
+       }
+      }
+     ]
+    },
+    {
+     "scope": {
+      "name": "langsmith"
+     },
+     "spans": [
+      {
+       "traceId": "dbf0d30fd91b2b54b82d6a14f9466910",
+       "spanId": "f9561fa6b75d485d",
+       "parentSpanId": "f63eb57a288a5e6c",
+       "name": "supervisor",
+       "kind": 1,
+       "startTimeUnixNano": "1794105558778708992",
+       "endTimeUnixNano": "1794105558865329152",
+       "attributes": [
+        {
+         "key": "langsmith.span.kind",
+         "value": {
+          "stringValue": "chain"
+         }
+        },
+        {
+         "key": "langsmith.trace.name",
+         "value": {
+          "stringValue": "supervisor"
+         }
+        },
+        {
+         "key": "langsmith.trace.session_name",
+         "value": {
+          "stringValue": "default"
+         }
+        },
+        {
+         "key": "gen_ai.operation.name",
+         "value": {
+          "stringValue": "chain"
+         }
+        },
+        {
+         "key": "gen_ai.system",
+         "value": {
+          "stringValue": "langchain"
+         }
+        },
+        {
+         "key": "langsmith.metadata.ls_integration",
+         "value": {
+          "stringValue": "langgraph"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_TRACING",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_OTEL_ENABLED",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_OTEL_ONLY",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "gen_ai.prompt",
+         "value": {
+          "stringValue": "{\"messages\":[{\"content\":\"buy 5 ACME\",\"additional_kwargs\":{},\"response_metadata\":{},\"type\":\"human\",\"id\":\"0576c5ea-1b1b-447b-bd39-e9120db08f1d\"}]}"
+         }
+        },
+        {
+         "key": "gen_ai.completion",
+         "value": {
+          "stringValue": "{\"messages\":[{\"content\":\"buy 5 ACME\",\"additional_kwargs\":{},\"response_metadata\":{},\"type\":\"human\",\"id\":\"0576c5ea-1b1b-447b-bd39-e9120db08f1d\"},{\"content\":\"\",\"additional_kwargs\":{},\"response_metadata\":{},\"type\":\"ai\",\"id\":\"lc_run--01a1b906-4747-7036-a5bd-26f1ec73f732-0\",\"tool_calls\":[{\"name\":\"ask_trade_agent\",\"args\":{\"request\":\"buy 5 ACME\"},\"id\":\"c1\",\"type\":\"tool_call\"}],\"invalid_tool_calls\":[]},{\"content\":\"done\",\"additional_kwargs\":{},\"response_metadata\":{},\"type\":\"tool\",\"name\":\"ask_trade_agent\",\"id\":\"d8bd255f-76be-4d09-9cb5-ba6634df49d5\",\"tool_call_id\":\"c1\",\"status\":\"success\"},{\"content\":\"ok\",\"additional_kwargs\":{},\"response_metadata\":{},\"type\":\"ai\",\"id\":\"lc_run--01a1b906-4750-7184-9624-adbd8a87fdc5-0\",\"tool_calls\":[],\"invalid_tool_calls\":[]}]}"
+         }
+        }
+       ],
+       "status": {
+        "code": 1
+       }
+      },
+      {
+       "traceId": "dbf0d30fd91b2b54b82d6a14f9466910",
+       "spanId": "44799f8cb905d7e9",
+       "parentSpanId": "f9561fa6b75d485d",
+       "name": "agent",
+       "kind": 1,
+       "startTimeUnixNano": "1794105558854816000",
+       "endTimeUnixNano": "1794105558856816128",
+       "attributes": [
+        {
+         "key": "langsmith.span.kind",
+         "value": {
+          "stringValue": "chain"
+         }
+        },
+        {
+         "key": "langsmith.trace.name",
+         "value": {
+          "stringValue": "agent"
+         }
+        },
+        {
+         "key": "langsmith.trace.session_name",
+         "value": {
+          "stringValue": "default"
+         }
+        },
+        {
+         "key": "gen_ai.operation.name",
+         "value": {
+          "stringValue": "chain"
+         }
+        },
+        {
+         "key": "gen_ai.system",
+         "value": {
+          "stringValue": "langchain"
+         }
+        },
+        {
+         "key": "langsmith.metadata.ls_integration",
+         "value": {
+          "stringValue": "langgraph"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_step",
+         "value": {
+          "intValue": "1"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_node",
+         "value": {
+          "stringValue": "agent"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_triggers",
+         "value": {
+          "stringValue": "[\"branch:to:agent\"]"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_path",
+         "value": {
+          "stringValue": "[\"__pregel_pull\",\"agent\"]"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_checkpoint_ns",
+         "value": {
+          "stringValue": "agent:56f84bbc-0d44-24de-cc70-bd347140a872"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_TRACING",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_OTEL_ENABLED",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_OTEL_ONLY",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.span.tags",
+         "value": {
+          "stringValue": "graph:step:1"
+         }
+        },
+        {
+         "key": "gen_ai.prompt",
+         "value": {
+          "stringValue": "{\"messages\":[{\"content\":\"buy 5 ACME\",\"additional_kwargs\":{},\"response_metadata\":{},\"type\":\"human\",\"id\":\"0576c5ea-1b1b-447b-bd39-e9120db08f1d\"}]}"
+         }
+        },
+        {
+         "key": "gen_ai.completion",
+         "value": {
+          "stringValue": "{\"messages\":[{\"content\":\"\",\"additional_kwargs\":{},\"response_metadata\":{},\"type\":\"ai\",\"id\":\"lc_run--01a1b906-4747-7036-a5bd-26f1ec73f732-0\",\"tool_calls\":[{\"name\":\"ask_trade_agent\",\"args\":{\"request\":\"buy 5 ACME\"},\"id\":\"c1\",\"type\":\"tool_call\"}],\"invalid_tool_calls\":[]}]}"
+         }
+        }
+       ],
+       "status": {
+        "code": 1
+       }
+      },
+      {
+       "traceId": "dbf0d30fd91b2b54b82d6a14f9466910",
+       "spanId": "5f3b101decff9099",
+       "parentSpanId": "44799f8cb905d7e9",
+       "name": "FakeToolModel",
+       "kind": 1,
+       "startTimeUnixNano": "1794105558855817984",
+       "endTimeUnixNano": "1794105558855817984",
+       "attributes": [
+        {
+         "key": "langsmith.span.kind",
+         "value": {
+          "stringValue": "llm"
+         }
+        },
+        {
+         "key": "langsmith.trace.name",
+         "value": {
+          "stringValue": "FakeToolModel"
+         }
+        },
+        {
+         "key": "langsmith.trace.session_name",
+         "value": {
+          "stringValue": "default"
+         }
+        },
+        {
+         "key": "gen_ai.operation.name",
+         "value": {
+          "stringValue": "chat"
+         }
+        },
+        {
+         "key": "gen_ai.system",
+         "value": {
+          "stringValue": "langchain"
+         }
+        },
+        {
+         "key": "langsmith.metadata.ls_integration",
+         "value": {
+          "stringValue": "langchain_chat_model"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_step",
+         "value": {
+          "intValue": "1"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_node",
+         "value": {
+          "stringValue": "agent"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_triggers",
+         "value": {
+          "stringValue": "[\"branch:to:agent\"]"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_path",
+         "value": {
+          "stringValue": "[\"__pregel_pull\",\"agent\"]"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_checkpoint_ns",
+         "value": {
+          "stringValue": "agent:56f84bbc-0d44-24de-cc70-bd347140a872"
+         }
+        },
+        {
+         "key": "langsmith.metadata.checkpoint_ns",
+         "value": {
+          "stringValue": "agent:56f84bbc-0d44-24de-cc70-bd347140a872"
+         }
+        },
+        {
+         "key": "langsmith.metadata.ls_provider",
+         "value": {
+          "stringValue": "faketoolmodel"
+         }
+        },
+        {
+         "key": "langsmith.metadata.ls_model_type",
+         "value": {
+          "stringValue": "chat"
+         }
+        },
+        {
+         "key": "langsmith.metadata.lc_versions",
+         "value": {
+          "stringValue": "{\"langchain-core\":\"1.7.6\"}"
+         }
+        },
+        {
+         "key": "langsmith.metadata._type",
+         "value": {
+          "stringValue": "fake-tool-model"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_TRACING",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_OTEL_ENABLED",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_OTEL_ONLY",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.span.tags",
+         "value": {
+          "stringValue": "seq:step:1"
+         }
+        },
+        {
+         "key": "gen_ai.serialized.name",
+         "value": {
+          "stringValue": "FakeToolModel"
+         }
+        },
+        {
+         "key": "gen_ai.prompt",
+         "value": {
+          "stringValue": "{\"messages\":[[{\"lc\":1,\"type\":\"constructor\",\"id\":[\"langchain\",\"schema\",\"messages\",\"HumanMessage\"],\"kwargs\":{\"content\":\"buy 5 ACME\",\"type\":\"human\",\"id\":\"0576c5ea-1b1b-447b-bd39-e9120db08f1d\"}}]]}"
+         }
+        },
+        {
+         "key": "gen_ai.completion",
+         "value": {
+          "stringValue": "{\"generations\":[[{\"text\":\"\",\"generation_info\":null,\"type\":\"ChatGeneration\",\"message\":{\"lc\":1,\"type\":\"constructor\",\"id\":[\"langchain\",\"schema\",\"messages\",\"AIMessage\"],\"kwargs\":{\"content\":\"\",\"type\":\"ai\",\"id\":\"lc_run--01a1b906-4747-7036-a5bd-26f1ec73f732-0\",\"tool_calls\":[{\"name\":\"ask_trade_agent\",\"args\":{\"request\":\"buy 5 ACME\"},\"id\":\"c1\",\"type\":\"tool_call\"}],\"invalid_tool_calls\":[]}}}]],\"llm_output\":null,\"run\":null,\"type\":\"LLMResult\"}"
+         }
+        }
+       ],
+       "status": {
+        "code": 1
+       }
+      },
+      {
+       "traceId": "dbf0d30fd91b2b54b82d6a14f9466910",
+       "spanId": "a7172c5abd72336b",
+       "parentSpanId": "44799f8cb905d7e9",
+       "name": "route",
+       "kind": 1,
+       "startTimeUnixNano": "1794105558856816128",
+       "endTimeUnixNano": "1794105558856816128",
+       "attributes": [
+        {
+         "key": "langsmith.span.kind",
+         "value": {
+          "stringValue": "chain"
+         }
+        },
+        {
+         "key": "langsmith.trace.name",
+         "value": {
+          "stringValue": "route"
+         }
+        },
+        {
+         "key": "langsmith.trace.session_name",
+         "value": {
+          "stringValue": "default"
+         }
+        },
+        {
+         "key": "gen_ai.operation.name",
+         "value": {
+          "stringValue": "chain"
+         }
+        },
+        {
+         "key": "gen_ai.system",
+         "value": {
+          "stringValue": "langchain"
+         }
+        },
+        {
+         "key": "langsmith.metadata.ls_integration",
+         "value": {
+          "stringValue": "langgraph"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_step",
+         "value": {
+          "intValue": "1"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_node",
+         "value": {
+          "stringValue": "agent"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_triggers",
+         "value": {
+          "stringValue": "[\"branch:to:agent\"]"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_path",
+         "value": {
+          "stringValue": "[\"__pregel_pull\",\"agent\"]"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_checkpoint_ns",
+         "value": {
+          "stringValue": "agent:56f84bbc-0d44-24de-cc70-bd347140a872"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_TRACING",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_OTEL_ENABLED",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_OTEL_ONLY",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.span.tags",
+         "value": {
+          "stringValue": "seq:step:3"
+         }
+        },
+        {
+         "key": "gen_ai.prompt",
+         "value": {
+          "stringValue": "{\"messages\":[{\"content\":\"buy 5 ACME\",\"additional_kwargs\":{},\"response_metadata\":{},\"type\":\"human\",\"id\":\"0576c5ea-1b1b-447b-bd39-e9120db08f1d\"},{\"content\":\"\",\"additional_kwargs\":{},\"response_metadata\":{},\"type\":\"ai\",\"id\":\"lc_run--01a1b906-4747-7036-a5bd-26f1ec73f732-0\",\"tool_calls\":[{\"name\":\"ask_trade_agent\",\"args\":{\"request\":\"buy 5 ACME\"},\"id\":\"c1\",\"type\":\"tool_call\"}],\"invalid_tool_calls\":[]}]}"
+         }
+        },
+        {
+         "key": "gen_ai.completion",
+         "value": {
+          "stringValue": "{\"output\":\"tools\"}"
+         }
+        }
+       ],
+       "status": {
+        "code": 1
+       }
+      },
+      {
+       "traceId": "dbf0d30fd91b2b54b82d6a14f9466910",
+       "spanId": "1f9b114468226297",
+       "parentSpanId": "f9561fa6b75d485d",
+       "name": "tools",
+       "kind": 1,
+       "startTimeUnixNano": "1794105558856816128",
+       "endTimeUnixNano": "1794105558863353856",
+       "attributes": [
+        {
+         "key": "langsmith.span.kind",
+         "value": {
+          "stringValue": "chain"
+         }
+        },
+        {
+         "key": "langsmith.trace.name",
+         "value": {
+          "stringValue": "tools"
+         }
+        },
+        {
+         "key": "langsmith.trace.session_name",
+         "value": {
+          "stringValue": "default"
+         }
+        },
+        {
+         "key": "gen_ai.operation.name",
+         "value": {
+          "stringValue": "chain"
+         }
+        },
+        {
+         "key": "gen_ai.system",
+         "value": {
+          "stringValue": "langchain"
+         }
+        },
+        {
+         "key": "langsmith.metadata.ls_integration",
+         "value": {
+          "stringValue": "langgraph"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_step",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_node",
+         "value": {
+          "stringValue": "tools"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_triggers",
+         "value": {
+          "stringValue": "[\"branch:to:tools\"]"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_path",
+         "value": {
+          "stringValue": "[\"__pregel_pull\",\"tools\"]"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_checkpoint_ns",
+         "value": {
+          "stringValue": "tools:d3ee5819-5f7d-4cfe-228c-3c14841fdd07"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_TRACING",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_OTEL_ENABLED",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_OTEL_ONLY",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.span.tags",
+         "value": {
+          "stringValue": "graph:step:2"
+         }
+        },
+        {
+         "key": "gen_ai.prompt",
+         "value": {
+          "stringValue": "{\"messages\":[{\"content\":\"buy 5 ACME\",\"additional_kwargs\":{},\"response_metadata\":{},\"type\":\"human\",\"id\":\"0576c5ea-1b1b-447b-bd39-e9120db08f1d\"},{\"content\":\"\",\"additional_kwargs\":{},\"response_metadata\":{},\"type\":\"ai\",\"id\":\"lc_run--01a1b906-4747-7036-a5bd-26f1ec73f732-0\",\"tool_calls\":[{\"name\":\"ask_trade_agent\",\"args\":{\"request\":\"buy 5 ACME\"},\"id\":\"c1\",\"type\":\"tool_call\"}],\"invalid_tool_calls\":[]}]}"
+         }
+        },
+        {
+         "key": "gen_ai.completion",
+         "value": {
+          "stringValue": "{\"messages\":[{\"content\":\"done\",\"additional_kwargs\":{},\"response_metadata\":{},\"type\":\"tool\",\"name\":\"ask_trade_agent\",\"tool_call_id\":\"c1\",\"status\":\"success\"}]}"
+         }
+        }
+       ],
+       "status": {
+        "code": 1
+       }
+      },
+      {
+       "traceId": "dbf0d30fd91b2b54b82d6a14f9466910",
+       "spanId": "c5807c2a1f6d353e",
+       "parentSpanId": "1f9b114468226297",
+       "name": "ask_trade_agent",
+       "kind": 1,
+       "startTimeUnixNano": "1794105558857819136",
+       "endTimeUnixNano": "1794105558863353856",
+       "attributes": [
+        {
+         "key": "langsmith.span.kind",
+         "value": {
+          "stringValue": "tool"
+         }
+        },
+        {
+         "key": "langsmith.trace.name",
+         "value": {
+          "stringValue": "ask_trade_agent"
+         }
+        },
+        {
+         "key": "langsmith.trace.session_name",
+         "value": {
+          "stringValue": "default"
+         }
+        },
+        {
+         "key": "gen_ai.operation.name",
+         "value": {
+          "stringValue": "execute_tool"
+         }
+        },
+        {
+         "key": "gen_ai.system",
+         "value": {
+          "stringValue": "langchain"
+         }
+        },
+        {
+         "key": "gen_ai.tool.name",
+         "value": {
+          "stringValue": "ask_trade_agent"
+         }
+        },
+        {
+         "key": "gen_ai.tool.call.id",
+         "value": {
+          "stringValue": "c1"
+         }
+        },
+        {
+         "key": "langsmith.metadata.ls_integration",
+         "value": {
+          "stringValue": "langgraph"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_step",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_node",
+         "value": {
+          "stringValue": "tools"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_triggers",
+         "value": {
+          "stringValue": "[\"branch:to:tools\"]"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_path",
+         "value": {
+          "stringValue": "[\"__pregel_pull\",\"tools\"]"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_checkpoint_ns",
+         "value": {
+          "stringValue": "tools:d3ee5819-5f7d-4cfe-228c-3c14841fdd07"
+         }
+        },
+        {
+         "key": "langsmith.metadata.checkpoint_ns",
+         "value": {
+          "stringValue": "tools:d3ee5819-5f7d-4cfe-228c-3c14841fdd07"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_TRACING",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_OTEL_ENABLED",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_OTEL_ONLY",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.span.tags",
+         "value": {
+          "stringValue": "seq:step:1"
+         }
+        },
+        {
+         "key": "gen_ai.prompt",
+         "value": {
+          "stringValue": "{\"request\":\"buy 5 ACME\"}"
+         }
+        },
+        {
+         "key": "gen_ai.completion",
+         "value": {
+          "stringValue": "{\"output\":{\"content\":\"done\",\"additional_kwargs\":{},\"response_metadata\":{},\"type\":\"tool\",\"name\":\"ask_trade_agent\",\"tool_call_id\":\"c1\",\"status\":\"success\"}}"
+         }
+        }
+       ],
+       "status": {
+        "code": 1
+       }
+      },
+      {
+       "traceId": "dbf0d30fd91b2b54b82d6a14f9466910",
+       "spanId": "924b393eee4d62fb",
+       "parentSpanId": "c5807c2a1f6d353e",
+       "name": "trade-agent",
+       "kind": 1,
+       "startTimeUnixNano": "1794105558857819136",
+       "endTimeUnixNano": "1794105558863353856",
+       "attributes": [
+        {
+         "key": "langsmith.span.kind",
+         "value": {
+          "stringValue": "chain"
+         }
+        },
+        {
+         "key": "langsmith.trace.name",
+         "value": {
+          "stringValue": "trade-agent"
+         }
+        },
+        {
+         "key": "langsmith.trace.session_name",
+         "value": {
+          "stringValue": "default"
+         }
+        },
+        {
+         "key": "gen_ai.operation.name",
+         "value": {
+          "stringValue": "chain"
+         }
+        },
+        {
+         "key": "gen_ai.system",
+         "value": {
+          "stringValue": "langchain"
+         }
+        },
+        {
+         "key": "langsmith.metadata.ls_integration",
+         "value": {
+          "stringValue": "langgraph"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_step",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_node",
+         "value": {
+          "stringValue": "tools"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_triggers",
+         "value": {
+          "stringValue": "[\"branch:to:tools\"]"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_path",
+         "value": {
+          "stringValue": "[\"__pregel_pull\",\"tools\"]"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_checkpoint_ns",
+         "value": {
+          "stringValue": "tools:d3ee5819-5f7d-4cfe-228c-3c14841fdd07"
+         }
+        },
+        {
+         "key": "langsmith.metadata.checkpoint_ns",
+         "value": {
+          "stringValue": "tools:d3ee5819-5f7d-4cfe-228c-3c14841fdd07"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_TRACING",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_OTEL_ENABLED",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_OTEL_ONLY",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "gen_ai.prompt",
+         "value": {
+          "stringValue": "{\"messages\":[{\"content\":\"buy 5 ACME\",\"additional_kwargs\":{},\"response_metadata\":{},\"type\":\"human\",\"id\":\"7c68996e-e83d-4670-9260-fd09b3aba5dc\"}]}"
+         }
+        },
+        {
+         "key": "gen_ai.completion",
+         "value": {
+          "stringValue": "{\"messages\":[{\"content\":\"buy 5 ACME\",\"additional_kwargs\":{},\"response_metadata\":{},\"type\":\"human\",\"id\":\"7c68996e-e83d-4670-9260-fd09b3aba5dc\"},{\"content\":\"\",\"additional_kwargs\":{},\"response_metadata\":{},\"type\":\"ai\",\"id\":\"lc_run--01a1b906-474c-7603-8195-202931672bb5-0\",\"tool_calls\":[{\"name\":\"execute_trade\",\"args\":{\"symbol\":\"ACME\",\"qty\":5},\"id\":\"c1\",\"type\":\"tool_call\"}],\"invalid_tool_calls\":[]},{\"content\":\"traded 5 ACME\",\"additional_kwargs\":{},\"response_metadata\":{},\"type\":\"tool\",\"name\":\"execute_trade\",\"id\":\"f6bbd7ba-89b1-472b-b791-db0c7a4c6c1a\",\"tool_call_id\":\"c1\",\"status\":\"success\"},{\"content\":\"done\",\"additional_kwargs\":{},\"response_metadata\":{},\"type\":\"ai\",\"id\":\"lc_run--01a1b906-474f-7482-a878-0c729c2e177e-0\",\"tool_calls\":[],\"invalid_tool_calls\":[]}]}"
+         }
+        }
+       ],
+       "status": {
+        "code": 1
+       }
+      },
+      {
+       "traceId": "dbf0d30fd91b2b54b82d6a14f9466910",
+       "spanId": "2aa95f89a9f425d7",
+       "parentSpanId": "924b393eee4d62fb",
+       "name": "agent",
+       "kind": 1,
+       "startTimeUnixNano": "1794105558858818048",
+       "endTimeUnixNano": "1794105558860323072",
+       "attributes": [
+        {
+         "key": "langsmith.span.kind",
+         "value": {
+          "stringValue": "chain"
+         }
+        },
+        {
+         "key": "langsmith.trace.name",
+         "value": {
+          "stringValue": "agent"
+         }
+        },
+        {
+         "key": "langsmith.trace.session_name",
+         "value": {
+          "stringValue": "default"
+         }
+        },
+        {
+         "key": "gen_ai.operation.name",
+         "value": {
+          "stringValue": "chain"
+         }
+        },
+        {
+         "key": "gen_ai.system",
+         "value": {
+          "stringValue": "langchain"
+         }
+        },
+        {
+         "key": "langsmith.metadata.ls_integration",
+         "value": {
+          "stringValue": "langgraph"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_step",
+         "value": {
+          "intValue": "1"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_node",
+         "value": {
+          "stringValue": "agent"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_triggers",
+         "value": {
+          "stringValue": "[\"branch:to:agent\"]"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_path",
+         "value": {
+          "stringValue": "[\"__pregel_pull\",\"agent\"]"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_checkpoint_ns",
+         "value": {
+          "stringValue": "tools:d3ee5819-5f7d-4cfe-228c-3c14841fdd07|agent:f010d70e-8ff3-1ed1-658f-a3d71f068edd"
+         }
+        },
+        {
+         "key": "langsmith.metadata.checkpoint_ns",
+         "value": {
+          "stringValue": "tools:d3ee5819-5f7d-4cfe-228c-3c14841fdd07"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_TRACING",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_OTEL_ENABLED",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_OTEL_ONLY",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.span.tags",
+         "value": {
+          "stringValue": "graph:step:1"
+         }
+        },
+        {
+         "key": "gen_ai.prompt",
+         "value": {
+          "stringValue": "{\"messages\":[{\"content\":\"buy 5 ACME\",\"additional_kwargs\":{},\"response_metadata\":{},\"type\":\"human\",\"id\":\"7c68996e-e83d-4670-9260-fd09b3aba5dc\"}]}"
+         }
+        },
+        {
+         "key": "gen_ai.completion",
+         "value": {
+          "stringValue": "{\"messages\":[{\"content\":\"\",\"additional_kwargs\":{},\"response_metadata\":{},\"type\":\"ai\",\"id\":\"lc_run--01a1b906-474c-7603-8195-202931672bb5-0\",\"tool_calls\":[{\"name\":\"execute_trade\",\"args\":{\"symbol\":\"ACME\",\"qty\":5},\"id\":\"c1\",\"type\":\"tool_call\"}],\"invalid_tool_calls\":[]}]}"
+         }
+        }
+       ],
+       "status": {
+        "code": 1
+       }
+      },
+      {
+       "traceId": "dbf0d30fd91b2b54b82d6a14f9466910",
+       "spanId": "5ce56778a113ba2a",
+       "parentSpanId": "2aa95f89a9f425d7",
+       "name": "FakeToolModel",
+       "kind": 1,
+       "startTimeUnixNano": "1794105558859817984",
+       "endTimeUnixNano": "1794105558860323072",
+       "attributes": [
+        {
+         "key": "langsmith.span.kind",
+         "value": {
+          "stringValue": "llm"
+         }
+        },
+        {
+         "key": "langsmith.trace.name",
+         "value": {
+          "stringValue": "FakeToolModel"
+         }
+        },
+        {
+         "key": "langsmith.trace.session_name",
+         "value": {
+          "stringValue": "default"
+         }
+        },
+        {
+         "key": "gen_ai.operation.name",
+         "value": {
+          "stringValue": "chat"
+         }
+        },
+        {
+         "key": "gen_ai.system",
+         "value": {
+          "stringValue": "langchain"
+         }
+        },
+        {
+         "key": "langsmith.metadata.ls_integration",
+         "value": {
+          "stringValue": "langchain_chat_model"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_step",
+         "value": {
+          "intValue": "1"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_node",
+         "value": {
+          "stringValue": "agent"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_triggers",
+         "value": {
+          "stringValue": "[\"branch:to:agent\"]"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_path",
+         "value": {
+          "stringValue": "[\"__pregel_pull\",\"agent\"]"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_checkpoint_ns",
+         "value": {
+          "stringValue": "tools:d3ee5819-5f7d-4cfe-228c-3c14841fdd07|agent:f010d70e-8ff3-1ed1-658f-a3d71f068edd"
+         }
+        },
+        {
+         "key": "langsmith.metadata.checkpoint_ns",
+         "value": {
+          "stringValue": "tools:d3ee5819-5f7d-4cfe-228c-3c14841fdd07"
+         }
+        },
+        {
+         "key": "langsmith.metadata.ls_provider",
+         "value": {
+          "stringValue": "faketoolmodel"
+         }
+        },
+        {
+         "key": "langsmith.metadata.ls_model_type",
+         "value": {
+          "stringValue": "chat"
+         }
+        },
+        {
+         "key": "langsmith.metadata.lc_versions",
+         "value": {
+          "stringValue": "{\"langchain-core\":\"1.7.6\"}"
+         }
+        },
+        {
+         "key": "langsmith.metadata._type",
+         "value": {
+          "stringValue": "fake-tool-model"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_TRACING",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_OTEL_ENABLED",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_OTEL_ONLY",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.span.tags",
+         "value": {
+          "stringValue": "seq:step:1"
+         }
+        },
+        {
+         "key": "gen_ai.serialized.name",
+         "value": {
+          "stringValue": "FakeToolModel"
+         }
+        },
+        {
+         "key": "gen_ai.prompt",
+         "value": {
+          "stringValue": "{\"messages\":[[{\"lc\":1,\"type\":\"constructor\",\"id\":[\"langchain\",\"schema\",\"messages\",\"HumanMessage\"],\"kwargs\":{\"content\":\"buy 5 ACME\",\"type\":\"human\",\"id\":\"7c68996e-e83d-4670-9260-fd09b3aba5dc\"}}]]}"
+         }
+        },
+        {
+         "key": "gen_ai.completion",
+         "value": {
+          "stringValue": "{\"generations\":[[{\"text\":\"\",\"generation_info\":null,\"type\":\"ChatGeneration\",\"message\":{\"lc\":1,\"type\":\"constructor\",\"id\":[\"langchain\",\"schema\",\"messages\",\"AIMessage\"],\"kwargs\":{\"content\":\"\",\"type\":\"ai\",\"id\":\"lc_run--01a1b906-474c-7603-8195-202931672bb5-0\",\"tool_calls\":[{\"name\":\"execute_trade\",\"args\":{\"symbol\":\"ACME\",\"qty\":5},\"id\":\"c1\",\"type\":\"tool_call\"}],\"invalid_tool_calls\":[]}}}]],\"llm_output\":null,\"run\":null,\"type\":\"LLMResult\"}"
+         }
+        }
+       ],
+       "status": {
+        "code": 1
+       }
+      },
+      {
+       "traceId": "dbf0d30fd91b2b54b82d6a14f9466910",
+       "spanId": "5af2dfc510dd614e",
+       "parentSpanId": "2aa95f89a9f425d7",
+       "name": "route",
+       "kind": 1,
+       "startTimeUnixNano": "1794105558860323072",
+       "endTimeUnixNano": "1794105558860323072",
+       "attributes": [
+        {
+         "key": "langsmith.span.kind",
+         "value": {
+          "stringValue": "chain"
+         }
+        },
+        {
+         "key": "langsmith.trace.name",
+         "value": {
+          "stringValue": "route"
+         }
+        },
+        {
+         "key": "langsmith.trace.session_name",
+         "value": {
+          "stringValue": "default"
+         }
+        },
+        {
+         "key": "gen_ai.operation.name",
+         "value": {
+          "stringValue": "chain"
+         }
+        },
+        {
+         "key": "gen_ai.system",
+         "value": {
+          "stringValue": "langchain"
+         }
+        },
+        {
+         "key": "langsmith.metadata.ls_integration",
+         "value": {
+          "stringValue": "langgraph"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_step",
+         "value": {
+          "intValue": "1"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_node",
+         "value": {
+          "stringValue": "agent"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_triggers",
+         "value": {
+          "stringValue": "[\"branch:to:agent\"]"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_path",
+         "value": {
+          "stringValue": "[\"__pregel_pull\",\"agent\"]"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_checkpoint_ns",
+         "value": {
+          "stringValue": "tools:d3ee5819-5f7d-4cfe-228c-3c14841fdd07|agent:f010d70e-8ff3-1ed1-658f-a3d71f068edd"
+         }
+        },
+        {
+         "key": "langsmith.metadata.checkpoint_ns",
+         "value": {
+          "stringValue": "tools:d3ee5819-5f7d-4cfe-228c-3c14841fdd07"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_TRACING",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_OTEL_ENABLED",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_OTEL_ONLY",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.span.tags",
+         "value": {
+          "stringValue": "seq:step:3"
+         }
+        },
+        {
+         "key": "gen_ai.prompt",
+         "value": {
+          "stringValue": "{\"messages\":[{\"content\":\"buy 5 ACME\",\"additional_kwargs\":{},\"response_metadata\":{},\"type\":\"human\",\"id\":\"7c68996e-e83d-4670-9260-fd09b3aba5dc\"},{\"content\":\"\",\"additional_kwargs\":{},\"response_metadata\":{},\"type\":\"ai\",\"id\":\"lc_run--01a1b906-474c-7603-8195-202931672bb5-0\",\"tool_calls\":[{\"name\":\"execute_trade\",\"args\":{\"symbol\":\"ACME\",\"qty\":5},\"id\":\"c1\",\"type\":\"tool_call\"}],\"invalid_tool_calls\":[]}]}"
+         }
+        },
+        {
+         "key": "gen_ai.completion",
+         "value": {
+          "stringValue": "{\"output\":\"tools\"}"
+         }
+        }
+       ],
+       "status": {
+        "code": 1
+       }
+      },
+      {
+       "traceId": "dbf0d30fd91b2b54b82d6a14f9466910",
+       "spanId": "e88ec423824352f8",
+       "parentSpanId": "924b393eee4d62fb",
+       "name": "tools",
+       "kind": 1,
+       "startTimeUnixNano": "1794105558860323072",
+       "endTimeUnixNano": "1794105558862358016",
+       "attributes": [
+        {
+         "key": "langsmith.span.kind",
+         "value": {
+          "stringValue": "chain"
+         }
+        },
+        {
+         "key": "langsmith.trace.name",
+         "value": {
+          "stringValue": "tools"
+         }
+        },
+        {
+         "key": "langsmith.trace.session_name",
+         "value": {
+          "stringValue": "default"
+         }
+        },
+        {
+         "key": "gen_ai.operation.name",
+         "value": {
+          "stringValue": "chain"
+         }
+        },
+        {
+         "key": "gen_ai.system",
+         "value": {
+          "stringValue": "langchain"
+         }
+        },
+        {
+         "key": "langsmith.metadata.ls_integration",
+         "value": {
+          "stringValue": "langgraph"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_step",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_node",
+         "value": {
+          "stringValue": "tools"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_triggers",
+         "value": {
+          "stringValue": "[\"branch:to:tools\"]"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_path",
+         "value": {
+          "stringValue": "[\"__pregel_pull\",\"tools\"]"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_checkpoint_ns",
+         "value": {
+          "stringValue": "tools:d3ee5819-5f7d-4cfe-228c-3c14841fdd07|tools:34a08964-d0aa-3e4d-7a1f-7ab640a6cf47"
+         }
+        },
+        {
+         "key": "langsmith.metadata.checkpoint_ns",
+         "value": {
+          "stringValue": "tools:d3ee5819-5f7d-4cfe-228c-3c14841fdd07"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_TRACING",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_OTEL_ENABLED",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_OTEL_ONLY",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.span.tags",
+         "value": {
+          "stringValue": "graph:step:2"
+         }
+        },
+        {
+         "key": "gen_ai.prompt",
+         "value": {
+          "stringValue": "{\"messages\":[{\"content\":\"buy 5 ACME\",\"additional_kwargs\":{},\"response_metadata\":{},\"type\":\"human\",\"id\":\"7c68996e-e83d-4670-9260-fd09b3aba5dc\"},{\"content\":\"\",\"additional_kwargs\":{},\"response_metadata\":{},\"type\":\"ai\",\"id\":\"lc_run--01a1b906-474c-7603-8195-202931672bb5-0\",\"tool_calls\":[{\"name\":\"execute_trade\",\"args\":{\"symbol\":\"ACME\",\"qty\":5},\"id\":\"c1\",\"type\":\"tool_call\"}],\"invalid_tool_calls\":[]}]}"
+         }
+        },
+        {
+         "key": "gen_ai.completion",
+         "value": {
+          "stringValue": "{\"messages\":[{\"content\":\"traded 5 ACME\",\"additional_kwargs\":{},\"response_metadata\":{},\"type\":\"tool\",\"name\":\"execute_trade\",\"tool_call_id\":\"c1\",\"status\":\"success\"}]}"
+         }
+        }
+       ],
+       "status": {
+        "code": 1
+       }
+      },
+      {
+       "traceId": "dbf0d30fd91b2b54b82d6a14f9466910",
+       "spanId": "54f540f108612922",
+       "parentSpanId": "e88ec423824352f8",
+       "name": "execute_trade",
+       "kind": 1,
+       "startTimeUnixNano": "1794105558861329152",
+       "endTimeUnixNano": "1794105558861329152",
+       "attributes": [
+        {
+         "key": "langsmith.span.kind",
+         "value": {
+          "stringValue": "tool"
+         }
+        },
+        {
+         "key": "langsmith.trace.name",
+         "value": {
+          "stringValue": "execute_trade"
+         }
+        },
+        {
+         "key": "langsmith.trace.session_name",
+         "value": {
+          "stringValue": "default"
+         }
+        },
+        {
+         "key": "gen_ai.operation.name",
+         "value": {
+          "stringValue": "execute_tool"
+         }
+        },
+        {
+         "key": "gen_ai.system",
+         "value": {
+          "stringValue": "langchain"
+         }
+        },
+        {
+         "key": "gen_ai.tool.name",
+         "value": {
+          "stringValue": "execute_trade"
+         }
+        },
+        {
+         "key": "gen_ai.tool.call.id",
+         "value": {
+          "stringValue": "c1"
+         }
+        },
+        {
+         "key": "langsmith.metadata.ls_integration",
+         "value": {
+          "stringValue": "langgraph"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_step",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_node",
+         "value": {
+          "stringValue": "tools"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_triggers",
+         "value": {
+          "stringValue": "[\"branch:to:tools\"]"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_path",
+         "value": {
+          "stringValue": "[\"__pregel_pull\",\"tools\"]"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_checkpoint_ns",
+         "value": {
+          "stringValue": "tools:d3ee5819-5f7d-4cfe-228c-3c14841fdd07|tools:34a08964-d0aa-3e4d-7a1f-7ab640a6cf47"
+         }
+        },
+        {
+         "key": "langsmith.metadata.checkpoint_ns",
+         "value": {
+          "stringValue": "tools:d3ee5819-5f7d-4cfe-228c-3c14841fdd07"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_TRACING",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_OTEL_ENABLED",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_OTEL_ONLY",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.span.tags",
+         "value": {
+          "stringValue": "seq:step:1"
+         }
+        },
+        {
+         "key": "gen_ai.prompt",
+         "value": {
+          "stringValue": "{\"symbol\":\"ACME\",\"qty\":5}"
+         }
+        },
+        {
+         "key": "gen_ai.completion",
+         "value": {
+          "stringValue": "{\"output\":{\"content\":\"traded 5 ACME\",\"additional_kwargs\":{},\"response_metadata\":{},\"type\":\"tool\",\"name\":\"execute_trade\",\"tool_call_id\":\"c1\",\"status\":\"success\"}}"
+         }
+        }
+       ],
+       "status": {
+        "code": 1
+       }
+      },
+      {
+       "traceId": "dbf0d30fd91b2b54b82d6a14f9466910",
+       "spanId": "31e0db4a9ca77748",
+       "parentSpanId": "924b393eee4d62fb",
+       "name": "agent",
+       "kind": 1,
+       "startTimeUnixNano": "1794105558862358016",
+       "endTimeUnixNano": "1794105558863353856",
+       "attributes": [
+        {
+         "key": "langsmith.span.kind",
+         "value": {
+          "stringValue": "chain"
+         }
+        },
+        {
+         "key": "langsmith.trace.name",
+         "value": {
+          "stringValue": "agent"
+         }
+        },
+        {
+         "key": "langsmith.trace.session_name",
+         "value": {
+          "stringValue": "default"
+         }
+        },
+        {
+         "key": "gen_ai.operation.name",
+         "value": {
+          "stringValue": "chain"
+         }
+        },
+        {
+         "key": "gen_ai.system",
+         "value": {
+          "stringValue": "langchain"
+         }
+        },
+        {
+         "key": "langsmith.metadata.ls_integration",
+         "value": {
+          "stringValue": "langgraph"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_step",
+         "value": {
+          "intValue": "3"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_node",
+         "value": {
+          "stringValue": "agent"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_triggers",
+         "value": {
+          "stringValue": "[\"branch:to:agent\"]"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_path",
+         "value": {
+          "stringValue": "[\"__pregel_pull\",\"agent\"]"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_checkpoint_ns",
+         "value": {
+          "stringValue": "tools:d3ee5819-5f7d-4cfe-228c-3c14841fdd07|agent:ed671808-36dc-633c-aee8-fdfb080d0c92"
+         }
+        },
+        {
+         "key": "langsmith.metadata.checkpoint_ns",
+         "value": {
+          "stringValue": "tools:d3ee5819-5f7d-4cfe-228c-3c14841fdd07"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_TRACING",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_OTEL_ENABLED",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_OTEL_ONLY",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.span.tags",
+         "value": {
+          "stringValue": "graph:step:3"
+         }
+        },
+        {
+         "key": "gen_ai.prompt",
+         "value": {
+          "stringValue": "{\"messages\":[{\"content\":\"buy 5 ACME\",\"additional_kwargs\":{},\"response_metadata\":{},\"type\":\"human\",\"id\":\"7c68996e-e83d-4670-9260-fd09b3aba5dc\"},{\"content\":\"\",\"additional_kwargs\":{},\"response_metadata\":{},\"type\":\"ai\",\"id\":\"lc_run--01a1b906-474c-7603-8195-202931672bb5-0\",\"tool_calls\":[{\"name\":\"execute_trade\",\"args\":{\"symbol\":\"ACME\",\"qty\":5},\"id\":\"c1\",\"type\":\"tool_call\"}],\"invalid_tool_calls\":[]},{\"content\":\"traded 5 ACME\",\"additional_kwargs\":{},\"response_metadata\":{},\"type\":\"tool\",\"name\":\"execute_trade\",\"id\":\"f6bbd7ba-89b1-472b-b791-db0c7a4c6c1a\",\"tool_call_id\":\"c1\",\"status\":\"success\"}]}"
+         }
+        },
+        {
+         "key": "gen_ai.completion",
+         "value": {
+          "stringValue": "{\"messages\":[{\"content\":\"done\",\"additional_kwargs\":{},\"response_metadata\":{},\"type\":\"ai\",\"id\":\"lc_run--01a1b906-474f-7482-a878-0c729c2e177e-0\",\"tool_calls\":[],\"invalid_tool_calls\":[]}]}"
+         }
+        }
+       ],
+       "status": {
+        "code": 1
+       }
+      },
+      {
+       "traceId": "dbf0d30fd91b2b54b82d6a14f9466910",
+       "spanId": "4e9ee963808f2d48",
+       "parentSpanId": "31e0db4a9ca77748",
+       "name": "FakeToolModel",
+       "kind": 1,
+       "startTimeUnixNano": "1794105558862358016",
+       "endTimeUnixNano": "1794105558863353856",
+       "attributes": [
+        {
+         "key": "langsmith.span.kind",
+         "value": {
+          "stringValue": "llm"
+         }
+        },
+        {
+         "key": "langsmith.trace.name",
+         "value": {
+          "stringValue": "FakeToolModel"
+         }
+        },
+        {
+         "key": "langsmith.trace.session_name",
+         "value": {
+          "stringValue": "default"
+         }
+        },
+        {
+         "key": "gen_ai.operation.name",
+         "value": {
+          "stringValue": "chat"
+         }
+        },
+        {
+         "key": "gen_ai.system",
+         "value": {
+          "stringValue": "langchain"
+         }
+        },
+        {
+         "key": "langsmith.metadata.ls_integration",
+         "value": {
+          "stringValue": "langchain_chat_model"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_step",
+         "value": {
+          "intValue": "3"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_node",
+         "value": {
+          "stringValue": "agent"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_triggers",
+         "value": {
+          "stringValue": "[\"branch:to:agent\"]"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_path",
+         "value": {
+          "stringValue": "[\"__pregel_pull\",\"agent\"]"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_checkpoint_ns",
+         "value": {
+          "stringValue": "tools:d3ee5819-5f7d-4cfe-228c-3c14841fdd07|agent:ed671808-36dc-633c-aee8-fdfb080d0c92"
+         }
+        },
+        {
+         "key": "langsmith.metadata.checkpoint_ns",
+         "value": {
+          "stringValue": "tools:d3ee5819-5f7d-4cfe-228c-3c14841fdd07"
+         }
+        },
+        {
+         "key": "langsmith.metadata.ls_provider",
+         "value": {
+          "stringValue": "faketoolmodel"
+         }
+        },
+        {
+         "key": "langsmith.metadata.ls_model_type",
+         "value": {
+          "stringValue": "chat"
+         }
+        },
+        {
+         "key": "langsmith.metadata.lc_versions",
+         "value": {
+          "stringValue": "{\"langchain-core\":\"1.7.6\"}"
+         }
+        },
+        {
+         "key": "langsmith.metadata._type",
+         "value": {
+          "stringValue": "fake-tool-model"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_TRACING",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_OTEL_ENABLED",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_OTEL_ONLY",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.span.tags",
+         "value": {
+          "stringValue": "seq:step:1"
+         }
+        },
+        {
+         "key": "gen_ai.serialized.name",
+         "value": {
+          "stringValue": "FakeToolModel"
+         }
+        },
+        {
+         "key": "gen_ai.prompt",
+         "value": {
+          "stringValue": "{\"messages\":[[{\"lc\":1,\"type\":\"constructor\",\"id\":[\"langchain\",\"schema\",\"messages\",\"HumanMessage\"],\"kwargs\":{\"content\":\"buy 5 ACME\",\"type\":\"human\",\"id\":\"7c68996e-e83d-4670-9260-fd09b3aba5dc\"}},{\"lc\":1,\"type\":\"constructor\",\"id\":[\"langchain\",\"schema\",\"messages\",\"AIMessage\"],\"kwargs\":{\"content\":\"\",\"type\":\"ai\",\"id\":\"lc_run--01a1b906-474c-7603-8195-202931672bb5-0\",\"tool_calls\":[{\"name\":\"execute_trade\",\"args\":{\"symbol\":\"ACME\",\"qty\":5},\"id\":\"c1\",\"type\":\"tool_call\"}],\"invalid_tool_calls\":[]}},{\"lc\":1,\"type\":\"constructor\",\"id\":[\"langchain\",\"schema\",\"messages\",\"ToolMessage\"],\"kwargs\":{\"content\":\"traded 5 ACME\",\"type\":\"tool\",\"name\":\"execute_trade\",\"id\":\"f6bbd7ba-89b1-472b-b791-db0c7a4c6c1a\",\"tool_call_id\":\"c1\",\"status\":\"success\"}}]]}"
+         }
+        },
+        {
+         "key": "gen_ai.completion",
+         "value": {
+          "stringValue": "{\"generations\":[[{\"text\":\"done\",\"generation_info\":null,\"type\":\"ChatGeneration\",\"message\":{\"lc\":1,\"type\":\"constructor\",\"id\":[\"langchain\",\"schema\",\"messages\",\"AIMessage\"],\"kwargs\":{\"content\":\"done\",\"type\":\"ai\",\"id\":\"lc_run--01a1b906-474f-7482-a878-0c729c2e177e-0\",\"tool_calls\":[],\"invalid_tool_calls\":[]}}}]],\"llm_output\":null,\"run\":null,\"type\":\"LLMResult\"}"
+         }
+        }
+       ],
+       "status": {
+        "code": 1
+       }
+      },
+      {
+       "traceId": "dbf0d30fd91b2b54b82d6a14f9466910",
+       "spanId": "a2a478993139114c",
+       "parentSpanId": "31e0db4a9ca77748",
+       "name": "route",
+       "kind": 1,
+       "startTimeUnixNano": "1794105558863353856",
+       "endTimeUnixNano": "1794105558863353856",
+       "attributes": [
+        {
+         "key": "langsmith.span.kind",
+         "value": {
+          "stringValue": "chain"
+         }
+        },
+        {
+         "key": "langsmith.trace.name",
+         "value": {
+          "stringValue": "route"
+         }
+        },
+        {
+         "key": "langsmith.trace.session_name",
+         "value": {
+          "stringValue": "default"
+         }
+        },
+        {
+         "key": "gen_ai.operation.name",
+         "value": {
+          "stringValue": "chain"
+         }
+        },
+        {
+         "key": "gen_ai.system",
+         "value": {
+          "stringValue": "langchain"
+         }
+        },
+        {
+         "key": "langsmith.metadata.ls_integration",
+         "value": {
+          "stringValue": "langgraph"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_step",
+         "value": {
+          "intValue": "3"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_node",
+         "value": {
+          "stringValue": "agent"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_triggers",
+         "value": {
+          "stringValue": "[\"branch:to:agent\"]"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_path",
+         "value": {
+          "stringValue": "[\"__pregel_pull\",\"agent\"]"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_checkpoint_ns",
+         "value": {
+          "stringValue": "tools:d3ee5819-5f7d-4cfe-228c-3c14841fdd07|agent:ed671808-36dc-633c-aee8-fdfb080d0c92"
+         }
+        },
+        {
+         "key": "langsmith.metadata.checkpoint_ns",
+         "value": {
+          "stringValue": "tools:d3ee5819-5f7d-4cfe-228c-3c14841fdd07"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_TRACING",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_OTEL_ENABLED",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_OTEL_ONLY",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.span.tags",
+         "value": {
+          "stringValue": "seq:step:3"
+         }
+        },
+        {
+         "key": "gen_ai.prompt",
+         "value": {
+          "stringValue": "{\"messages\":[{\"content\":\"buy 5 ACME\",\"additional_kwargs\":{},\"response_metadata\":{},\"type\":\"human\",\"id\":\"7c68996e-e83d-4670-9260-fd09b3aba5dc\"},{\"content\":\"\",\"additional_kwargs\":{},\"response_metadata\":{},\"type\":\"ai\",\"id\":\"lc_run--01a1b906-474c-7603-8195-202931672bb5-0\",\"tool_calls\":[{\"name\":\"execute_trade\",\"args\":{\"symbol\":\"ACME\",\"qty\":5},\"id\":\"c1\",\"type\":\"tool_call\"}],\"invalid_tool_calls\":[]},{\"content\":\"traded 5 ACME\",\"additional_kwargs\":{},\"response_metadata\":{},\"type\":\"tool\",\"name\":\"execute_trade\",\"id\":\"f6bbd7ba-89b1-472b-b791-db0c7a4c6c1a\",\"tool_call_id\":\"c1\",\"status\":\"success\"},{\"content\":\"done\",\"additional_kwargs\":{},\"response_metadata\":{},\"type\":\"ai\",\"id\":\"lc_run--01a1b906-474f-7482-a878-0c729c2e177e-0\",\"tool_calls\":[],\"invalid_tool_calls\":[]}]}"
+         }
+        },
+        {
+         "key": "gen_ai.completion",
+         "value": {
+          "stringValue": "{\"output\":\"__end__\"}"
+         }
+        }
+       ],
+       "status": {
+        "code": 1
+       }
+      },
+      {
+       "traceId": "dbf0d30fd91b2b54b82d6a14f9466910",
+       "spanId": "54e4d74bced08779",
+       "parentSpanId": "f9561fa6b75d485d",
+       "name": "agent",
+       "kind": 1,
+       "startTimeUnixNano": "1794105558864329216",
+       "endTimeUnixNano": "1794105558864329216",
+       "attributes": [
+        {
+         "key": "langsmith.span.kind",
+         "value": {
+          "stringValue": "chain"
+         }
+        },
+        {
+         "key": "langsmith.trace.name",
+         "value": {
+          "stringValue": "agent"
+         }
+        },
+        {
+         "key": "langsmith.trace.session_name",
+         "value": {
+          "stringValue": "default"
+         }
+        },
+        {
+         "key": "gen_ai.operation.name",
+         "value": {
+          "stringValue": "chain"
+         }
+        },
+        {
+         "key": "gen_ai.system",
+         "value": {
+          "stringValue": "langchain"
+         }
+        },
+        {
+         "key": "langsmith.metadata.ls_integration",
+         "value": {
+          "stringValue": "langgraph"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_step",
+         "value": {
+          "intValue": "3"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_node",
+         "value": {
+          "stringValue": "agent"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_triggers",
+         "value": {
+          "stringValue": "[\"branch:to:agent\"]"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_path",
+         "value": {
+          "stringValue": "[\"__pregel_pull\",\"agent\"]"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_checkpoint_ns",
+         "value": {
+          "stringValue": "agent:dcac8110-fb57-3ea3-99a5-d03fa513c5e8"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_TRACING",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_OTEL_ENABLED",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_OTEL_ONLY",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.span.tags",
+         "value": {
+          "stringValue": "graph:step:3"
+         }
+        },
+        {
+         "key": "gen_ai.prompt",
+         "value": {
+          "stringValue": "{\"messages\":[{\"content\":\"buy 5 ACME\",\"additional_kwargs\":{},\"response_metadata\":{},\"type\":\"human\",\"id\":\"0576c5ea-1b1b-447b-bd39-e9120db08f1d\"},{\"content\":\"\",\"additional_kwargs\":{},\"response_metadata\":{},\"type\":\"ai\",\"id\":\"lc_run--01a1b906-4747-7036-a5bd-26f1ec73f732-0\",\"tool_calls\":[{\"name\":\"ask_trade_agent\",\"args\":{\"request\":\"buy 5 ACME\"},\"id\":\"c1\",\"type\":\"tool_call\"}],\"invalid_tool_calls\":[]},{\"content\":\"done\",\"additional_kwargs\":{},\"response_metadata\":{},\"type\":\"tool\",\"name\":\"ask_trade_agent\",\"id\":\"d8bd255f-76be-4d09-9cb5-ba6634df49d5\",\"tool_call_id\":\"c1\",\"status\":\"success\"}]}"
+         }
+        },
+        {
+         "key": "gen_ai.completion",
+         "value": {
+          "stringValue": "{\"messages\":[{\"content\":\"ok\",\"additional_kwargs\":{},\"response_metadata\":{},\"type\":\"ai\",\"id\":\"lc_run--01a1b906-4750-7184-9624-adbd8a87fdc5-0\",\"tool_calls\":[],\"invalid_tool_calls\":[]}]}"
+         }
+        }
+       ],
+       "status": {
+        "code": 1
+       }
+      },
+      {
+       "traceId": "dbf0d30fd91b2b54b82d6a14f9466910",
+       "spanId": "1a6d9424c6f3f4c9",
+       "parentSpanId": "54e4d74bced08779",
+       "name": "FakeToolModel",
+       "kind": 1,
+       "startTimeUnixNano": "1794105558864329216",
+       "endTimeUnixNano": "1794105558864329216",
+       "attributes": [
+        {
+         "key": "langsmith.span.kind",
+         "value": {
+          "stringValue": "llm"
+         }
+        },
+        {
+         "key": "langsmith.trace.name",
+         "value": {
+          "stringValue": "FakeToolModel"
+         }
+        },
+        {
+         "key": "langsmith.trace.session_name",
+         "value": {
+          "stringValue": "default"
+         }
+        },
+        {
+         "key": "gen_ai.operation.name",
+         "value": {
+          "stringValue": "chat"
+         }
+        },
+        {
+         "key": "gen_ai.system",
+         "value": {
+          "stringValue": "langchain"
+         }
+        },
+        {
+         "key": "langsmith.metadata.ls_integration",
+         "value": {
+          "stringValue": "langchain_chat_model"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_step",
+         "value": {
+          "intValue": "3"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_node",
+         "value": {
+          "stringValue": "agent"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_triggers",
+         "value": {
+          "stringValue": "[\"branch:to:agent\"]"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_path",
+         "value": {
+          "stringValue": "[\"__pregel_pull\",\"agent\"]"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_checkpoint_ns",
+         "value": {
+          "stringValue": "agent:dcac8110-fb57-3ea3-99a5-d03fa513c5e8"
+         }
+        },
+        {
+         "key": "langsmith.metadata.checkpoint_ns",
+         "value": {
+          "stringValue": "agent:dcac8110-fb57-3ea3-99a5-d03fa513c5e8"
+         }
+        },
+        {
+         "key": "langsmith.metadata.ls_provider",
+         "value": {
+          "stringValue": "faketoolmodel"
+         }
+        },
+        {
+         "key": "langsmith.metadata.ls_model_type",
+         "value": {
+          "stringValue": "chat"
+         }
+        },
+        {
+         "key": "langsmith.metadata.lc_versions",
+         "value": {
+          "stringValue": "{\"langchain-core\":\"1.7.6\"}"
+         }
+        },
+        {
+         "key": "langsmith.metadata._type",
+         "value": {
+          "stringValue": "fake-tool-model"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_TRACING",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_OTEL_ENABLED",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_OTEL_ONLY",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.span.tags",
+         "value": {
+          "stringValue": "seq:step:1"
+         }
+        },
+        {
+         "key": "gen_ai.serialized.name",
+         "value": {
+          "stringValue": "FakeToolModel"
+         }
+        },
+        {
+         "key": "gen_ai.prompt",
+         "value": {
+          "stringValue": "{\"messages\":[[{\"lc\":1,\"type\":\"constructor\",\"id\":[\"langchain\",\"schema\",\"messages\",\"HumanMessage\"],\"kwargs\":{\"content\":\"buy 5 ACME\",\"type\":\"human\",\"id\":\"0576c5ea-1b1b-447b-bd39-e9120db08f1d\"}},{\"lc\":1,\"type\":\"constructor\",\"id\":[\"langchain\",\"schema\",\"messages\",\"AIMessage\"],\"kwargs\":{\"content\":\"\",\"type\":\"ai\",\"id\":\"lc_run--01a1b906-4747-7036-a5bd-26f1ec73f732-0\",\"tool_calls\":[{\"name\":\"ask_trade_agent\",\"args\":{\"request\":\"buy 5 ACME\"},\"id\":\"c1\",\"type\":\"tool_call\"}],\"invalid_tool_calls\":[]}},{\"lc\":1,\"type\":\"constructor\",\"id\":[\"langchain\",\"schema\",\"messages\",\"ToolMessage\"],\"kwargs\":{\"content\":\"done\",\"type\":\"tool\",\"name\":\"ask_trade_agent\",\"id\":\"d8bd255f-76be-4d09-9cb5-ba6634df49d5\",\"tool_call_id\":\"c1\",\"status\":\"success\"}}]]}"
+         }
+        },
+        {
+         "key": "gen_ai.completion",
+         "value": {
+          "stringValue": "{\"generations\":[[{\"text\":\"ok\",\"generation_info\":null,\"type\":\"ChatGeneration\",\"message\":{\"lc\":1,\"type\":\"constructor\",\"id\":[\"langchain\",\"schema\",\"messages\",\"AIMessage\"],\"kwargs\":{\"content\":\"ok\",\"type\":\"ai\",\"id\":\"lc_run--01a1b906-4750-7184-9624-adbd8a87fdc5-0\",\"tool_calls\":[],\"invalid_tool_calls\":[]}}}]],\"llm_output\":null,\"run\":null,\"type\":\"LLMResult\"}"
+         }
+        }
+       ],
+       "status": {
+        "code": 1
+       }
+      },
+      {
+       "traceId": "dbf0d30fd91b2b54b82d6a14f9466910",
+       "spanId": "d29962158c84eeff",
+       "parentSpanId": "54e4d74bced08779",
+       "name": "route",
+       "kind": 1,
+       "startTimeUnixNano": "1794105558864329216",
+       "endTimeUnixNano": "1794105558864329216",
+       "attributes": [
+        {
+         "key": "langsmith.span.kind",
+         "value": {
+          "stringValue": "chain"
+         }
+        },
+        {
+         "key": "langsmith.trace.name",
+         "value": {
+          "stringValue": "route"
+         }
+        },
+        {
+         "key": "langsmith.trace.session_name",
+         "value": {
+          "stringValue": "default"
+         }
+        },
+        {
+         "key": "gen_ai.operation.name",
+         "value": {
+          "stringValue": "chain"
+         }
+        },
+        {
+         "key": "gen_ai.system",
+         "value": {
+          "stringValue": "langchain"
+         }
+        },
+        {
+         "key": "langsmith.metadata.ls_integration",
+         "value": {
+          "stringValue": "langgraph"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_step",
+         "value": {
+          "intValue": "3"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_node",
+         "value": {
+          "stringValue": "agent"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_triggers",
+         "value": {
+          "stringValue": "[\"branch:to:agent\"]"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_path",
+         "value": {
+          "stringValue": "[\"__pregel_pull\",\"agent\"]"
+         }
+        },
+        {
+         "key": "langsmith.metadata.langgraph_checkpoint_ns",
+         "value": {
+          "stringValue": "agent:dcac8110-fb57-3ea3-99a5-d03fa513c5e8"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_TRACING",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_OTEL_ENABLED",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.metadata.LANGSMITH_OTEL_ONLY",
+         "value": {
+          "stringValue": "true"
+         }
+        },
+        {
+         "key": "langsmith.span.tags",
+         "value": {
+          "stringValue": "seq:step:3"
+         }
+        },
+        {
+         "key": "gen_ai.prompt",
+         "value": {
+          "stringValue": "{\"messages\":[{\"content\":\"buy 5 ACME\",\"additional_kwargs\":{},\"response_metadata\":{},\"type\":\"human\",\"id\":\"0576c5ea-1b1b-447b-bd39-e9120db08f1d\"},{\"content\":\"\",\"additional_kwargs\":{},\"response_metadata\":{},\"type\":\"ai\",\"id\":\"lc_run--01a1b906-4747-7036-a5bd-26f1ec73f732-0\",\"tool_calls\":[{\"name\":\"ask_trade_agent\",\"args\":{\"request\":\"buy 5 ACME\"},\"id\":\"c1\",\"type\":\"tool_call\"}],\"invalid_tool_calls\":[]},{\"content\":\"done\",\"additional_kwargs\":{},\"response_metadata\":{},\"type\":\"tool\",\"name\":\"ask_trade_agent\",\"id\":\"d8bd255f-76be-4d09-9cb5-ba6634df49d5\",\"tool_call_id\":\"c1\",\"status\":\"success\"},{\"content\":\"ok\",\"additional_kwargs\":{},\"response_metadata\":{},\"type\":\"ai\",\"id\":\"lc_run--01a1b906-4750-7184-9624-adbd8a87fdc5-0\",\"tool_calls\":[],\"invalid_tool_calls\":[]}]}"
+         }
+        },
+        {
+         "key": "gen_ai.completion",
+         "value": {
+          "stringValue": "{\"output\":\"__end__\"}"
+         }
+        }
+       ],
+       "status": {
+        "code": 1
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

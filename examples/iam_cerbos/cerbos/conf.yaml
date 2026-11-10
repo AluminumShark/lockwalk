@@ -1,0 +1,11 @@
+# Cerbos config shared by both PDPs. The policies directory is mounted at /policies.
+server:
+  httpListenAddr: ":3592"
+  grpcListenAddr: ":3593"
+storage:
+  driver: disk
+  disk:
+    directory: /policies
+    watchForChanges: false
+telemetry:
+  disabled: true

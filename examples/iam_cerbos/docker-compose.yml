@@ -1,0 +1,31 @@
+# Two Cerbos PDPs, both published on 127.0.0.1 only. Keep the image tag in step with
+# CERBOS_IMAGE in tests/test_iam_cerbos.py (a test checks that).
+services:
+  cerbos:
+    image: ghcr.io/cerbos/cerbos:0.57.0
+    command: ["server", "--config=/conf.yaml"]
+    ports:
+      - "127.0.0.1:3592:3592"
+    volumes:
+      - ./cerbos/conf.yaml:/conf.yaml:ro
+      - ./cerbos/policies:/policies:ro
+    healthcheck:
+      test: ["CMD", "/cerbos", "healthcheck", "--config=/conf.yaml"]
+      interval: 1s
+      timeout: 2s
+      retries: 30
+      start_period: 1s
+  cerbos-broken:
+    image: ghcr.io/cerbos/cerbos:0.57.0
+    command: ["server", "--config=/conf.yaml"]
+    ports:
+      - "127.0.0.1:3602:3592"
+    volumes:
+      - ./cerbos/conf.yaml:/conf.yaml:ro
+      - ./cerbos/policies-broken:/policies:ro
+    healthcheck:
+      test: ["CMD", "/cerbos", "healthcheck", "--config=/conf.yaml"]
+      interval: 1s
+      timeout: 2s
+      retries: 30
+      start_period: 1s

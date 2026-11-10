@@ -1,0 +1,21 @@
+# The same waivers as waivers.yaml, with a date that has already passed.
+# Use it with: lockwalk coverage --waivers waivers-expired.yaml
+#
+# Expired waivers do nothing: RULE-001 and RULE-002 block the gate again, and each expired
+# waiver adds a warning with its id, date and owner.
+#
+# The 90-day rule: "expires" may not be more than [gate] max_waiver_days (default 90) days
+# after today. A past date is allowed (it is just expired); a date too far ahead is a
+# configuration error (exit 2).
+schema_version: '1'
+waivers:
+  - id: WAIVE-001
+    match: {rule: RULE-002}
+    reason: market-oracle is a third party; its contract was reviewed by security
+    owner: alice@example.com
+    expires: 2026-06-30
+  - id: WAIVE-002
+    match: {rule: RULE-001}
+    reason: known gap, tracked in a ticket (SEC-1234) until the handoff is removed
+    owner: alice@example.com
+    expires: 2026-06-30

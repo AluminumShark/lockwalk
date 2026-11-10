@@ -1,0 +1,11 @@
+# One OPA server, published on 127.0.0.1 only. Keep the image tag in step with OPA_IMAGE
+# in tests/test_recipe_opa.py (a test checks that). `docker compose up -d --wait` returns
+# when the image's own healthcheck passes; `docker compose down` removes everything.
+services:
+  opa:
+    image: openpolicyagent/opa:1.10.0
+    command: ["run", "--server", "--addr=0.0.0.0:8181", "/policy/policy.rego"]
+    ports:
+      - "127.0.0.1:8181:8181"
+    volumes:
+      - ./policy.rego:/policy/policy.rego:ro

@@ -1,0 +1,30 @@
+# Waivers for lockwalk observe: accepted risks with an owner and an expiry date.
+# Use it with: lockwalk observe --traces traces/untested.jsonl --waivers waivers-observe.yaml
+#
+# A waived finding stays in the report, marked [waived: ...], but it no longer blocks the
+# gate. The same rules as waivers.yaml apply: at most 90 days, and an expired waiver stops
+# working. This demo file expires on 2027-01-31.
+#
+# It waives one finding in each of mismatch.jsonl, unguarded.jsonl and untested.jsonl, and
+# leaves bypass.jsonl alone: a denied call that still ran is a bypass, and this file does not
+# accept that risk.
+schema_version: '1'
+waivers:
+  - id: WAIVE-OBS-001
+    match:
+      untested_path: {path: [trade-desk, trade-agent], tool: confirm_price}
+    reason: confirm_price only echoes a price; a case is planned for the next release
+    owner: alice@example.com
+    expires: 2027-01-31
+  - id: WAIVE-OBS-002
+    match:
+      unguarded: {agent: finance-agent, tool: read_portfolio}
+    reason: the portfolio service checks access itself until the door is wired in (SEC-1301)
+    owner: alice@example.com
+    expires: 2027-01-31
+  - id: WAIVE-OBS-003
+    match:
+      observed_identity: {path: [trade-desk, trade-agent], tool: execute_trade}
+    reason: the door asks about the user while trade-agent is moved to its own identity (SEC-1302)
+    owner: alice@example.com
+    expires: 2027-01-31

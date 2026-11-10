@@ -1,0 +1,123 @@
+name: CI
+
+# Every job stands alone: it checks out the code and installs uv itself, so the jobs can run
+# in any order or in parallel.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          version: "0.13.7"
+          enable-cache: true
+      - run: uv sync --locked
+      - run: uv run ruff check
+      - run: uv run ruff format --check
+      - run: uv run ty check
+      # With no file names, actionlint reads .github/workflows/.
+      - run: uvx --from actionlint-py==1.7.12.25 actionlint
+
+  test:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 40
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python: ["3.11", "3.14"]
+        include:
+          - os: ubuntu-latest
+            python: "3.12"
+          - os: ubuntu-latest
+            python: "3.13"
+    env:
+      # Overrides .python-version for every uv command in the job.
+      UV_PYTHON: ${{ matrix.python }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          version: "0.13.7"
+          enable-cache: true
+      - run: uv sync --locked
+      # The docker tests have their own job; Windows and macOS runners have no docker.
+      - run: uv run pytest -q -rs -m "not docker"
+
+  docker:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          version: "0.13.7"
+          enable-cache: true
+      - run: uv sync --locked
+      # The tests never pull an image: they skip when it is missing. These must match the
+      # images named in the tests.
+      - name: Pull the images the tests use
+        run: |
+          docker pull ghcr.io/cerbos/cerbos:0.57.0
+          docker pull openpolicyagent/opa:1.10.0
+          docker pull otel/opentelemetry-collector-contrib:0.165.0
+      # tests/crewai_env skips itself when collected without CrewAI, which the next step would
+      # count as a skipped docker test. The crewai job runs that folder.
+      - run: uv run pytest -q -rs -m docker --ignore=tests/crewai_env --junitxml=docker.xml
+      # A docker test skips itself when docker or its image is missing. Here that is a failure,
+      # so a wrong image tag cannot give a green job that tested nothing.
+      - run: python3 scripts/check_no_skips.py docker.xml
+
+  crewai:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      # CrewAI needs Python below 3.14, and its own environment (it conflicts with the dev group).
+      UV_PYTHON: "3.13"
+      UV_PROJECT_ENVIRONMENT: .venv-crewai
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          version: "0.13.7"
+          enable-cache: true
+          # Its own cache key: this job's environment differs from the 3.13 test job.
+          cache-suffix: crewai
+      - run: uv run --locked --no-default-groups --group crewai pytest -q tests/crewai_env
+
+  package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          version: "0.13.7"
+      - run: uv build
+      - run: python3 scripts/check_package.py dist
+      - run: python3 scripts/smoke_wheel.py dist
+      - run: uvx twine==7.0.0 check dist/*

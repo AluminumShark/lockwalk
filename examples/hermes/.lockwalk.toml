@@ -1,0 +1,45 @@
+# The Hermes Agent example. Run lockwalk from this directory and pass --traces.
+# Relative paths are resolved against the directory of this file.
+
+[lockwalk]
+registry = "registry.yaml"
+spec = "security-spec.yaml"
+fixtures = "fixtures.yaml"
+
+# The tool list, exported from Hermes (see record/README.md).
+[[inventory.json]]
+path = "tools.json"
+
+# A sub-agent's root span is named hermes-agent too; this names it by its role instead (leaf).
+[[observe.rules]]
+kind = "agent"
+when = { "hermes.platform" = "subagent" }
+name = "hermes.subagent.role"
+
+# The user pressed allow in the approval menu.
+[[observe.rules]]
+kind = "door"
+when = { "gen_ai.operation.name" = "approval", "hermes.approval.granted" = true }
+decision = "allow"
+tool_call_id = "gen_ai.tool.call.id"
+
+# The user pressed deny (or the menu timed out).
+[[observe.rules]]
+kind = "door"
+when = { "gen_ai.operation.name" = "approval", "hermes.approval.granted" = false }
+decision = "deny"
+tool_call_id = "gen_ai.tool.call.id"
+
+# Any tool that Hermes reports as blocked (for example by itself in unattended mode, -q) is a
+# deny. A deny can only make a call safer, so a broad match is fine here. This rule has no
+# tool_call_id, so the record is linked to its tool call by ancestry.
+[[observe.rules]]
+kind = "door"
+when = { "hermes.tool.outcome" = "blocked" }
+decision = "deny"
+
+# Hermes's own claim that the tool completed. Its hook writes it, not the tool, so it is only
+# as good as that hook. It is what turns a denied call that still completed into a BYPASS.
+[[observe.rules]]
+kind = "effect"
+when = { "hermes.tool.outcome" = "completed" }

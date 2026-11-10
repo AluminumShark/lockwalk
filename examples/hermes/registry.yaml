@@ -1,0 +1,39 @@
+# The Hermes Agent example. The tool risks below are an example: set your own.
+# The tools are those in tools.json (exported from Hermes). Every tool is called "<tool>:call",
+# and its resource type is "<tool>_target", because Hermes tells lockwalk nothing finer.
+schema_version: '1'
+roles: [operator]
+agents:
+  - id: hermes-agent
+    description: The Hermes turn root. The hermes_otel plugin names every turn root hermes-agent.
+    entry: true
+    roles: [operator]
+    delegation_mode: user
+    calls: [leaf]
+  - id: leaf
+    description: A sub-agent started by delegate_task. The plugin derives its role from the depth, so every sub-agent is leaf.
+    delegation_mode: user
+    calls: []
+tools:
+  - {id: browser_exec, action: "browser_exec:call", risk: high, resource_type: browser_exec_target, supported_agents: [hermes-agent, leaf]}
+  - {id: clarify, action: "clarify:call", risk: low, resource_type: clarify_target, supported_agents: [hermes-agent, leaf]}
+  # delegate_task is medium on purpose: an UNGUARDED medium call is reported but does not block.
+  - {id: delegate_task, action: "delegate_task:call", risk: medium, resource_type: delegate_task_target, supported_agents: [hermes-agent]}
+  - {id: execute_code, action: "execute_code:call", risk: critical, resource_type: execute_code_target, supported_agents: [hermes-agent, leaf]}
+  - {id: manage_connections, action: "manage_connections:call", risk: high, resource_type: manage_connections_target, supported_agents: [hermes-agent, leaf]}
+  - {id: memory, action: "memory:call", risk: medium, resource_type: memory_target, supported_agents: [hermes-agent, leaf]}
+  - {id: patch, action: "patch:call", risk: high, resource_type: patch_target, supported_agents: [hermes-agent, leaf]}
+  - {id: read_file, action: "read_file:call", risk: low, resource_type: read_file_target, supported_agents: [hermes-agent, leaf]}
+  - {id: search_files, action: "search_files:call", risk: low, resource_type: search_files_target, supported_agents: [hermes-agent, leaf]}
+  - {id: skill_manage, action: "skill_manage:call", risk: high, resource_type: skill_manage_target, supported_agents: [hermes-agent, leaf]}
+  - {id: skill_view, action: "skill_view:call", risk: low, resource_type: skill_view_target, supported_agents: [hermes-agent, leaf]}
+  - {id: skills_list, action: "skills_list:call", risk: low, resource_type: skills_list_target, supported_agents: [hermes-agent, leaf]}
+  - {id: terminal, action: "terminal:call", risk: critical, resource_type: terminal_target, supported_agents: [hermes-agent, leaf]}
+  - {id: text_to_speech, action: "text_to_speech:call", risk: low, resource_type: text_to_speech_target, supported_agents: [hermes-agent, leaf]}
+  - {id: tool_call, action: "tool_call:call", risk: high, resource_type: tool_call_target, supported_agents: [hermes-agent, leaf]}
+  - {id: tool_describe, action: "tool_describe:call", risk: low, resource_type: tool_describe_target, supported_agents: [hermes-agent, leaf]}
+  - {id: tool_search, action: "tool_search:call", risk: low, resource_type: tool_search_target, supported_agents: [hermes-agent, leaf]}
+  - {id: vision_analyze, action: "vision_analyze:call", risk: low, resource_type: vision_analyze_target, supported_agents: [hermes-agent, leaf]}
+  - {id: web_extract, action: "web_extract:call", risk: low, resource_type: web_extract_target, supported_agents: [hermes-agent, leaf]}
+  - {id: web_search, action: "web_search:call", risk: low, resource_type: web_search_target, supported_agents: [hermes-agent, leaf]}
+  - {id: write_file, action: "write_file:call", risk: high, resource_type: write_file_target, supported_agents: [hermes-agent, leaf]}

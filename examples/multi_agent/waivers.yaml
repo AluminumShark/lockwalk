@@ -1,0 +1,25 @@
+# Waivers: accepted risks with an owner and an expiry date.
+# Use it with: lockwalk coverage --waivers waivers.yaml
+#
+# A waived finding stays in the report, marked [waived: ...], but it no longer blocks the
+# gate. Once the date passes, the waiver stops working and the finding blocks again.
+#
+# The 90-day rule: "expires" may not be more than [gate] max_waiver_days (default 90) days
+# after today. A longer date is a configuration error (exit 2). A waiver is a short-term
+# promise to fix the problem, not a permanent exception.
+#
+# This demo file expires on 2027-01-31. After that date the file itself shows the
+# "expired" behavior: both waivers are reported as expired and the gate fails again.
+# See waivers-expired.yaml for the same file with a date that has already passed.
+schema_version: '1'
+waivers:
+  - id: WAIVE-001
+    match: {rule: RULE-002}
+    reason: market-oracle is a third party; its contract was reviewed by security
+    owner: alice@example.com
+    expires: 2027-01-31
+  - id: WAIVE-002
+    match: {rule: RULE-001}
+    reason: known gap, tracked in a ticket (SEC-1234) until the handoff is removed
+    owner: alice@example.com
+    expires: 2027-01-31

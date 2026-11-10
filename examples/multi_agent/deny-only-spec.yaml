@@ -1,0 +1,22 @@
+# Only deny cases: nothing proves that the IAM understood the questions, so lockwalk test reports them INCONCLUSIVE (the positive-control check).
+schema_version: '1'
+scenario_suite: multi-agent-deny-only-v1
+cases:
+  - id: CASE-002
+    actor: alice
+    role: analyst
+    path: [supervisor, finance-agent]
+    tool: read_portfolio
+    action: portfolio:read
+    resource_fixture: bob-portfolio
+    expect: deny
+    reason: Alice does not own Bob's portfolio
+  - id: CASE-005
+    actor: bob
+    role: trader
+    path: [trade-desk, trade-agent]
+    tool: execute_trade
+    action: trade:execute
+    resource_fixture: alice-order
+    expect: deny
+    reason: Bob cannot trade from Alice's account

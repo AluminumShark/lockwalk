@@ -1,0 +1,7 @@
+# Test identities and resources for the spec. lockwalk observe does not read them.
+schema_version: '1'
+subjects:
+  alice: {roles: [operator]}
+resources:
+  safe-command: {type: terminal_target, id: c-echo, tool_args: {command: "echo hi"}}
+  dangerous-command: {type: terminal_target, id: c-rm, tool_args: {command: "rm -rf x"}}

@@ -1,0 +1,19 @@
+# The trading-desk rules of examples/iam_cedar/policies.cedar. Conditions have no commas
+# (it is a CSV file), use single quotes for strings, and write "always" as 1 == 1.
+# Analysts and traders may read market data.
+p, user, market:read, stock_symbol, ('analyst' in r_sub.roles) or ('trader' in r_sub.roles)
+p, user, market:quote, stock_symbol, ('analyst' in r_sub.roles) or ('trader' in r_sub.roles)
+p, user, market:confirm, stock_symbol, ('analyst' in r_sub.roles) or ('trader' in r_sub.roles)
+# Agents may read market data too.
+p, agent, market:read, stock_symbol, 1 == 1
+p, agent, market:quote, stock_symbol, 1 == 1
+p, agent, market:confirm, stock_symbol, 1 == 1
+# A user reads only their own portfolio.
+p, user, portfolio:read, portfolio, r_obj.owner == r_sub.id
+# A trader trades only from their own account.
+p, user, trade:execute, order, ('trader' in r_sub.roles) and (r_obj.account_owner == r_sub.id)
+# DELIBERATE HOLE, which lockwalk test finds: trade-agent's own service identity may trade
+# on any account.
+p, agent, trade:execute, order, r_sub.id == 'trade-agent'
+# Anyone may invoke any agent (asked only with [policy] ask_every_hop = true).
+p, any, agent:invoke, agent, 1 == 1

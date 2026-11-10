@@ -1,0 +1,31 @@
+# The multi-agent demo. Run lockwalk from this directory, or pass
+# --config examples/multi_agent/.lockwalk.toml from the repository root.
+# Relative paths are resolved against the directory of this file.
+
+[lockwalk]
+registry = "registry.yaml"
+spec = "security-spec.yaml"
+fixtures = "fixtures.yaml"
+
+# The default gate, written out so it is easy to find and change.
+[gate]
+fail_on_unspecified_risk = ["critical", "unknown"]
+require_deny_case_for_risk = ["high", "critical", "unknown"]
+fail_on_never_reaches_inconclusive = true
+fail_on_unspecified_role_risk = ["critical", "unknown"]
+# For lockwalk observe the demo is stricter than the default (critical and unknown): a real path
+# that no case tests also blocks for medium and high risk tools.
+fail_on_untested_path = ["medium", "high", "critical", "unknown"]
+
+# One source per framework entry point. lockwalk imports app.py in a subprocess and
+# walks the objects; it never runs an agent or a tool.
+
+# OpenAI Agents SDK: supervisor and trade-desk, and every agent they reach. One target
+# per entry agent ("app:supervisor" and "app:trade_desk") works too.
+[[inventory.python]]
+target = "app:OPENAI_ENTRY_AGENTS"
+
+# Pydantic AI: pricing-agent. finance-agent calls it inside a tool, so the walk above
+# never reaches it.
+[[inventory.python]]
+target = "app:pricing_agent"

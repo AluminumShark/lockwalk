@@ -1,0 +1,29 @@
+# Hand-written list of agents and tools for the finance demo.
+# Risk is the one thing no discovery source can tell lockwalk, so it is declared here.
+schema_version: '1'
+# Both agents talk to users directly (entry: true) and call no other agent (calls: []).
+agents:
+  - id: research-agent
+    description: Reads market data. Must never trade.
+    entry: true
+    calls: []
+  - id: finance-agent
+    description: Manages the user's own portfolio.
+    entry: true
+    calls: []
+tools:
+  - id: get_stock_price
+    action: market:read
+    risk: low
+    resource_type: stock_symbol
+    supported_agents: [research-agent, finance-agent]
+  - id: read_portfolio
+    action: portfolio:read
+    risk: high
+    resource_type: portfolio
+    supported_agents: [finance-agent]
+  - id: execute_trade
+    action: trade:execute
+    risk: critical
+    resource_type: order
+    supported_agents: [finance-agent]

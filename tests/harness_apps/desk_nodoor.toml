@@ -1,0 +1,26 @@
+[lockwalk]
+registry = "desk/registry.yaml"
+spec = "desk/security-spec.yaml"
+fixtures = "desk/fixtures.yaml"
+
+[gate]
+# The desk lets analysts reach execute_trade through supervisor (the IAM denies them).
+fail_on_unspecified_role_risk = []
+
+[policy]
+adapter = "python"
+target = "desk.iam:decide"
+
+[[inventory.python]]
+target = "desk.agents_openai:ENTRY_AGENTS"
+
+[[inventory.python]]
+target = "desk.agent_pydantic:ENTRY"
+
+[[inventory.python]]
+target = "desk.agent_langgraph:ENTRY"
+
+[harness]
+hooks = "desk_hooks_nodoor.py"
+import_timeout_s = 60
+timeout_s = 30

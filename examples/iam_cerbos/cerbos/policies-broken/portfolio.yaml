@@ -1,0 +1,9 @@
+# Broken on purpose: the owner check is gone, so any analyst or trader reads any portfolio.
+apiVersion: api.cerbos.dev/v1
+resourcePolicy:
+  resource: portfolio
+  version: default
+  rules:
+    - actions: ["portfolio:read"]
+      effect: EFFECT_ALLOW
+      roles: ["analyst", "trader"]

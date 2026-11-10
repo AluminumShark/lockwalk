@@ -1,0 +1,13 @@
+# The owner check: a portfolio can be read only by its owner. policies-broken/portfolio.yaml
+# is the same file without the condition.
+apiVersion: api.cerbos.dev/v1
+resourcePolicy:
+  resource: portfolio
+  version: default
+  rules:
+    - actions: ["portfolio:read"]
+      effect: EFFECT_ALLOW
+      roles: ["analyst", "trader"]
+      condition:
+        match:
+          expr: request.resource.attr.owner == request.principal.id

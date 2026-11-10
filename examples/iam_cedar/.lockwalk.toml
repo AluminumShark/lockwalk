@@ -1,0 +1,21 @@
+# Cedar, asked locally through lockwalk's decide() adapter. The registry, spec, fixtures,
+# and agents are the multi-agent demo's. Run lockwalk from this directory.
+[lockwalk]
+registry = "../multi_agent/registry.yaml"
+spec = "../multi_agent/security-spec.yaml"
+fixtures = "../multi_agent/fixtures.yaml"
+
+[policy]
+adapter = "python"
+target = "iam_bridge.py:decide"
+
+[[inventory.python]]
+target = "../multi_agent/app.py:OPENAI_ENTRY_AGENTS"
+
+[[inventory.python]]
+target = "../multi_agent/app.py:pricing_agent"
+
+# The door tests: lockwalk calls the app's tools in a worker subprocess, after replacing the
+# side effects named in the hooks file. Skip them with `lockwalk test --no-harness`.
+[harness]
+hooks = "lockwalk_hooks.py"

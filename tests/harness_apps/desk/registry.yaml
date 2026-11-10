@@ -1,0 +1,38 @@
+schema_version: '1'
+roles: [analyst, trader]
+agents:
+  - id: supervisor
+    entry: true
+    roles: [analyst, trader]
+    delegation_mode: user
+  - id: finance-agent
+    delegation_mode: user
+  - id: trade-agent
+    delegation_mode: on_behalf_of
+  - id: quote-agent
+    entry: true
+    roles: [analyst]
+    delegation_mode: user
+  - id: research
+    entry: true
+    roles: [analyst]
+    delegation_mode: user
+  - id: research:agent
+    delegation_mode: user
+tools:
+  - id: read_portfolio
+    action: portfolio:read
+    risk: high
+    resource_type: portfolio
+  - id: execute_trade
+    action: trade:execute
+    risk: critical
+    resource_type: order
+  - id: get_stock_price
+    action: market:read
+    risk: low
+    resource_type: stock_symbol
+  - id: read_report
+    action: report:read
+    risk: medium
+    resource_type: report

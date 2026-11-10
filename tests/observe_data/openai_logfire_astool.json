@@ -1,0 +1,861 @@
+{
+ "resourceSpans": [
+  {
+   "resource": {
+    "attributes": [
+     {
+      "key": "service.name",
+      "value": {
+       "stringValue": "demo-svc"
+      }
+     }
+    ]
+   },
+   "scopeSpans": [
+    {
+     "scope": {
+      "name": "app"
+     },
+     "spans": [
+      {
+       "traceId": "01a1b904b6c3614fa3a4711c56e2bf8c",
+       "spanId": "452e233739ba1677",
+       "parentSpanId": "674c34ecfec672ae",
+       "name": "authz-check",
+       "kind": 1,
+       "startTimeUnixNano": "1794105456332037800",
+       "endTimeUnixNano": "1794105456332037800",
+       "attributes": [
+        {
+         "key": "logfire.span_type",
+         "value": {
+          "stringValue": "span"
+         }
+        },
+        {
+         "key": "logfire.msg",
+         "value": {
+          "stringValue": "authz-check"
+         }
+        },
+        {
+         "key": "probe",
+         "value": {
+          "stringValue": "sync"
+         }
+        }
+       ],
+       "status": {},
+       "flags": 256
+      },
+      {
+       "traceId": "01a1b904b6c3614fa3a4711c56e2bf8c",
+       "spanId": "2e9fd7a6dd48a46f",
+       "name": "app-request",
+       "kind": 1,
+       "startTimeUnixNano": "1794105456322546800",
+       "endTimeUnixNano": "1794105456337550800",
+       "attributes": [
+        {
+         "key": "user.id",
+         "value": {
+          "stringValue": "alice"
+         }
+        },
+        {
+         "key": "logfire.span_type",
+         "value": {
+          "stringValue": "span"
+         }
+        },
+        {
+         "key": "logfire.msg",
+         "value": {
+          "stringValue": "app-request"
+         }
+        }
+       ],
+       "status": {},
+       "flags": 256
+      }
+     ]
+    },
+    {
+     "scope": {
+      "name": "logfire.openai_agents",
+      "version": "5.5.0"
+     },
+     "spans": [
+      {
+       "traceId": "01a1b904b6c3614fa3a4711c56e2bf8c",
+       "spanId": "674c34ecfec672ae",
+       "parentSpanId": "85e0a55c3e1fae05",
+       "name": "Function: {name}",
+       "kind": 1,
+       "startTimeUnixNano": "1794105456331051800",
+       "endTimeUnixNano": "1794105456332037800",
+       "attributes": [
+        {
+         "key": "logfire.msg_template",
+         "value": {
+          "stringValue": "Function: {name}"
+         }
+        },
+        {
+         "key": "logfire.span_type",
+         "value": {
+          "stringValue": "span"
+         }
+        },
+        {
+         "key": "lockwalk.door.decision",
+         "value": {
+          "stringValue": "[Scrubbed due to 'auth']"
+         }
+        },
+        {
+         "key": "lockwalk.door.action",
+         "value": {
+          "stringValue": "[Scrubbed due to 'auth']"
+         }
+        },
+        {
+         "key": "name",
+         "value": {
+          "stringValue": "execute_trade"
+         }
+        },
+        {
+         "key": "input",
+         "value": {
+          "stringValue": "{\"order_id\": \"o-1\"}"
+         }
+        },
+        {
+         "key": "output",
+         "value": {
+          "stringValue": "traded o-1"
+         }
+        },
+        {
+         "key": "mcp_data",
+         "value": {
+          "stringValue": "null"
+         }
+        },
+        {
+         "key": "gen_ai.system",
+         "value": {
+          "stringValue": "openai"
+         }
+        },
+        {
+         "key": "logfire.msg",
+         "value": {
+          "stringValue": "Function: execute_trade"
+         }
+        },
+        {
+         "key": "logfire.json_schema",
+         "value": {
+          "stringValue": "{\"type\":\"object\",\"properties\":{\"name\":{},\"input\":{},\"output\":{},\"mcp_data\":{\"type\":\"null\"},\"gen_ai.system\":{}}}"
+         }
+        },
+        {
+         "key": "logfire.scrubbed",
+         "value": {
+          "stringValue": "[{\"path\": [\"attributes\", \"lockwalk.door.decision\"], \"matched_substring\": \"auth\"}, {\"path\": [\"attributes\", \"lockwalk.door.action\"], \"matched_substring\": \"auth\"}]"
+         }
+        }
+       ],
+       "status": {},
+       "flags": 256
+      },
+      {
+       "traceId": "01a1b904b6c3614fa3a4711c56e2bf8c",
+       "spanId": "85e0a55c3e1fae05",
+       "parentSpanId": "5eda0af1e8c203de",
+       "name": "Turn {turn} for agent trade-agent",
+       "kind": 1,
+       "startTimeUnixNano": "1794105456330054100",
+       "endTimeUnixNano": "1794105456333039900",
+       "attributes": [
+        {
+         "key": "logfire.msg_template",
+         "value": {
+          "stringValue": "Turn {turn} for agent trade-agent"
+         }
+        },
+        {
+         "key": "logfire.span_type",
+         "value": {
+          "stringValue": "span"
+         }
+        },
+        {
+         "key": "type",
+         "value": {
+          "stringValue": "custom"
+         }
+        },
+        {
+         "key": "name",
+         "value": {
+          "stringValue": "turn"
+         }
+        },
+        {
+         "key": "gen_ai.system",
+         "value": {
+          "stringValue": "openai"
+         }
+        },
+        {
+         "key": "sdk_span_type",
+         "value": {
+          "stringValue": "turn"
+         }
+        },
+        {
+         "key": "turn",
+         "value": {
+          "intValue": "1"
+         }
+        },
+        {
+         "key": "agent_name",
+         "value": {
+          "stringValue": "trade-agent"
+         }
+        },
+        {
+         "key": "logfire.msg",
+         "value": {
+          "stringValue": "Turn 1 for agent trade-agent"
+         }
+        },
+        {
+         "key": "logfire.json_schema",
+         "value": {
+          "stringValue": "{\"type\":\"object\",\"properties\":{\"type\":{},\"name\":{},\"gen_ai.system\":{},\"sdk_span_type\":{},\"turn\":{},\"agent_name\":{}}}"
+         }
+        }
+       ],
+       "status": {},
+       "flags": 256
+      },
+      {
+       "traceId": "01a1b904b6c3614fa3a4711c56e2bf8c",
+       "spanId": "b0dc0ba5dd8c995c",
+       "parentSpanId": "5eda0af1e8c203de",
+       "name": "Turn {turn} for agent trade-agent",
+       "kind": 1,
+       "startTimeUnixNano": "1794105456333039900",
+       "endTimeUnixNano": "1794105456335040100",
+       "attributes": [
+        {
+         "key": "logfire.msg_template",
+         "value": {
+          "stringValue": "Turn {turn} for agent trade-agent"
+         }
+        },
+        {
+         "key": "logfire.span_type",
+         "value": {
+          "stringValue": "span"
+         }
+        },
+        {
+         "key": "type",
+         "value": {
+          "stringValue": "custom"
+         }
+        },
+        {
+         "key": "name",
+         "value": {
+          "stringValue": "turn"
+         }
+        },
+        {
+         "key": "gen_ai.system",
+         "value": {
+          "stringValue": "openai"
+         }
+        },
+        {
+         "key": "sdk_span_type",
+         "value": {
+          "stringValue": "turn"
+         }
+        },
+        {
+         "key": "turn",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "agent_name",
+         "value": {
+          "stringValue": "trade-agent"
+         }
+        },
+        {
+         "key": "logfire.msg",
+         "value": {
+          "stringValue": "Turn 2 for agent trade-agent"
+         }
+        },
+        {
+         "key": "logfire.json_schema",
+         "value": {
+          "stringValue": "{\"type\":\"object\",\"properties\":{\"type\":{},\"name\":{},\"gen_ai.system\":{},\"sdk_span_type\":{},\"turn\":{},\"agent_name\":{}}}"
+         }
+        }
+       ],
+       "status": {},
+       "flags": 256
+      },
+      {
+       "traceId": "01a1b904b6c3614fa3a4711c56e2bf8c",
+       "spanId": "5eda0af1e8c203de",
+       "parentSpanId": "cc0959f0b36a4ad2",
+       "name": "Agent run: {name!r}",
+       "kind": 1,
+       "startTimeUnixNano": "1794105456330054100",
+       "endTimeUnixNano": "1794105456335040100",
+       "attributes": [
+        {
+         "key": "logfire.msg_template",
+         "value": {
+          "stringValue": "Agent run: {name!r}"
+         }
+        },
+        {
+         "key": "logfire.span_type",
+         "value": {
+          "stringValue": "span"
+         }
+        },
+        {
+         "key": "name",
+         "value": {
+          "stringValue": "trade-agent"
+         }
+        },
+        {
+         "key": "handoffs",
+         "value": {
+          "stringValue": "[]"
+         }
+        },
+        {
+         "key": "tools",
+         "value": {
+          "stringValue": "[\"execute_trade\"]"
+         }
+        },
+        {
+         "key": "output_type",
+         "value": {
+          "stringValue": "str"
+         }
+        },
+        {
+         "key": "gen_ai.system",
+         "value": {
+          "stringValue": "openai"
+         }
+        },
+        {
+         "key": "logfire.msg",
+         "value": {
+          "stringValue": "Agent run: 'trade-agent'"
+         }
+        },
+        {
+         "key": "logfire.json_schema",
+         "value": {
+          "stringValue": "{\"type\":\"object\",\"properties\":{\"name\":{},\"handoffs\":{\"type\":\"array\"},\"tools\":{\"type\":\"array\"},\"output_type\":{},\"gen_ai.system\":{}}}"
+         }
+        }
+       ],
+       "status": {},
+       "flags": 256
+      },
+      {
+       "traceId": "01a1b904b6c3614fa3a4711c56e2bf8c",
+       "spanId": "cc0959f0b36a4ad2",
+       "parentSpanId": "1d051e647006aa0f",
+       "name": "Task: Agent workflow",
+       "kind": 1,
+       "startTimeUnixNano": "1794105456330054100",
+       "endTimeUnixNano": "1794105456335040100",
+       "attributes": [
+        {
+         "key": "logfire.msg_template",
+         "value": {
+          "stringValue": "Task: Agent workflow"
+         }
+        },
+        {
+         "key": "logfire.span_type",
+         "value": {
+          "stringValue": "span"
+         }
+        },
+        {
+         "key": "type",
+         "value": {
+          "stringValue": "custom"
+         }
+        },
+        {
+         "key": "name",
+         "value": {
+          "stringValue": "Agent workflow"
+         }
+        },
+        {
+         "key": "gen_ai.system",
+         "value": {
+          "stringValue": "openai"
+         }
+        },
+        {
+         "key": "sdk_span_type",
+         "value": {
+          "stringValue": "task"
+         }
+        },
+        {
+         "key": "logfire.msg",
+         "value": {
+          "stringValue": "Task: Agent workflow"
+         }
+        },
+        {
+         "key": "logfire.json_schema",
+         "value": {
+          "stringValue": "{\"type\":\"object\",\"properties\":{\"type\":{},\"name\":{},\"gen_ai.system\":{},\"sdk_span_type\":{}}}"
+         }
+        }
+       ],
+       "status": {},
+       "flags": 256
+      },
+      {
+       "traceId": "01a1b904b6c3614fa3a4711c56e2bf8c",
+       "spanId": "1d051e647006aa0f",
+       "parentSpanId": "ea1aa71192da108a",
+       "name": "Function: {name}",
+       "kind": 1,
+       "startTimeUnixNano": "1794105456329055400",
+       "endTimeUnixNano": "1794105456335040100",
+       "attributes": [
+        {
+         "key": "logfire.msg_template",
+         "value": {
+          "stringValue": "Function: {name}"
+         }
+        },
+        {
+         "key": "logfire.span_type",
+         "value": {
+          "stringValue": "span"
+         }
+        },
+        {
+         "key": "name",
+         "value": {
+          "stringValue": "ask_trade_agent"
+         }
+        },
+        {
+         "key": "input",
+         "value": {
+          "stringValue": "{\"input\": \"do trade\"}"
+         }
+        },
+        {
+         "key": "output",
+         "value": {
+          "stringValue": "final from trade-agent"
+         }
+        },
+        {
+         "key": "mcp_data",
+         "value": {
+          "stringValue": "null"
+         }
+        },
+        {
+         "key": "gen_ai.system",
+         "value": {
+          "stringValue": "openai"
+         }
+        },
+        {
+         "key": "logfire.msg",
+         "value": {
+          "stringValue": "Function: ask_trade_agent"
+         }
+        },
+        {
+         "key": "logfire.json_schema",
+         "value": {
+          "stringValue": "{\"type\":\"object\",\"properties\":{\"name\":{},\"input\":{},\"output\":{},\"mcp_data\":{\"type\":\"null\"},\"gen_ai.system\":{}}}"
+         }
+        }
+       ],
+       "status": {},
+       "flags": 256
+      },
+      {
+       "traceId": "01a1b904b6c3614fa3a4711c56e2bf8c",
+       "spanId": "ea1aa71192da108a",
+       "parentSpanId": "b885383b59901b67",
+       "name": "Turn {turn} for agent supervisor",
+       "kind": 1,
+       "startTimeUnixNano": "1794105456327060400",
+       "endTimeUnixNano": "1794105456335040100",
+       "attributes": [
+        {
+         "key": "logfire.msg_template",
+         "value": {
+          "stringValue": "Turn {turn} for agent supervisor"
+         }
+        },
+        {
+         "key": "logfire.span_type",
+         "value": {
+          "stringValue": "span"
+         }
+        },
+        {
+         "key": "type",
+         "value": {
+          "stringValue": "custom"
+         }
+        },
+        {
+         "key": "name",
+         "value": {
+          "stringValue": "turn"
+         }
+        },
+        {
+         "key": "gen_ai.system",
+         "value": {
+          "stringValue": "openai"
+         }
+        },
+        {
+         "key": "sdk_span_type",
+         "value": {
+          "stringValue": "turn"
+         }
+        },
+        {
+         "key": "turn",
+         "value": {
+          "intValue": "1"
+         }
+        },
+        {
+         "key": "agent_name",
+         "value": {
+          "stringValue": "supervisor"
+         }
+        },
+        {
+         "key": "logfire.msg",
+         "value": {
+          "stringValue": "Turn 1 for agent supervisor"
+         }
+        },
+        {
+         "key": "logfire.json_schema",
+         "value": {
+          "stringValue": "{\"type\":\"object\",\"properties\":{\"type\":{},\"name\":{},\"gen_ai.system\":{},\"sdk_span_type\":{},\"turn\":{},\"agent_name\":{}}}"
+         }
+        }
+       ],
+       "status": {},
+       "flags": 256
+      },
+      {
+       "traceId": "01a1b904b6c3614fa3a4711c56e2bf8c",
+       "spanId": "518099e1aec5d955",
+       "parentSpanId": "b885383b59901b67",
+       "name": "Turn {turn} for agent supervisor",
+       "kind": 1,
+       "startTimeUnixNano": "1794105456335040100",
+       "endTimeUnixNano": "1794105456336544500",
+       "attributes": [
+        {
+         "key": "logfire.msg_template",
+         "value": {
+          "stringValue": "Turn {turn} for agent supervisor"
+         }
+        },
+        {
+         "key": "logfire.span_type",
+         "value": {
+          "stringValue": "span"
+         }
+        },
+        {
+         "key": "type",
+         "value": {
+          "stringValue": "custom"
+         }
+        },
+        {
+         "key": "name",
+         "value": {
+          "stringValue": "turn"
+         }
+        },
+        {
+         "key": "gen_ai.system",
+         "value": {
+          "stringValue": "openai"
+         }
+        },
+        {
+         "key": "sdk_span_type",
+         "value": {
+          "stringValue": "turn"
+         }
+        },
+        {
+         "key": "turn",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "agent_name",
+         "value": {
+          "stringValue": "supervisor"
+         }
+        },
+        {
+         "key": "logfire.msg",
+         "value": {
+          "stringValue": "Turn 2 for agent supervisor"
+         }
+        },
+        {
+         "key": "logfire.json_schema",
+         "value": {
+          "stringValue": "{\"type\":\"object\",\"properties\":{\"type\":{},\"name\":{},\"gen_ai.system\":{},\"sdk_span_type\":{},\"turn\":{},\"agent_name\":{}}}"
+         }
+        }
+       ],
+       "status": {},
+       "flags": 256
+      },
+      {
+       "traceId": "01a1b904b6c3614fa3a4711c56e2bf8c",
+       "spanId": "b885383b59901b67",
+       "parentSpanId": "0aa60b3f61e2f88b",
+       "name": "Agent run: {name!r}",
+       "kind": 1,
+       "startTimeUnixNano": "1794105456327060400",
+       "endTimeUnixNano": "1794105456336544500",
+       "attributes": [
+        {
+         "key": "logfire.msg_template",
+         "value": {
+          "stringValue": "Agent run: {name!r}"
+         }
+        },
+        {
+         "key": "logfire.span_type",
+         "value": {
+          "stringValue": "span"
+         }
+        },
+        {
+         "key": "name",
+         "value": {
+          "stringValue": "supervisor"
+         }
+        },
+        {
+         "key": "handoffs",
+         "value": {
+          "stringValue": "[]"
+         }
+        },
+        {
+         "key": "tools",
+         "value": {
+          "stringValue": "[\"ask_trade_agent\"]"
+         }
+        },
+        {
+         "key": "output_type",
+         "value": {
+          "stringValue": "str"
+         }
+        },
+        {
+         "key": "gen_ai.system",
+         "value": {
+          "stringValue": "openai"
+         }
+        },
+        {
+         "key": "logfire.msg",
+         "value": {
+          "stringValue": "Agent run: 'supervisor'"
+         }
+        },
+        {
+         "key": "logfire.json_schema",
+         "value": {
+          "stringValue": "{\"type\":\"object\",\"properties\":{\"name\":{},\"handoffs\":{\"type\":\"array\"},\"tools\":{\"type\":\"array\"},\"output_type\":{},\"gen_ai.system\":{}}}"
+         }
+        }
+       ],
+       "status": {},
+       "flags": 256
+      },
+      {
+       "traceId": "01a1b904b6c3614fa3a4711c56e2bf8c",
+       "spanId": "0aa60b3f61e2f88b",
+       "parentSpanId": "396971b21557cc7e",
+       "name": "Task: Agent workflow",
+       "kind": 1,
+       "startTimeUnixNano": "1794105456326034000",
+       "endTimeUnixNano": "1794105456336544500",
+       "attributes": [
+        {
+         "key": "logfire.msg_template",
+         "value": {
+          "stringValue": "Task: Agent workflow"
+         }
+        },
+        {
+         "key": "logfire.span_type",
+         "value": {
+          "stringValue": "span"
+         }
+        },
+        {
+         "key": "type",
+         "value": {
+          "stringValue": "custom"
+         }
+        },
+        {
+         "key": "name",
+         "value": {
+          "stringValue": "Agent workflow"
+         }
+        },
+        {
+         "key": "gen_ai.system",
+         "value": {
+          "stringValue": "openai"
+         }
+        },
+        {
+         "key": "sdk_span_type",
+         "value": {
+          "stringValue": "task"
+         }
+        },
+        {
+         "key": "logfire.msg",
+         "value": {
+          "stringValue": "Task: Agent workflow"
+         }
+        },
+        {
+         "key": "logfire.json_schema",
+         "value": {
+          "stringValue": "{\"type\":\"object\",\"properties\":{\"type\":{},\"name\":{},\"gen_ai.system\":{},\"sdk_span_type\":{}}}"
+         }
+        }
+       ],
+       "status": {},
+       "flags": 256
+      },
+      {
+       "traceId": "01a1b904b6c3614fa3a4711c56e2bf8c",
+       "spanId": "396971b21557cc7e",
+       "parentSpanId": "2e9fd7a6dd48a46f",
+       "name": "OpenAI Agents trace: {name}",
+       "kind": 1,
+       "startTimeUnixNano": "1794105456324530600",
+       "endTimeUnixNano": "1794105456337550800",
+       "attributes": [
+        {
+         "key": "name",
+         "value": {
+          "stringValue": "Agent workflow"
+         }
+        },
+        {
+         "key": "group_id",
+         "value": {
+          "stringValue": "null"
+         }
+        },
+        {
+         "key": "metadata",
+         "value": {
+          "stringValue": "null"
+         }
+        },
+        {
+         "key": "tracing",
+         "value": {
+          "stringValue": "null"
+         }
+        },
+        {
+         "key": "logfire.msg_template",
+         "value": {
+          "stringValue": "OpenAI Agents trace: {name}"
+         }
+        },
+        {
+         "key": "logfire.msg",
+         "value": {
+          "stringValue": "OpenAI Agents trace: Agent workflow"
+         }
+        },
+        {
+         "key": "logfire.span_type",
+         "value": {
+          "stringValue": "span"
+         }
+        },
+        {
+         "key": "agent_trace_id",
+         "value": {
+          "stringValue": "trace_b9329a79cdc14b9baa5d9b761fc77c21"
+         }
+        },
+        {
+         "key": "logfire.json_schema",
+         "value": {
+          "stringValue": "{\"type\":\"object\",\"properties\":{\"name\":{},\"agent_trace_id\":{},\"group_id\":{\"type\":\"null\"},\"metadata\":{\"type\":\"null\"},\"tracing\":{\"type\":\"null\"}}}"
+         }
+        }
+       ],
+       "status": {},
+       "flags": 256
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

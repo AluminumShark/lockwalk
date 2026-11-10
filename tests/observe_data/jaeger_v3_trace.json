@@ -1,0 +1,89 @@
+{
+ "result": {
+  "resourceSpans": [
+   {
+    "resource": {
+     "attributes": [
+      {
+       "key": "service.name",
+       "value": {
+        "stringValue": "raw-svc"
+       }
+      }
+     ]
+    },
+    "scopeSpans": [
+     {
+      "scope": {
+       "name": "raw.scope"
+      },
+      "spans": [
+       {
+        "traceId": "0af7651916cd43dd8448eb211c80319c",
+        "spanId": "00f067aa0ba902b7",
+        "traceState": "k=v",
+        "flags": 768,
+        "name": "raw-root",
+        "kind": 2,
+        "startTimeUnixNano": "1700000000000000001",
+        "endTimeUnixNano": "1700000000500000000",
+        "attributes": [
+         {
+          "key": "raw.arr_mixed",
+          "value": {
+           "arrayValue": {
+            "values": [
+             {
+              "stringValue": "s"
+             },
+             {
+              "intValue": "3"
+             }
+            ]
+           }
+          }
+         },
+         {
+          "key": "raw.bytes",
+          "value": {
+           "bytesValue": "AAH/"
+          }
+         },
+         {
+          "key": "raw.empty_value",
+          "value": {}
+         },
+         {
+          "key": "raw.map",
+          "value": {
+           "kvlistValue": {
+            "values": [
+             {
+              "key": "k",
+              "value": {
+               "stringValue": "v"
+              }
+             },
+             {
+              "key": "n",
+              "value": {
+               "intValue": "1"
+              }
+             }
+            ]
+           }
+          }
+         }
+        ],
+        "status": {
+         "message": "bad",
+         "code": 2
+        }
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}

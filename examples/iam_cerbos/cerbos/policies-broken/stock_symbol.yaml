@@ -1,0 +1,10 @@
+# Agent entities arrive without "cerbos.roles", so Cerbos gives them the role of their
+# subject type: "agent". The rules below therefore name the role "agent".
+apiVersion: api.cerbos.dev/v1
+resourcePolicy:
+  resource: stock_symbol
+  version: default
+  rules:
+    - actions: ["market:read", "market:quote", "market:confirm"]
+      effect: EFFECT_ALLOW
+      roles: ["analyst", "trader", "agent"]

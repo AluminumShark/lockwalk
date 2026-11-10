@@ -1,0 +1,19 @@
+# Test registry for the observe fixtures. See README.md for the names in each trace file.
+schema_version: '1'
+agents:
+  - id: supervisor
+    description: Entry agent; hands work to trade-agent.
+    entry: true
+    calls: [trade-agent]
+  - id: trade-agent
+    description: Executes trades.
+tools:
+  - id: execute_trade
+    action: trade:execute
+    risk: high
+    resource_type: order
+    supported_agents: [trade-agent]
+  - id: delegate_trade
+    action: trade:delegate
+    risk: low
+    supported_agents: [supervisor]

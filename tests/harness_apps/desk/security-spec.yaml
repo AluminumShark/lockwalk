@@ -1,0 +1,53 @@
+schema_version: '1'
+scenario_suite: desk-e2e-v1
+cases:
+  - id: CASE-1
+    actor: alice
+    role: analyst
+    path: [supervisor, finance-agent]
+    tool: read_portfolio
+    action: portfolio:read
+    resource_fixture: alice-portfolio
+    expect: allow
+  - id: CASE-2
+    actor: alice
+    role: analyst
+    path: [supervisor, finance-agent]
+    tool: read_portfolio
+    action: portfolio:read
+    resource_fixture: bob-portfolio
+    expect: deny
+    reason: Alice does not own the portfolio of Bob
+  - id: CASE-3
+    actor: bob
+    role: trader
+    path: [supervisor, finance-agent, trade-agent]
+    tool: execute_trade
+    action: trade:execute
+    resource_fixture: bob-order
+    expect: allow
+  - id: CASE-4
+    actor: bob
+    role: trader
+    path: [supervisor, finance-agent, trade-agent]
+    tool: execute_trade
+    action: trade:execute
+    resource_fixture: alice-order
+    expect: deny
+    reason: Bob cannot trade from the account of Alice
+  - id: CASE-5
+    actor: alice
+    role: analyst
+    path: [quote-agent]
+    tool: get_stock_price
+    action: market:read
+    resource_fixture: TSMC
+    expect: allow
+  - id: CASE-6
+    actor: alice
+    role: analyst
+    path: [research, "research:agent"]
+    tool: read_report
+    action: report:read
+    resource_fixture: q3-report
+    expect: allow

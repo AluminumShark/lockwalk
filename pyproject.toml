@@ -1,0 +1,97 @@
+[project]
+name = "lockwalk"
+version = "0.1.0.dev0"
+description = "Authorization test coverage for AI agent tools: find untested tool permissions, policy mismatches, and unenforced denials."
+readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+authors = [{ name = "Levi", email = "126132428+AluminumShark@users.noreply.github.com" }]
+requires-python = ">=3.11"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Security",
+    "Topic :: Software Development :: Testing",
+]
+dependencies = [
+    "pydantic>=2.7,<3",
+    "pyyaml>=6.0",
+    "rich>=13",
+    "typer>=0.12",
+]
+
+[project.optional-dependencies]
+mcp = ["mcp>=2.3,<3"]
+otel = ["opentelemetry-api>=1.20"]
+
+[project.urls]
+Homepage = "https://github.com/AluminumShark/lockwalk"
+Documentation = "https://github.com/AluminumShark/lockwalk/blob/main/docs/README.md"
+Issues = "https://github.com/AluminumShark/lockwalk/issues"
+Changelog = "https://github.com/AluminumShark/lockwalk/blob/main/CHANGELOG.md"
+
+[project.scripts]
+lockwalk = "lockwalk.cli:main"
+
+[dependency-groups]
+dev = [
+    "agno>=3.1",
+    "casbin>=1.36",
+    "cedarpy>=4.8.5",
+    "langchain-core>=1.7",
+    "langgraph>=1.2",
+    "mcp>=2.3,<3",
+    "openai-agents>=0.24",
+    "opentelemetry-sdk>=1.45,<2",
+    "pydantic-ai-slim>=2.66",
+    "pytest>=9",
+    "ruff==0.17.4",
+    "ty==0.0.98",
+]
+# CrewAI pins openai<3 and mcp 1.x, so it cannot share an environment with the dev group
+# or the mcp extra. Its tests run in a separate virtual environment (see tests/crewai_env/).
+crewai = [
+    "crewai>=1.15; python_version < '3.14'",
+    "pytest>=9",
+]
+
+[tool.uv]
+conflicts = [
+    [{ group = "dev" }, { group = "crewai" }],
+    [{ extra = "mcp" }, { group = "crewai" }],
+]
+
+[build-system]
+requires = ["uv_build>=0.11.1,<0.12.0"]
+build-backend = "uv_build"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+# ruff also formats Python code blocks inside Markdown; leave the documentation alone.
+extend-exclude = ["docs"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF"]
+
+[tool.ty.environment]
+python-version = "3.11"
+# The demo app imports its sibling modules (demo_door, demo_trading) by plain name, as the workers do.
+extra-paths = ["examples/multi_agent", "examples/iam_cedar"]
+
+[tool.ty.src]
+include = ["src", "tests", "examples", "scripts"]
+# CrewAI is not installed in the dev environment, so its test file cannot be type-checked there.
+exclude = ["tests/crewai_env"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# Lets tests import shared helper modules from tests/ in every import mode.
+pythonpath = ["tests"]
+addopts = "-ra"
+markers = ["docker: needs Docker and the example's image already pulled (skipped otherwise)"]

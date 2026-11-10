@@ -1,0 +1,18 @@
+schema_version: '1'
+subjects:
+  alice: {roles: [analyst]}
+  bob: {roles: [trader]}
+resources:
+  alice-portfolio:
+    {type: portfolio, id: p-alice, properties: {owner: alice}, tool_args: {portfolio_id: p-alice}}
+  bob-portfolio:
+    {type: portfolio, id: p-bob, properties: {owner: bob}, tool_args: {portfolio_id: p-bob}}
+  bob-order:
+    {type: order, id: o-bob-1, properties: {account_owner: bob}, tool_args: {order_id: o-bob-1}}
+  alice-order:
+    {type: order, id: o-alice-1, properties: {account_owner: alice}, tool_args: {order_id: o-alice-1}}
+  TSMC: {type: stock_symbol, id: "2330.TW", tool_args: {symbol: "2330.TW"}}
+  q3-report: {type: report, id: r-q3, tool_args: {report_id: r-q3}}
+probes:
+  subjects: {analyst: alice, trader: bob}
+  resources: {portfolio: alice-portfolio, order: bob-order, stock_symbol: TSMC, report: q3-report}

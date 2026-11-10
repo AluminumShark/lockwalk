@@ -1,0 +1,12 @@
+# One expected answer, written by hand for the observe test data.
+schema_version: '1'
+scenario_suite: observe-test-data
+cases:
+  - id: CASE-001
+    actor: alice
+    role: trader
+    path: [supervisor, trade-agent]
+    tool: execute_trade
+    action: trade:execute
+    resource_fixture: order-1
+    expect: allow

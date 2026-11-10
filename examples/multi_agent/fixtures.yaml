@@ -1,0 +1,24 @@
+# Test identities and resources for `lockwalk test` (see examples/iam_cedar and
+# examples/iam_cerbos). lockwalk puts these properties into its questions to the IAM.
+# tool_args are the arguments lockwalk passes when it calls a tool for the door tests
+# (examples/iam_cedar, [harness]); they match the tool parameters in app.py.
+schema_version: '1'
+subjects:
+  alice: {roles: [analyst]}
+  bob: {roles: [trader]}
+agents:
+  # trade-agent calls tools with its own service identity (delegation_mode: agent).
+  trade-agent: {properties: {roles: [service_agent], service_account: svc-trade}}
+resources:
+  alice-portfolio:
+    {type: portfolio, id: p-alice, properties: {owner: alice}, tool_args: {portfolio_id: p-alice}}
+  bob-portfolio:
+    {type: portfolio, id: p-bob, properties: {owner: bob}, tool_args: {portfolio_id: p-bob}}
+  TSMC: {type: stock_symbol, id: "2330.TW", tool_args: {symbol: "2330.TW"}}
+  bob-order:
+    {type: order, id: o-bob-1, properties: {account_owner: bob}, tool_args: {order_id: o-bob-1}}
+  alice-order:
+    {type: order, id: o-alice-1, properties: {account_owner: alice}, tool_args: {order_id: o-alice-1}}
+probes:
+  subjects: {analyst: alice, trader: bob}
+  resources: {portfolio: alice-portfolio, order: bob-order, stock_symbol: TSMC}

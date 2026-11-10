@@ -1,0 +1,30 @@
+# Hand-written expected answers. This is an observe example, so the suite is small on purpose:
+# lockwalk coverage reports the tools that have no case.
+schema_version: '1'
+scenario_suite: hermes-example-v1
+cases:
+  - id: CASE-001
+    actor: alice
+    role: operator
+    path: [hermes-agent]
+    tool: terminal
+    action: terminal:call
+    resource_fixture: safe-command
+    expect: allow
+  - id: CASE-002
+    actor: alice
+    role: operator
+    path: [hermes-agent]
+    tool: terminal
+    action: terminal:call
+    resource_fixture: dangerous-command
+    expect: deny
+    reason: A dangerous command needs a human yes
+  - id: CASE-003
+    actor: alice
+    role: operator
+    path: [hermes-agent, leaf]
+    tool: terminal
+    action: terminal:call
+    resource_fixture: safe-command
+    expect: allow
